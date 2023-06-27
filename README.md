@@ -1,4 +1,4 @@
-# sokos-mikrofrontend-template
+# sokos-op-skattekort
 
 Brukes som utgangspunkt for å opprette nye mikrofrontends i Økonomiportalen.
 

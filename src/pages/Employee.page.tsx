@@ -22,7 +22,7 @@ const ResultatSide = () => {
     <>
       <Panel border className="text-center">
         <Heading spacing level="2" size="large">
-          sokos-mikrofrontend-template
+          sokos-op-skattekort
         </Heading>
         <BodyLong>Dette er en template for å bygge undersider i Økonomiportalen</BodyLong>
       </Panel>
