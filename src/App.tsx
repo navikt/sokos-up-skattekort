@@ -1,9 +1,12 @@
 import "./App.module.css";
-import EmployeePage from "./pages/Employee.page";
+import { useEffect, useState } from "react";
+import useSWR from "swr";
+import Skattekortvisning from "./pages/Skattekortvisning";
+import skattekortData from "./pages/skattekortFrikort.json";
 
 const App = ({ gjelderId }: { gjelderId?: string }) => {
-  console.log({ gjelderId });
-  return <EmployeePage />;
+  console.log({ skattekortData });
+  return <> {skattekortData && <Skattekortvisning data={skattekortData} />}</>;
 };
 
 export default App;

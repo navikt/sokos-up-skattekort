@@ -1,0 +1,60 @@
+{
+  "skattekortListe": [
+    {
+      "arbeidsgiver": [
+        {
+          "arbeidstaker": [
+            {
+              "inntektsaar": 2023,
+              "arbeidstakeridentifikator": "04014400295",
+              "resultatPaaForespoersel": "skattekortopplysningerOK",
+              "skattekort": {
+                "utstedtDato": "2023-01-26",
+                "skattekortidentifikator": 1035796,
+                "forskuddstrekk": [
+                  {
+                    "type": "Trekktabell",
+                    "trekkode": "loennFraHovedarbeidsgiver",
+                    "tabelltype": "trekktabellForLoenn",
+                    "tabellnummer": "7100",
+                    "prosentsats": 35,
+                    "antallMaanederForTrekk": 10.5
+                  },
+                  {
+                    "type": "Trekktabell",
+                    "trekkode": "loennFraNAV",
+                    "tabelltype": "trekktabellForLoenn",
+                    "tabellnummer": "7100",
+                    "prosentsats": 35,
+                    "antallMaanederForTrekk": 10.5
+                  },
+                  {
+                    "type": "Trekktabell",
+                    "trekkode": "ufoeretrygdFraNAV",
+                    "tabelltype": "trekktabellForLoenn",
+                    "tabellnummer": "7100",
+                    "prosentsats": 35,
+                    "antallMaanederForTrekk": 10.5
+                  },
+                  {
+                    "type": "Trekkprosent",
+                    "trekkode": "loennFraBiarbeidsgiver",
+                    "prosentsats": 25
+                  },
+                  {
+                    "type": "Trekkprosent",
+                    "trekkode": "ufoereytelserFraAndre",
+                    "prosentsats": 32
+                  }
+                ]
+              }
+            }
+          ],
+          "arbeidsgiveridentifikator": {
+            "organisasjonsnummer": "910962728"
+          }
+        }
+      ]
+    }
+  ]
+}
