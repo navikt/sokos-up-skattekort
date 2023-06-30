@@ -1,9 +1,9 @@
-import { BodyLong, Heading, Loader, Panel, Table, TextField } from "@navikt/ds-react";
 import Skattekortdata from "../models/Skattekortdata";
-import SkattekortHeader from "../components/SkattekortHeader";
+import SkattekortTitle from "../components/SkattekortTitle";
 import Arbeidsgiver from "../components/Arbeidsgiver";
 import Tilleggsopplysningsliste from "../components/Tilleggsopplysningsliste";
 import Arbeidstaker from "../components/Arbeidstaker";
+import styles from "./skattekort.module.css";
 
 type SkattekortvisningProps = {
   data: Skattekortdata;
@@ -17,12 +17,20 @@ const Skattekortvisning = (props: SkattekortvisningProps) => {
   const arbeidstaker = arbeidsgiver.arbeidstaker[0];
   return (
     <>
-      <SkattekortHeader ar={arbeidsgiver.arbeidstaker[0].inntektsaar} utstedt={skattekort.utstedtDato} />
-      <Arbeidsgiver identifikator={arbeidsgiver.arbeidsgiveridentifikator} />
-      {arbeidstaker.tilleggsopplysning && (
-        <Tilleggsopplysningsliste tilleggsopplysninger={arbeidstaker.tilleggsopplysning} />
-      )}
-      <Arbeidstaker arbeidstaker={arbeidstaker.arbeidstakeridentifikator} forskuddstrekk={forskuddstrekk} />
+      <div className={styles.skattekort}>
+        <div className={styles.rightTitle}>
+          <SkattekortTitle ar={arbeidsgiver.arbeidstaker[0].inntektsaar} utstedt={skattekort.utstedtDato} />
+        </div>
+        <div className={styles.leftColumn}>
+          <Arbeidsgiver identifikator={arbeidsgiver.arbeidsgiveridentifikator} />
+          {arbeidstaker.tilleggsopplysning && (
+            <Tilleggsopplysningsliste tilleggsopplysninger={arbeidstaker.tilleggsopplysning} />
+          )}
+        </div>
+        <div className={styles.rightColumn}>
+          <Arbeidstaker arbeidstaker={arbeidstaker.arbeidstakeridentifikator} forskuddstrekk={forskuddstrekk} />
+        </div>
+      </div>
     </>
   );
 };

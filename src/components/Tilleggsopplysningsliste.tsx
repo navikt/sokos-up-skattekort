@@ -1,15 +1,20 @@
 import { Tilleggsopplysning } from "../models/Skattekortdata";
+import styles from "../pages/skattekort.module.css";
+import { Label } from "@navikt/ds-react";
 
 type TilleggsoppysningProps = {
   tilleggsopplysninger: Set<Tilleggsopplysning>;
 };
 
 const Tilleggsopplysningsliste = ({ tilleggsopplysninger }: TilleggsoppysningProps) => (
-  <ul>
-    {Array.from(tilleggsopplysninger).map((t) => (
-      <li>{t}</li>
-    ))}
-  </ul>
+  <div className={styles.tilleggsopplysning}>
+    <Label>Tilleggsopplysning</Label>
+    <ul>
+      {Array.from(tilleggsopplysninger).map((t) => (
+        <li>{t}</li>
+      ))}
+    </ul>
+  </div>
 );
 
 export default Tilleggsopplysningsliste;

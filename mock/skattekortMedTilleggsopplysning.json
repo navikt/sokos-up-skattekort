@@ -5,11 +5,11 @@
         {
           "arbeidstaker": [
             {
-              "inntektsaar": 2023,
+              "inntektsaar": 2022,
               "arbeidstakeridentifikator": "01016902310",
               "resultatPaaForespoersel": "skattekortopplysningerOK",
               "skattekort": {
-                "utstedtDato": "2023-01-26",
+                "utstedtDato": "2022-01-12",
                 "skattekortidentifikator": 1035996,
                 "forskuddstrekk": [
                   {

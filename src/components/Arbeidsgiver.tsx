@@ -1,4 +1,4 @@
-import { BodyShort } from "@navikt/ds-react";
+import { Label } from "@navikt/ds-react";
 
 type ArbeidsgiverProps = {
   identifikator: ArbeidsgiverIdentifikator;
@@ -9,7 +9,7 @@ type ArbeidsgiverIdentifikator = {
 };
 
 const Arbeidsgiver = ({ identifikator }: ArbeidsgiverProps) => (
-  <BodyShort>Arbeidsgiver: {identifikator.organisasjonsnummer}</BodyShort>
+  <Label>Arbeidsgiver: {identifikator.organisasjonsnummer}</Label>
 );
 
 export default Arbeidsgiver;
