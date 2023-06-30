@@ -19,7 +19,4 @@ server.use(
 );
 
 server.get([`${basePath}/internal/isAlive`, `${basePath}/internal/isReady`], (_req, res) => res.sendStatus(200));
-
-server.get(`${basePath}/api/skattekort`, (_req, res) => res.sendFile('/Users/lars/code/op/sokos-op-skattekort/mock/skattekortFrikort json'))
-
 server.listen(8080, () => console.log("Server listening on port 8080"));

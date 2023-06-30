@@ -1,5 +1,4 @@
 import { Heading } from "@navikt/ds-react";
-import styles from "../pages/Skattekort.module.css";
 
 type SkattekortTitleProps = {
   ar: number;
@@ -7,7 +6,7 @@ type SkattekortTitleProps = {
 };
 
 const SkattekortTitle = (props: SkattekortTitleProps) => (
-  <div className={styles.rightTitle}>
+  <div>
     <Heading level="3" size="xlarge">
       Skattekort {props.ar}
     </Heading>
