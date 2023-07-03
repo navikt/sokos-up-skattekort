@@ -21,7 +21,6 @@ const Skattekort = () => {
           method: "POST",
           body: JSON.stringify(searchBody),
           headers: { "Content-Type": "application/json;charset=UTF-8" },
-          includeCredentials,
         },
       }
     : null;
