@@ -3,7 +3,7 @@ import SkattekortSearch from "../components/SkattekortSearch";
 import Skattekortvisning from "../components/Skattekortvisning";
 import useSWR from "swr";
 import { skattekortDataUrl } from "../api/urls";
-import { fetcher, includeCredentials } from "../api/api";
+import { fetcher } from "../api/api";
 import SkattekortData from "../models/Skattekortdata";
 import { Loader } from "@navikt/ds-react";
 
