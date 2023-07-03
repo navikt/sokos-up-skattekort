@@ -11,7 +11,7 @@ const Tilleggsopplysningsliste = ({ tilleggsopplysninger }: TilleggsoppysningPro
     <Label>Tilleggsopplysning</Label>
     <ul>
       {Array.from(tilleggsopplysninger).map((t) => (
-        <li>{t}</li>
+        <li key={t}>{t}</li>
       ))}
     </ul>
   </div>

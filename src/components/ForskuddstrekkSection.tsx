@@ -1,13 +1,13 @@
 import { Forskuddstrekk } from "../models/Skattekortdata";
 import { BodyShort, Label } from "@navikt/ds-react";
 import styles from "../pages/skattekort.module.css";
-import { trekkodetekster } from "../models/trekkodetekster";
+import { Trekkodetekster } from "../models/Trekkodetekster";
 
 type ForskuddstrekkSectionProps = {
   forskuddstrekk: Forskuddstrekk;
 };
 const ForskuddstrekkSection = ({ forskuddstrekk }: ForskuddstrekkSectionProps) => {
-  const tittel = trekkodetekster.get(forskuddstrekk.trekkode) ?? forskuddstrekk.trekkode;
+  const tittel = Trekkodetekster.get(forskuddstrekk.trekkode) ?? forskuddstrekk.trekkode;
 
   const prosentsatsEllerFrikort = forskuddstrekk.prosentsats
     ? `Prosentsats: ${forskuddstrekk.prosentsats}`

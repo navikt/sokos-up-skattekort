@@ -1,9 +1,8 @@
 import "./App.module.css";
-import Skattekortvisning from "./pages/Skattekortvisning";
-import skattekortData from "../mock/skattekortMedTilleggsopplysning.json";
+import Skattekort from "./pages/Skattekort";
 
-const App = ({ gjelderId }: { gjelderId?: string }) => {
-  return <> {skattekortData && <Skattekortvisning data={skattekortData} />}</>;
+const App = () => {
+  return <Skattekort />;
 };
 
 export default App;

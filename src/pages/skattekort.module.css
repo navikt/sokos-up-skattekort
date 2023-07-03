@@ -45,3 +45,10 @@
   text-align: right;
   margin-top: 5px;
 }
+
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  max-width: 1024px;
+}

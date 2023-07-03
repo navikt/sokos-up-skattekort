@@ -1,5 +1,3 @@
-// Generert av ChatGPT
-
 export type Skattekort = {
   utstedtDato: string;
   skattekortidentifikator: number;
