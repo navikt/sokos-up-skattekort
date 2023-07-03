@@ -19,7 +19,7 @@ const Skattekort = () => {
         path: skattekortDataUrl,
         options: {
           method: "POST",
-          body: searchBody,
+          body: JSON.stringify(searchBody),
           headers: { "Content-Type": "application/json;charset=UTF-8" },
           includeCredentials,
         },
