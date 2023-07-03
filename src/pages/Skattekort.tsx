@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { skattekortDataUrl } from "../api/urls";
 import { fetcher } from "../api/api";
 import SkattekortData from "../models/Skattekortdata";
+import { Loader } from "@navikt/ds-react";
 
 type SkattekortPersonRequestBody = {
   fnr: string;
@@ -13,7 +14,9 @@ type SkattekortPersonRequestBody = {
 
 const Skattekort = () => {
   const [searchBody, setSearchBody] = useState<SkattekortPersonRequestBody>();
-  const query = searchBody ? { path: skattekortDataUrl, options: { method: "POST", body: searchBody } } : null;
+  const query = searchBody
+    ? { path: skattekortDataUrl, options: { method: "POST", body: JSON.stringify(searchBody) } }
+    : null;
   const { data, isLoading, error } = useSWR<SkattekortData>(query, fetcher);
 
   const handleSubmit = (fnr: string, year: number) => {
@@ -27,6 +30,7 @@ const Skattekort = () => {
     <>
       <SkattekortSearch handleSubmit={handleSubmit} />
       {showSkattekort && <Skattekortvisning data={data} />}
+      {isLoading && <Loader />}
     </>
   );
 };
