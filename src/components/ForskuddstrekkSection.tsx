@@ -1,6 +1,6 @@
 import { Forskuddstrekk } from "../models/Skattekortdata";
 import { BodyShort, Label } from "@navikt/ds-react";
-import styles from "../pages/skattekort.module.css";
+import styles from "./ForskuddstrekkSection.module.css";
 import { Trekkodetekster } from "../models/Trekkodetekster";
 
 type ForskuddstrekkSectionProps = {

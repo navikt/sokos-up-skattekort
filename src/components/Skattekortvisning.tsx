@@ -1,4 +1,4 @@
-import styles from "../pages/skattekort.module.css";
+import styles from "./SkattekortVisning.module.css";
 import SkattekortTitle from "./SkattekortTitle";
 import Arbeidsgiver from "./Arbeidsgiver";
 import Tilleggsopplysningsliste from "./Tilleggsopplysningsliste";

@@ -1,5 +1,5 @@
 import { Tilleggsopplysning } from "../models/Skattekortdata";
-import styles from "../pages/skattekort.module.css";
+import styles from "./TilleggsopplysningsListe.module.css";
 import { Label } from "@navikt/ds-react";
 
 type TilleggsoppysningProps = {

@@ -1,5 +1,5 @@
 import { Radio, RadioGroup, Search } from "@navikt/ds-react";
-import styles from "../pages/skattekort.module.css";
+import styles from "./SkattekortSearch.module.css";
 
 type SkattekortSearchProps = {
   handleSubmit: (fnr: string, year: number) => void;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SkattekortSearch from "../components/SkattekortSearch";
 import Skattekortvisning from "../components/Skattekortvisning";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { skattekortDataUrl } from "../api/urls";
 import { fetcher } from "../api/api";
 import SkattekortData from "../models/Skattekortdata";
@@ -24,7 +24,7 @@ const Skattekort = () => {
         },
       }
     : null;
-  const { data, isLoading, error } = useSWR<SkattekortData>(query, fetcher);
+  const { data, isLoading, error } = useSWRImmutable<SkattekortData>(query, fetcher);
 
   const handleSubmit = (fnr: string, year: number) => {
     const searchParameters = { fnr, inntektsaar: year };
