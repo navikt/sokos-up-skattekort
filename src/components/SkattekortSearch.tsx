@@ -1,6 +1,7 @@
 import { Chips, Search } from "@navikt/ds-react";
 import styles from "./SkattekortSearch.module.css";
 import { ChangeEvent, useState } from "react";
+import { erGyldigFodselsnummer } from "../util/fnrValidationUtil";
 
 type SkattekortSearchProps = {
   handleSubmit: (fnr: string, year: number) => void;
@@ -16,8 +17,14 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
     const fnr: string = event.target.search.value;
 
     if (fnr.replace(/[\s.]/g, "").match(/^[0-9]{11}$/)) {
-      handleSubmit(fnr, year);
-      setError("");
+      if (erGyldigFodselsnummer(fnr)) {
+        setError("");
+        handleSubmit(fnr, year);
+        setError("");
+      } else {
+        handleSubmit("", year);
+        setError("Personnummer er ikke gyldig");
+      }
     } else {
       handleSubmit("", year);
       setError("Personnummer må være 11 siffer");
