@@ -7,7 +7,7 @@ type TilleggsopplysningProps = {
   tilleggsopplysninger: Set<Tilleggsopplysning>;
 };
 
-const Tilleggsopplysningsliste = ({ tilleggsopplysninger }: TilleggsopplysningProps) => {
+const TilleggsopplysningsListe = ({ tilleggsopplysninger }: TilleggsopplysningProps) => {
   const tilleggsopplysningList = Array.from(tilleggsopplysninger).filter((tilleggsopplysning) =>
     TillegsopplysningTekster.has(tilleggsopplysning)
   );
@@ -16,7 +16,6 @@ const Tilleggsopplysningsliste = ({ tilleggsopplysninger }: TilleggsopplysningPr
     <div className={styles.tilleggsopplysning}>
       <Label>Tilleggsopplysning</Label>
       <ul>
-        {/* Bruk <li> for å vise hver tilleggsopplysning */}
         {tilleggsopplysningList.map((tilleggsopplysning) => (
           <li key={tilleggsopplysning}>{TillegsopplysningTekster.get(tilleggsopplysning)}</li>
         ))}
@@ -25,4 +24,4 @@ const Tilleggsopplysningsliste = ({ tilleggsopplysninger }: TilleggsopplysningPr
   );
 };
 
-export default Tilleggsopplysningsliste;
+export default TilleggsopplysningsListe;

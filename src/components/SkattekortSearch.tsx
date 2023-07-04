@@ -20,7 +20,6 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
       if (isValidBirthNumber(fnr)) {
         setError("");
         handleSubmit(fnr, year);
-        setError("");
       } else {
         handleSubmit("", year);
         setError("Personnummer er ikke gyldig");
