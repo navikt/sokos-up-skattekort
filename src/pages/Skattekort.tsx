@@ -14,6 +14,7 @@ type SkattekortPersonRequestBody = {
 
 const Skattekort = () => {
   const [searchBody, setSearchBody] = useState<SkattekortPersonRequestBody>();
+
   const query = searchBody
     ? {
         path: skattekortDataUrl,
@@ -24,6 +25,7 @@ const Skattekort = () => {
         },
       }
     : null;
+
   const { data, isLoading, error } = useSWRImmutable<SkattekortData>(query, fetcher);
 
   const handleSubmit = (fnr: string, year: number) => {
