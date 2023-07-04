@@ -1,6 +1,6 @@
 .searchForm {
-  display: flex;
-  flex-direction: row;
   margin: 10px;
-  max-width: 1024px;
+}
+.searchForm ul {
+  margin-top: 10px;
 }

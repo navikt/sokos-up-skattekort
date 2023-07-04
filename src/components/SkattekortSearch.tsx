@@ -1,19 +1,21 @@
-import { Radio, RadioGroup, Search } from "@navikt/ds-react";
+import { Chips, Search } from "@navikt/ds-react";
 import styles from "./SkattekortSearch.module.css";
+import { ChangeEvent, useState } from "react";
 
 type SkattekortSearchProps = {
   handleSubmit: (fnr: string, year: number) => void;
 };
 
 const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
-  const year = new Date().getFullYear();
-  const submitHandler = (event: { preventDefault: () => void; target: any }) => {
+  const currentYear = new Date().getFullYear();
+  const [year, setYear] = useState(currentYear);
+  const submitHandler = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const fnr: string = event.target.search.value;
-    const year = event.target.year.value;
 
-    handleSubmit(fnr, year);
+    if (fnr.replace(/ /g, "").match(/[0-9]{11}/)) handleSubmit(fnr, year);
+    else console.log("valideringsfeil");
   };
 
   return (
@@ -26,11 +28,13 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
           htmlSize="12"
           name={"search"}
         />
-        <RadioGroup defaultValue={year} legend="Velg år" name={"year"}>
-          <Radio value={year - 1}>{year - 1}</Radio>
-          <Radio value={year}>{year}</Radio>
-          <Radio value={year + 1}>{year + 1}</Radio>
-        </RadioGroup>
+        <Chips>
+          {[currentYear - 1, currentYear, currentYear + 1].map((c) => (
+            <Chips.Toggle selected={year === c} key={c} onClick={() => setYear(c)} type={"submit"}>
+              {c.toString()}
+            </Chips.Toggle>
+          ))}
+        </Chips>
       </div>
     </form>
   );

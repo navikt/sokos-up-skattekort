@@ -6,13 +6,14 @@ import { skattekortDataUrl } from "../api/urls";
 import { fetcher } from "../api/api";
 import SkattekortData from "../models/Skattekortdata";
 import { Loader } from "@navikt/ds-react";
+import styles from "./Skattekort.page.module.css";
 
 type SkattekortPersonRequestBody = {
   fnr: string;
   inntektsaar: number;
 };
 
-const Skattekort = () => {
+const SkattekortPage = () => {
   const [searchBody, setSearchBody] = useState<SkattekortPersonRequestBody>();
 
   const query = searchBody
@@ -39,9 +40,13 @@ const Skattekort = () => {
     <>
       <SkattekortSearch handleSubmit={handleSubmit} />
       {showSkattekort && <Skattekortvisning data={data} />}
-      {isLoading && <Loader />}
+      {isLoading && (
+        <div className={styles.loader}>
+          <Loader size="3xlarge" title="Henter Skattekort" />
+        </div>
+      )}
     </>
   );
 };
 
-export default Skattekort;
+export default SkattekortPage;

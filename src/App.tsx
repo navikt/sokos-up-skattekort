@@ -1,8 +1,8 @@
 import "./App.module.css";
-import Skattekort from "./pages/Skattekort";
+import SkattekortPage from "./pages/Skattekort.page";
 
 const App = () => {
-  return <Skattekort />;
+  return <SkattekortPage />;
 };
 
 export default App;

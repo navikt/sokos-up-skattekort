@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: space-between;
   grid-row-start: 2;
+  margin-left: 5px;
 }
 
 .rightColumn {

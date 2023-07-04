@@ -1,3 +1,8 @@
 .tilleggsopplysning {
   margin-bottom: 20px;
 }
+
+.tilleggsopplysning li {
+  list-style-type: circle;
+  list-style-position: inside;
+}
