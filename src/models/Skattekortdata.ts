@@ -10,6 +10,7 @@ export type Trekkode =
   | "loennFraHovedarbeidsgiver"
   | "loennFraBiarbeidsgiver"
   | "loennFraNAV"
+  | "pensjonFraNAV"
   | "ufoeretrygdFraNAV"
   | "ufoereytelserFraAndre";
 
