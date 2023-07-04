@@ -3,7 +3,7 @@ import SkattekortTitle from "./SkattekortTitle";
 import Arbeidsgiver from "./Arbeidsgiver";
 import Tilleggsopplysningsliste from "./Tilleggsopplysningsliste";
 import Arbeidstaker from "./Arbeidstaker";
-import Skattekortdata from "../models/Skattekortdata";
+import Skattekortdata from "../models/SkattekortData";
 
 type SkattekortvisningProps = {
   data: Skattekortdata;

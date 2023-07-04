@@ -1,5 +1,5 @@
 import { Label } from "@navikt/ds-react";
-import { Forskuddstrekk } from "../models/Skattekortdata";
+import { Forskuddstrekk } from "../models/SkattekortData";
 import ForskuddstrekkSection from "./ForskuddstrekkSection";
 
 type ArbeidstakerProps = {

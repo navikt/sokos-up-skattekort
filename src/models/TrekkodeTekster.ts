@@ -1,6 +1,6 @@
-import { Trekkode } from "./Skattekortdata";
+import { Trekkode } from "./SkattekortData";
 
-export const Trekkodetekster = new Map<Trekkode, string>([
+export const TrekkodeTekster = new Map<Trekkode, string>([
   ["loennFraHovedarbeidsgiver", "Lønn fra hovedarbeidsgiver"],
   ["loennFraBiarbeidsgiver", "Lønn fra biarbeidsgiver"],
   ["loennFraNAV", "Lønn fra NAV"],

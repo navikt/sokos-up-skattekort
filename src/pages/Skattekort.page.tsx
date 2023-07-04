@@ -4,9 +4,9 @@ import Skattekortvisning from "../components/Skattekortvisning";
 import useSWRImmutable from "swr/immutable";
 import { skattekortDataUrl } from "../api/urls";
 import { fetcher } from "../api/api";
-import SkattekortData from "../models/Skattekortdata";
+import SkattekortData from "../models/SkattekortData";
 import { Loader } from "@navikt/ds-react";
-import styles from "./Skattekort.page.module.css";
+import styles from "./Skattekort.module.css";
 
 type SkattekortPersonRequestBody = {
   fnr: string;
