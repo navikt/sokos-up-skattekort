@@ -9,13 +9,19 @@ type SkattekortSearchProps = {
 const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
   const currentYear = new Date().getFullYear();
   const [year, setYear] = useState(currentYear);
+  const [error, setError] = useState("");
   const submitHandler = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const fnr: string = event.target.search.value;
 
-    if (fnr.replace(/ /g, "").match(/[0-9]{11}/)) handleSubmit(fnr, year);
-    else console.log("valideringsfeil");
+    if (fnr.replace(/[\s.]/g, "").match(/^[0-9]{11}$/)) {
+      handleSubmit(fnr, year);
+      setError("");
+    } else {
+      handleSubmit("", year);
+      setError("Personnummer må være 11 siffer");
+    }
   };
 
   return (
@@ -23,10 +29,12 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
       <div className={styles.searchForm}>
         <Search
           label="Betalingsmottaker"
-          description="Velg hvem du vil se skattekort for"
+          description="Tast inn fødselsnummer 11 siffer"
           hideLabel={false}
           htmlSize="12"
           name={"search"}
+          error={error}
+          onChange={() => setError("")}
         />
         <Chips>
           {[currentYear - 1, currentYear, currentYear + 1].map((c) => (

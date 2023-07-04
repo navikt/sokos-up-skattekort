@@ -8,6 +8,7 @@
               "inntektsaar": 2023,
               "arbeidstakeridentifikator": "04014400295",
               "resultatPaaForespoersel": "skattekortopplysningerOK",
+              "tilleggsopplysning": ["oppholdPaaSvalbard"],
               "skattekort": {
                 "utstedtDato": "2023-01-26",
                 "skattekortidentifikator": 1035796,
@@ -35,6 +36,11 @@
                     "tabellnummer": "7100",
                     "prosentsats": 35,
                     "antallMaanederForTrekk": 10.5
+                  },
+                  {
+                    "type": "Trekkprosent",
+                    "trekkode": "pensjonFraNAV",
+                    "prosentsats": 28
                   },
                   {
                     "type": "Trekkprosent",

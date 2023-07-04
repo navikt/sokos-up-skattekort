@@ -27,14 +27,15 @@ const SkattekortPage = () => {
       }
     : null;
 
-  const { data, isLoading, error } = useSWRImmutable<SkattekortData>(query, fetcher);
+  const { data, isLoading, error: fetchError } = useSWRImmutable<SkattekortData>(query, fetcher);
 
   const handleSubmit = (fnr: string, year: number) => {
     const searchParameters = { fnr, inntektsaar: year };
-    setSearchBody(() => searchParameters);
+    if (fnr && year) setSearchBody(() => searchParameters);
+    else setSearchBody(undefined);
   };
 
-  const showSkattekort = data && !isLoading && !error && !!data.skattekortListe?.length;
+  const showSkattekort = data && !isLoading && !fetchError && !!data.skattekortListe?.length;
 
   return (
     <>
