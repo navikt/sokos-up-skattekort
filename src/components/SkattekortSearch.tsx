@@ -22,7 +22,7 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
       handleSubmit(fodselsnummer, year);
     } else {
       handleSubmit("", year);
-      setError("Personnummer er ikke gyldig");
+      setError("Oppgitt personnummer er ikke gyldig");
     }
   };
 
