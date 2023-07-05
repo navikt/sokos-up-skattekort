@@ -5,7 +5,7 @@ import useSWRImmutable from "swr/immutable";
 import { skattekortDataUrl } from "../api/urls";
 import { fetcher } from "../api/api";
 import SkattekortData from "../models/SkattekortData";
-import { Loader } from "@navikt/ds-react";
+import { Alert, Loader } from "@navikt/ds-react";
 import styles from "./Skattekort.module.css";
 
 type SkattekortPersonRequestBody = {
@@ -36,17 +36,24 @@ const SkattekortPage = () => {
   };
 
   const showSkattekort = data && !isLoading && !fetchError && !!data.skattekortListe?.length;
+  const emptySkattekort = data && !isLoading && !fetchError && !data.skattekortListe?.length;
 
   return (
-    <>
+    <div className={styles.skattekort}>
       <SkattekortSearch handleSubmit={handleSubmit} />
       {showSkattekort && <Skattekortvisning data={data} />}
       {isLoading && (
-        <div className={styles.loader}>
+        <div className={styles.skattekort__loader}>
           <Loader size="3xlarge" title="Henter Skattekort" />
         </div>
       )}
-    </>
+      {emptySkattekort && (
+        <Alert variant="warning">
+          {`Ingen skattekort funnet for år ${searchBody?.inntektsaar} med bruker ${searchBody?.fnr}`}
+        </Alert>
+      )}
+      {fetchError && <Alert variant="error">En feil oppstod, prøv igjen</Alert>}
+    </div>
   );
 };
 

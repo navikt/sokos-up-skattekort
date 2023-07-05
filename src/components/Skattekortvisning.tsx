@@ -3,7 +3,7 @@ import SkattekortTitle from "./SkattekortTitle";
 import Arbeidsgiver from "./Arbeidsgiver";
 import Arbeidstaker from "./Arbeidstaker";
 import Skattekortdata from "../models/SkattekortData";
-import TilleggsopplysningsListe from "./Tilleggsopplysningsliste";
+import TilleggsopplysningsListe from "./TilleggsopplysningsListe";
 
 type SkattekortvisningProps = {
   data: Skattekortdata;
@@ -16,17 +16,17 @@ const Skattekortvisning = ({ data }: SkattekortvisningProps) => {
   const arbeidstaker = arbeidsgiver.arbeidstaker[0];
 
   return (
-    <div className={styles.skattekort}>
-      <div className={styles.rightTitle}>
+    <div className={styles.skattekortvisning}>
+      <div className={styles.skattekortvisning__rightTitle}>
         <SkattekortTitle ar={arbeidsgiver.arbeidstaker[0].inntektsaar} utstedt={skattekort.utstedtDato} />
       </div>
-      <div className={styles.leftColumn}>
+      <div className={styles.skattekortvisning__leftColumn}>
         <Arbeidsgiver identifikator={arbeidsgiver.arbeidsgiveridentifikator} />
         {arbeidstaker.tilleggsopplysning && (
           <TilleggsopplysningsListe tilleggsopplysninger={arbeidstaker.tilleggsopplysning} />
         )}
       </div>
-      <div className={styles.rightColumn}>
+      <div className={styles.skattekortvisning__rightColumn}>
         <Arbeidstaker arbeidstaker={arbeidstaker.arbeidstakeridentifikator} forskuddstrekk={forskuddstrekk} />
       </div>
     </div>

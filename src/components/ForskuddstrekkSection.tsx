@@ -17,12 +17,12 @@ const ForskuddstrekkSection = ({ forskuddstrekk }: ForskuddstrekkSectionProps) =
 
   return (
     <div className={styles.forskuddstrekk}>
-      <div className={styles.prosenttrekk}>
+      <div>
         <Label>{tittel}</Label>
         <BodyShort>{prosentsatsEllerFrikort}</BodyShort>
       </div>
       {skalViseTabell && (
-        <div className={styles.tabelltrekk}>
+        <div className={styles.forskuddstrekk__tabelltrekk}>
           <BodyShort>Tabellnummer: {forskuddstrekk.tabellnummer}</BodyShort>
           <BodyShort>Antall måneder for trekk: {forskuddstrekk.antallMaanederForTrekk}</BodyShort>
         </div>

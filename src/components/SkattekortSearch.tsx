@@ -32,24 +32,22 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
 
   return (
     <form role={"search"} onSubmit={submitHandler}>
-      <div className={styles.searchForm}>
-        <Search
-          label="Betalingsmottaker"
-          description="Tast inn fødselsnummer 11 siffer"
-          hideLabel={false}
-          htmlSize="12"
-          name={"search"}
-          error={error}
-          onChange={() => setError("")}
-        />
-        <Chips>
-          {[currentYear - 1, currentYear, currentYear + 1].map((c) => (
-            <Chips.Toggle selected={year === c} key={c} onClick={() => setYear(c)} type={"submit"}>
-              {c.toString()}
-            </Chips.Toggle>
-          ))}
-        </Chips>
-      </div>
+      <Search
+        label="Betalingsmottaker"
+        description="Tast inn fødselsnummer 11 siffer"
+        hideLabel={false}
+        htmlSize="12"
+        name={"search"}
+        error={error}
+        onChange={() => setError("")}
+      />
+      <Chips className={styles.chips}>
+        {[currentYear - 1, currentYear, currentYear + 1].map((c) => (
+          <Chips.Toggle selected={year === c} key={c} onClick={() => setYear(c)} type={"submit"}>
+            {c.toString()}
+          </Chips.Toggle>
+        ))}
+      </Chips>
     </form>
   );
 };
