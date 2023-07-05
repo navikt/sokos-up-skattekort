@@ -3,8 +3,11 @@
   margin: 10px;
 }
 
+.forskuddstrekk__label {
+  margin-top: 0;
+}
+
 .forskuddstrekk__tabelltrekk {
   grid-column-start: 2;
   text-align: right;
-  margin-top: 5px;
 }
