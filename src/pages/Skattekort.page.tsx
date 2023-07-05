@@ -1,11 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import SkattekortSearch from "../components/SkattekortSearch";
 import Skattekortvisning from "../components/Skattekortvisning";
 import useSWRImmutable from "swr/immutable";
 import { skattekortDataUrl } from "../api/urls";
 import { fetcher } from "../api/api";
 import SkattekortData from "../models/SkattekortData";
-import { Alert, Loader } from "@navikt/ds-react";
+import { Alert, Heading, Loader } from "@navikt/ds-react";
 import styles from "./Skattekort.module.css";
 
 type SkattekortPersonRequestBody = {
@@ -40,6 +40,9 @@ const SkattekortPage = () => {
 
   return (
     <div className={styles.skattekort}>
+      <Heading level="1" size="medium">
+        Skattekort
+      </Heading>
       <SkattekortSearch handleSubmit={handleSubmit} />
       {showSkattekort && <Skattekortvisning data={data} />}
       {isLoading && (
