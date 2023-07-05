@@ -29,10 +29,12 @@ export type Tilleggsopplysning =
   | "oppholdITiltakssone"
   | "kildeskattPaaLoenn";
 
-type Arbeidstaker = {
+export type ResultatStatus = "ikkeSkattekort" | "skattekortopplysningerOK";
+
+export type Arbeidstaker = {
   inntektsaar: number;
   arbeidstakeridentifikator: string;
-  resultatPaaForespoersel: string;
+  resultatPaaForespoersel: ResultatStatus;
   skattekort: Skattekort;
   tilleggsopplysning?: Set<Tilleggsopplysning>;
 };

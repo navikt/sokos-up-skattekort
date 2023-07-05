@@ -2,18 +2,21 @@ import { Heading } from "@navikt/ds-react";
 
 type SkattekortTitleProps = {
   ar: number;
-  utstedt: string;
+  utstedt?: string;
 };
 
-const SkattekortTitle = (props: SkattekortTitleProps) => (
-  <div>
-    <Heading level="3" size="xlarge">
-      Skattekort {props.ar}
-    </Heading>
-    <Heading size={"medium"} spacing>
-      Utstedt dato {props.utstedt}
-    </Heading>
-  </div>
-);
+const SkattekortTitle = ({ ar, utstedt }: SkattekortTitleProps) => {
+  const underTitle = utstedt ? `Utstedt dato ${utstedt}` : "Ingen skattekort utstedt";
+  return (
+    <div>
+      <Heading level="3" size="xlarge">
+        Skattekort {ar}
+      </Heading>
+      <Heading size={"medium"} spacing>
+        {underTitle}
+      </Heading>
+    </div>
+  );
+};
 
 export default SkattekortTitle;
