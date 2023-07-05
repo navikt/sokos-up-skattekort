@@ -3,5 +3,5 @@
 }
 
 .skattekort__loader {
-  @apply flex justify-center m-10;
+  @apply flex justify-center;
 }
