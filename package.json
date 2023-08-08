@@ -17,7 +17,8 @@
     "@navikt/ds-react": "^4.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "swr": "^2.2.0"
+    "swr": "^2.2.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@eik/rollup-plugin": "^4.0.49",
