@@ -7,7 +7,6 @@ import skattekortdata from './skattekortMedTabelltrekk.json'
 export default [
   {
     url: "/skattekort-api/api/v1/hent-skattekort",
-    method: "post",
     response: () => skattekortdata
   },
 ];

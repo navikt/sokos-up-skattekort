@@ -1,15 +1,15 @@
-import { Tilleggsopplysning } from "../models/SkattekortData";
-import styles from "./TilleggsopplysningsListe.module.css";
 import { Label } from "@navikt/ds-react";
+import { Tilleggsopplysning } from "../models/SkattekortData";
 import { TillegsopplysningTekster } from "../models/TillegsopplysningTekster";
+import styles from "./TilleggsopplysningsListe.module.css";
 
 type TilleggsopplysningProps = {
-  tilleggsopplysninger: Set<Tilleggsopplysning>;
+  tilleggsopplysninger: Tilleggsopplysning[];
 };
 
 const TilleggsopplysningsListe = ({ tilleggsopplysninger }: TilleggsopplysningProps) => {
   const tilleggsopplysningList = Array.from(tilleggsopplysninger).filter((tilleggsopplysning) =>
-    TillegsopplysningTekster.has(tilleggsopplysning)
+    TillegsopplysningTekster.has(tilleggsopplysning),
   );
 
   return (

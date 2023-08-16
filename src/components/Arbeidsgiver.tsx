@@ -1,11 +1,8 @@
 import { Label } from "@navikt/ds-react";
+import { Arbeidsgiveridentifikator } from "../models/SkattekortData";
 
 type ArbeidsgiverProps = {
-  identifikator: ArbeidsgiverIdentifikator;
-};
-
-type ArbeidsgiverIdentifikator = {
-  organisasjonsnummer: string;
+  identifikator: Arbeidsgiveridentifikator;
 };
 
 const Arbeidsgiver = ({ identifikator }: ArbeidsgiverProps) => (

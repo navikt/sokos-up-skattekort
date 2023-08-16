@@ -1,9 +1,9 @@
-import styles from "./SkattekortVisning.module.css";
+import { Heading, Label } from "@navikt/ds-react";
 import Arbeidsgiver from "./Arbeidsgiver";
-import Skattekortdata from "../models/SkattekortData";
 import TilleggsopplysningsListe from "./TilleggsopplysningsListe";
 import ForskuddstrekkSection from "./ForskuddstrekkSection";
-import { Heading, Label } from "@navikt/ds-react";
+import Skattekortdata from "../models/SkattekortData";
+import styles from "./SkattekortVisning.module.css";
 
 type SkattekortvisningProps = {
   data: Skattekortdata;
@@ -34,8 +34,8 @@ const Skattekortvisning = ({ data }: SkattekortvisningProps) => {
       </div>
       <div className={styles.skattekortvisning__rightColumn}>
         <Label>Arbeidstaker: {arbeidstaker.arbeidstakeridentifikator}</Label>
-        {forskuddstrekkList.map((f, n) => (
-          <ForskuddstrekkSection key={f.trekkode + n} forskuddstrekk={f} />
+        {forskuddstrekkList.map((f) => (
+          <ForskuddstrekkSection key={f.trekkode} forskuddstrekk={f} />
         ))}
       </div>
     </div>

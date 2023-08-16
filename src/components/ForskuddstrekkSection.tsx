@@ -1,7 +1,7 @@
-import { Forskuddstrekk } from "../models/SkattekortData";
 import { BodyShort, Label } from "@navikt/ds-react";
-import styles from "./ForskuddstrekkSection.module.css";
+import { Forskuddstrekk } from "../models/SkattekortData";
 import { TrekkodeTekster } from "../models/TrekkodeTekster";
+import styles from "./ForskuddstrekkSection.module.css";
 
 type ForskuddstrekkSectionProps = {
   forskuddstrekk: Forskuddstrekk;
@@ -9,7 +9,7 @@ type ForskuddstrekkSectionProps = {
 const ForskuddstrekkSection = ({ forskuddstrekk }: ForskuddstrekkSectionProps) => {
   const title = TrekkodeTekster.get(forskuddstrekk.trekkode) ?? forskuddstrekk.trekkode;
 
-  const prosentsatsEllerFrikort = forskuddstrekk.prosentsats
+  const prosentSatsOrFrikort = forskuddstrekk.prosentsats
     ? `Prosentsats: ${forskuddstrekk.prosentsats}`
     : `Frikortbeløp: ${forskuddstrekk.frikortbeloep}`;
 
@@ -19,7 +19,7 @@ const ForskuddstrekkSection = ({ forskuddstrekk }: ForskuddstrekkSectionProps) =
     <div className={styles.forskuddstrekk}>
       <div>
         <Label className={styles.forskuddstrekk__label}>{title}</Label>
-        <BodyShort>{prosentsatsEllerFrikort}</BodyShort>
+        <BodyShort>{prosentSatsOrFrikort}</BodyShort>
       </div>
       {showTable && (
         <div className={styles.forskuddstrekk__tabelltrekk}>

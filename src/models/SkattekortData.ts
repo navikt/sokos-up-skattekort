@@ -1,8 +1,10 @@
 import { z } from "zod";
 
-const Forskuddstrekktype = z.enum(["Trekkprosent", "Trekktabell", "Frikort"] as const);
+const ForskuddstrekkTypeSchema = z.enum(["Trekkprosent", "Trekktabell", "Frikort"] as const);
 
-const Trekkode = z.enum([
+const ResultatStatusSchema = z.enum(["ikkeSkattekort", "skattekortopplysningerOK"] as const);
+
+const TrekkodeSchema = z.enum([
   "loennFraHovedarbeidsgiver",
   "loennFraBiarbeidsgiver",
   "loennFraNAV",
@@ -11,52 +13,61 @@ const Trekkode = z.enum([
   "ufoereytelserFraAndre",
 ] as const);
 
-const Forskuddstrekk = z.object({
-  type: Forskuddstrekktype,
-  trekkode: Trekkode,
-  frikortbeloep: z.optional(z.number()),
-  tabellnummer: z.optional(z.string()),
-  prosentsats: z.optional(z.number()),
-  antallMaanederForTrekk: z.optional(z.number()),
-});
+export type Trekkode = z.infer<typeof TrekkodeSchema>;
 
-const Skattekort = z.object({
-  utstedtDato: z.string().regex(/[0-9]{4}-[0-9]{2}-[0-9]{2}/),
-  skattekortidentifikator: z.number(),
-  forskuddstrekk: z.array(Forskuddstrekk),
-});
-
-const ResultatStatus = z.enum(["ikkeSkattekort", "skattekortopplysningerOK"] as const);
-
-const Tilleggsopplysning = z.enum([
+const TilleggsopplysningSchema = z.enum([
   "oppholdPaaSvalbard",
   "kildeskattpensjonist",
   "oppholdITiltakssone",
   "kildeskattPaaLoenn",
 ] as const);
 
-const Arbeidstaker = z.object({
+export type Tilleggsopplysning = z.infer<typeof TilleggsopplysningSchema>;
+
+const ForskuddstrekkSchema = z.object({
+  type: ForskuddstrekkTypeSchema,
+  trekkode: TrekkodeSchema,
+  frikortbeloep: z.optional(z.number()),
+  tabellnummer: z.optional(z.string()),
+  prosentsats: z.optional(z.number()),
+  antallMaanederForTrekk: z.optional(z.number()),
+});
+
+export type Forskuddstrekk = z.infer<typeof ForskuddstrekkSchema>;
+
+const SkattekortSchema = z.object({
+  utstedtDato: z.string().regex(/[0-9]{4}-[0-9]{2}-[0-9]{2}/),
+  skattekortidentifikator: z.number(),
+  forskuddstrekk: z.array(ForskuddstrekkSchema),
+});
+
+const ArbeidstakerSchema = z.object({
   inntektsaar: z.number(),
   arbeidstakeridentifikator: z.string().regex(/[0-9]{11}/),
-  resultatPaaForespoersel: ResultatStatus,
-  skattekort: z.optional(Skattekort),
-  tilleggsopplysning: z.optional(z.array(Tilleggsopplysning)),
+  resultatPaaForespoersel: ResultatStatusSchema,
+  skattekort: z.optional(SkattekortSchema),
+  tilleggsopplysning: z.optional(z.array(TilleggsopplysningSchema)),
 });
 
-const Arbeidsgiver = z.object({
-  arbeidstaker: z.array(Arbeidstaker),
-  arbeidsgiveridentifikator: z.object({
-    organisasjonsnummer: z.string().regex(/[0-9]{9}/),
-  }),
+const ArbeidsgiveridentifikatorSchema = z.object({
+  organisasjonsnummer: z.string().regex(/[0-9]{9}/),
 });
 
-const SkattekortHolder = z.object({
-  arbeidsgiver: z.array(Arbeidsgiver),
-});
-export const SkattekortSchema = z.object({
-  skattekortListe: z.array(SkattekortHolder),
+export type Arbeidsgiveridentifikator = z.infer<typeof ArbeidsgiveridentifikatorSchema>;
+
+const ArbeidsgiverSchema = z.object({
+  arbeidstaker: z.array(ArbeidstakerSchema),
+  arbeidsgiveridentifikator: ArbeidsgiveridentifikatorSchema,
 });
 
-type SkattekortData = z.infer<typeof SkattekortSchema>;
+const SkattekortDataSchema = z.object({
+  arbeidsgiver: z.array(ArbeidsgiverSchema),
+});
+
+export const SkattekortListeSchema = z.object({
+  skattekortListe: z.array(SkattekortDataSchema),
+});
+
+type SkattekortData = z.infer<typeof SkattekortListeSchema>;
 
 export default SkattekortData;

@@ -7,4 +7,4 @@ export const TrekkodeTekster = new Map<Trekkode, string>([
   ["pensjonFraNAV", "Pensjon fra NAV"],
   ["ufoeretrygdFraNAV", "Uføretrygd fra NAV"],
   ["ufoereytelserFraAndre", "Uføreytelser fra andre"],
-]);
+] as const);
