@@ -1,7 +1,7 @@
 import { Chips, Search } from "@navikt/ds-react";
-import styles from "./SkattekortSearch.module.css";
 import { ChangeEvent, useState } from "react";
-import { isValidFodselsnummer } from "../util/fnrValidationUtil";
+import { isValidFodselsnummer } from "../util/fnrValidator";
+import styles from "./SkattekortSearch.module.css";
 
 type SkattekortSearchProps = {
   handleSubmit: (fnr: string, year: number) => void;
@@ -18,7 +18,6 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
     const fodselsnummer = rawFodselsnummer.replace(/[\s.]/g, "");
 
     if (isValidFodselsnummer(fodselsnummer)) {
-      setError("");
       handleSubmit(fodselsnummer, year);
     } else {
       handleSubmit("", year);
@@ -38,7 +37,7 @@ const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
         onChange={() => setError("")}
       />
       <Chips className={styles.chips}>
-        {[currentYear - 1, currentYear, currentYear + 1].map((c) => (
+        {[year - 1, year, year + 1].map((c) => (
           <Chips.Toggle selected={year === c} key={c} onClick={() => setYear(c)} type={"submit"}>
             {c.toString()}
           </Chips.Toggle>

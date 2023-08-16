@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import SkattekortSearch from "../components/SkattekortSearch";
 import Skattekortvisning from "../components/Skattekortvisning";
 import useSWRImmutable from "swr/immutable";
-import { skattekortDataUrl } from "../api/urls";
-import { fetcher } from "../api/api";
-import SkattekortData, { SkattekortSchema } from "../models/SkattekortData";
+import { skattekortDataUrl } from "../urls";
+import { fetcher } from "../util/apiClient";
+import SkattekortData, { SkattekortListeSchema } from "../models/SkattekortData";
 import { Alert, Heading, Loader } from "@navikt/ds-react";
 import styles from "./Skattekort.module.css";
-import { isEmpty } from "../util/utils";
+import { isEmpty } from "../util/commonUtils";
 
 type SkattekortPersonRequestBody = {
   fnr: string;
@@ -28,11 +28,11 @@ const SkattekortPage = () => {
       }
     : null;
 
-  const { data, isLoading, error: fetchError } = useSWRImmutable<SkattekortData>(query, fetcher);
+  const { data, isLoading, error } = useSWRImmutable<SkattekortData>(query, fetcher);
 
   useEffect(() => {
     if (data) {
-      const safeParse = SkattekortSchema.safeParse(data);
+      const safeParse = SkattekortListeSchema.safeParse(data);
 
       if (!safeParse.success) {
         console.error("Ugyldig skattekortdataresultat" + safeParse.error.message);
@@ -49,23 +49,31 @@ const SkattekortPage = () => {
   };
 
   const showSkatteKort = () => {
-    let jsx;
-    if (isLoading)
-      jsx = (
+    if (isLoading) {
+      return (
         <div className={styles.skattekort__loader}>
           <Loader size="3xlarge" title="Henter Skattekort" />
         </div>
       );
-    else if (fetchError) jsx = <Alert variant="error">En feil oppstod, prøv igjen</Alert>;
-    else if (!skattekortData) jsx = <></>;
-    else if (isEmpty(skattekortData.skattekortListe))
-      jsx = (
+    }
+
+    if (error) {
+      return <Alert variant="error">En feil oppstod, prøv igjen</Alert>;
+    }
+
+    if (!skattekortData) {
+      return <></>;
+    }
+
+    if (isEmpty(skattekortData.skattekortListe)) {
+      return (
         <Alert variant="warning">
           {`Ingen skattekort funnet for år ${searchBody?.inntektsaar} med bruker ${searchBody?.fnr}`}
         </Alert>
       );
-    else jsx = <Skattekortvisning data={skattekortData} />;
-    return jsx;
+    }
+
+    return <Skattekortvisning data={skattekortData} />;
   };
 
   return (
