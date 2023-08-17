@@ -1,49 +1,45 @@
 import { Chips, Search } from "@navikt/ds-react";
-import { ChangeEvent, useState } from "react";
-import { isValidFodselsnummer } from "../util/fnrValidator";
 import styles from "./SkattekortSearch.module.css";
+import { SkattekortInutResult, useSkattekortInput } from "../pages/skattekort";
+import { ChangeEvent } from "react";
 
 type SkattekortSearchProps = {
-  handleSubmit: (fnr: string, year: number) => void;
+  searchInput: SkattekortInutResult;
+  yearOptions: number[];
 };
 
-const SkattekortSearch = ({ handleSubmit }: SkattekortSearchProps) => {
-  const currentYear = new Date().getFullYear();
-  const [year, setYear] = useState(currentYear);
-  const [error, setError] = useState("");
-  const submitHandler = (event: ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const rawFodselsnummer: string = event.target.search.value;
-    const fodselsnummer = rawFodselsnummer.replace(/[\s.]/g, "");
-
-    if (isValidFodselsnummer(fodselsnummer)) {
-      handleSubmit(fodselsnummer, year);
-    } else {
-      handleSubmit("", year);
-      setError("Oppgitt personnummer er ikke gyldig");
-    }
-  };
+const SkattekortSearch = ({ yearOptions, searchInput }: SkattekortSearchProps) => {
+  const { fnr, year, setFnr, setYear, error, validateFodselsnummer, fnrInputHandler } = useSkattekortInput(fnr, year);
 
   return (
-    <form role={"search"} onSubmit={submitHandler}>
+    <>
       <Search
         label="Betalingsmottaker"
         description="Tast inn fødselsnummer 11 siffer"
         hideLabel={false}
         htmlSize="12"
-        name={"search"}
         error={error}
-        onChange={() => setError("")}
+        onChange={fnrInputHandler}
+        onSearchClick={validateFodselsnummer}
+        value={fnr}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            validateFodselsnummer();
+          }
+        }}
       />
       <Chips className={styles.chips}>
-        {[year - 1, year, year + 1].map((c) => (
-          <Chips.Toggle selected={year === c} key={c} onClick={() => setYear(c)} type={"submit"}>
-            {c.toString()}
+        {yearOptions.map((selectedYear) => (
+          <Chips.Toggle
+            selected={year === selectedYear}
+            key={selectedYear}
+            onClick={() => setYear(searchInput.setYear(selectedYear))}
+          >
+            {selectedYear.toString()}
           </Chips.Toggle>
         ))}
       </Chips>
-    </form>
+    </>
   );
 };
 export default SkattekortSearch;
