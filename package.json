@@ -15,6 +15,7 @@
     "@navikt/aksel-icons": "^4.10.2",
     "@navikt/ds-css": "^4.10.2",
     "@navikt/ds-react": "^4.10.2",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swr": "^2.2.0",
