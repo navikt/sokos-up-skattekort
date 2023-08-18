@@ -1,16 +1,13 @@
 import { Chips, Search } from "@navikt/ds-react";
 import styles from "./SkattekortSearch.module.css";
-import { SkattekortInutResult, useSkattekortInput } from "../pages/skattekort";
-import { ChangeEvent } from "react";
+import { SkattekortSearchOptions } from "../pages/skattekort";
 
 type SkattekortSearchProps = {
-  searchInput: SkattekortInutResult;
-  yearOptions: number[];
+  searchOptions: SkattekortSearchOptions;
+  submitHandler: () => void;
 };
 
-const SkattekortSearch = ({ yearOptions, searchInput }: SkattekortSearchProps) => {
-  const { fnr, year, setFnr, setYear, error, validateFodselsnummer, fnrInputHandler } = useSkattekortInput(fnr, year);
-
+const SkattekortSearch = ({ searchOptions, submitHandler }: SkattekortSearchProps) => {
   return (
     <>
       <Search
@@ -18,22 +15,22 @@ const SkattekortSearch = ({ yearOptions, searchInput }: SkattekortSearchProps) =
         description="Tast inn fødselsnummer 11 siffer"
         hideLabel={false}
         htmlSize="12"
-        error={error}
-        onChange={fnrInputHandler}
-        onSearchClick={validateFodselsnummer}
-        value={fnr}
+        error={searchOptions.error}
+        onChange={searchOptions.fnrOnChange}
+        onSearchClick={submitHandler}
+        value={searchOptions.fnr}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            validateFodselsnummer();
+            submitHandler();
           }
         }}
       />
       <Chips className={styles.chips}>
-        {yearOptions.map((selectedYear) => (
+        {searchOptions.yearOptions.map((selectedYear) => (
           <Chips.Toggle
-            selected={year === selectedYear}
+            selected={searchOptions.year === selectedYear}
             key={selectedYear}
-            onClick={() => setYear(searchInput.setYear(selectedYear))}
+            onClick={() => searchOptions.setYear(selectedYear)}
           >
             {selectedYear.toString()}
           </Chips.Toggle>

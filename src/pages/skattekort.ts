@@ -3,12 +3,12 @@ import SkattekortData, { SkattekortListeSchema } from "../models/SkattekortData"
 import RestService from "../services/rest-service";
 import { isValidFodselsnummer } from "../util/fnrValidator";
 
-export function useFetchSkattekort(fnr: string, inntektsaar: number) {
+export function useSkattekortFetch(fnr: string, inntektsaar: number) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>();
   const [data, setData] = useState<SkattekortData>();
 
-  useEffect(() => {
+  const submitHandler = () => {
     RestService.hentSkattekort({ fnr, inntektsaar })
       .then((data) => {
         const parsedResult = SkattekortListeSchema.safeParse(data);
@@ -21,17 +21,20 @@ export function useFetchSkattekort(fnr: string, inntektsaar: number) {
         setError(error);
         setIsLoading(false);
       });
-  }, [fnr, inntektsaar]);
+  };
 
-  return { isLoading, error, data };
+  return { isLoading, error, data, submitHandler };
 }
 
-export function useSkattekortInput(fnrInput: string, yearInput: number) {
+export function useSkattekortSearch(fnrInput: string, inntektsaar: number) {
+  const currentYear = new Date().getFullYear();
+  const yearOptions = [currentYear - 1, currentYear, currentYear + 1];
+
   const [fnr, setFnr] = useState(fnrInput);
-  const [year, setYear] = useState(yearInput);
+  const [year, setYear] = useState(inntektsaar);
   const [error, setError] = useState<string>();
 
-  const fnrInputHandler = (fnr: string) => {
+  const fnrOnChange = (fnr: string) => {
     if (fnr.match(/^[0-9 .]*$/)) {
       setFnr(fnr);
     }
@@ -42,15 +45,17 @@ export function useSkattekortInput(fnrInput: string, yearInput: number) {
     if (!fnrIsValid) {
       setError("Fødselsnummer er ikke gyldig");
     } else {
-      setError(undefined);
+      setError("");
     }
   };
 
   useEffect(() => {
-    validateFodselsnummer();
+    if (fnr.length === 11) {
+      validateFodselsnummer();
+    }
   }, [fnr, year]);
 
-  return { fnr, year, setFnr, setYear, error, validateFodselsnummer, fnrInputHandler };
+  return { fnr, year, setFnr, setYear, error, validateFodselsnummer, fnrOnChange, yearOptions };
 }
 
-export type SkattekortInutResult = ReturnType<typeof useSkattekortInput>;
+export type SkattekortSearchOptions = ReturnType<typeof useSkattekortSearch>;
