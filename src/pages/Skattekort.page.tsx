@@ -4,13 +4,12 @@ import Skattekortvisning from "../components/Skattekortvisning";
 import { Alert, Heading, Loader } from "@navikt/ds-react";
 import styles from "./Skattekort.module.css";
 import { isEmpty } from "../util/commonUtils";
-import { useFetchSkattekort } from "./skattekort";
+import { useSkattekortFetch, useSkattekortSearch } from "./skattekort";
 
 const SkattekortPage = () => {
-  const yearOptions = [new Date().getFullYear() - 1, new Date().getFullYear(), new Date().getFullYear() + 1];
-
-  const searchInput = useFetchSkattekort("", 0);
-  const { isLoading, error, data } = searchInput;
+  const searchOptions = useSkattekortSearch("", 0);
+  const fetchData = useSkattekortFetch(searchOptions.fnr, searchOptions.year);
+  const { isLoading, error, data, submitHandler } = fetchData;
 
   const showSkatteKort = () => {
     if (isLoading) {
@@ -35,8 +34,7 @@ const SkattekortPage = () => {
       <Heading level="1" size="medium">
         Skattekort
       </Heading>
-      <SkattekortSearch searchInput={searchInput} yearOptions={yearOptions} />
-
+      <SkattekortSearch searchOptions={searchOptions} submitHandler={submitHandler} />
       {showSkatteKort()}
     </div>
   );
