@@ -4,10 +4,17 @@ import { SkattekortSearchOptions } from "../pages/skattekort";
 
 type SkattekortSearchProps = {
   searchOptions: SkattekortSearchOptions;
+  inputError?: string;
+  clearInputErrorOnChange: () => void;
   submitHandler: () => void;
 };
 
-const SkattekortSearch = ({ searchOptions, submitHandler }: SkattekortSearchProps) => {
+const SkattekortSearch = ({
+  searchOptions,
+  submitHandler,
+  inputError,
+  clearInputErrorOnChange,
+}: SkattekortSearchProps) => {
   return (
     <>
       <Search
@@ -15,8 +22,11 @@ const SkattekortSearch = ({ searchOptions, submitHandler }: SkattekortSearchProp
         description="Tast inn fødselsnummer 11 siffer"
         hideLabel={false}
         htmlSize="12"
-        error={searchOptions.error}
-        onChange={searchOptions.fnrOnChange}
+        error={inputError}
+        onChange={(fnr) => {
+          searchOptions.fnrInputOnChange(fnr);
+          clearInputErrorOnChange();
+        }}
         onSearchClick={submitHandler}
         value={searchOptions.fnr}
         onKeyDown={(e) => {
@@ -26,7 +36,7 @@ const SkattekortSearch = ({ searchOptions, submitHandler }: SkattekortSearchProp
         }}
       />
       <Chips className={styles.chips}>
-        {searchOptions.yearOptions.map((selectedYear) => (
+        {searchOptions.yearList.map((selectedYear) => (
           <Chips.Toggle
             selected={searchOptions.year === selectedYear}
             key={selectedYear}
