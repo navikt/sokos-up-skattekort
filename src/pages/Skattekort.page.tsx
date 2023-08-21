@@ -7,9 +7,11 @@ import { isEmpty } from "../util/commonUtils";
 import { useSkattekortFetch, useSkattekortSearch } from "./skattekort";
 
 const SkattekortPage = () => {
-  const searchOptions = useSkattekortSearch("", 0);
-  const fetchData = useSkattekortFetch(searchOptions.fnr, searchOptions.year);
-  const { isLoading, error, data, submitHandler } = fetchData;
+  const searchOptions = useSkattekortSearch("");
+  const { isLoading, error, data, submitHandler, inputError, clearInputErrorOnChange } = useSkattekortFetch(
+    searchOptions.fnr,
+    searchOptions.year,
+  );
 
   const showSkatteKort = () => {
     if (isLoading) {
@@ -34,7 +36,12 @@ const SkattekortPage = () => {
       <Heading level="1" size="medium">
         Skattekort
       </Heading>
-      <SkattekortSearch searchOptions={searchOptions} submitHandler={submitHandler} />
+      <SkattekortSearch
+        inputError={inputError}
+        clearInputErrorOnChange={clearInputErrorOnChange}
+        searchOptions={searchOptions}
+        submitHandler={submitHandler}
+      />
       {showSkatteKort()}
     </div>
   );
