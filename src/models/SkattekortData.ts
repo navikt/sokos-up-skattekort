@@ -8,9 +8,14 @@ const TrekkodeSchema = z.enum([
   "loennFraHovedarbeidsgiver",
   "loennFraBiarbeidsgiver",
   "loennFraNAV",
+  "pensjon",
   "pensjonFraNAV",
+  "loennTilUtenrikstjenestemann",
+  "loennKunTrygdeavgiftTilUtenlandskBorger",
+  "loennKunTrygdeavgiftTilUtenlandskBorgerSomGrensegjenger",
   "ufoeretrygdFraNAV",
   "ufoereytelserFraAndre",
+  "introduksjonsstoenad",
 ] as const);
 
 export type Trekkode = z.infer<typeof TrekkodeSchema>;
