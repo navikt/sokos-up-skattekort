@@ -4,7 +4,6 @@ export const TrekkodeTekster = new Map<Trekkode, string>([
   ["loennFraHovedarbeidsgiver", "Lønn fra hovedarbeidsgiver"],
   ["loennFraBiarbeidsgiver", "Lønn fra biarbeidsgiver"],
   ["loennFraNAV", "Lønn fra NAV"],
-  ["pensjon", "Pensjon"],
   ["pensjonFraNAV", "Pensjon fra NAV"],
   ["loennTilUtenrikstjenestemann", "Lønn til utenrikstjenestemann"],
   ["loennKunTrygdeavgiftTilUtenlandskBorger", "Lønn kun trygdeavgift til utenlandsk borger"],

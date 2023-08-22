@@ -8,7 +8,6 @@ const TrekkodeSchema = z.enum([
   "loennFraHovedarbeidsgiver",
   "loennFraBiarbeidsgiver",
   "loennFraNAV",
-  "pensjon",
   "pensjonFraNAV",
   "loennTilUtenrikstjenestemann",
   "loennKunTrygdeavgiftTilUtenlandskBorger",
