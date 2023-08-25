@@ -19,8 +19,7 @@ export function useSkattekortFetch(fnr: string, inntektsaar: number) {
         .then((data) => {
           const parsedResult = SkattekortListeSchema.safeParse(data);
           if (!parsedResult.success) {
-            console.error("Ugyldig skattekortdataresultat" + parsedResult.error.message);
-            setError(parsedResult.error.message);
+            return new Error(parsedResult.error.message);
           } else setData(data);
           setIsLoading(false);
         })
