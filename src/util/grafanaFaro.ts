@@ -1,5 +1,5 @@
 import { getEnvironment } from "./environment";
-import { initializeFaro } from "@grafana/faro-web-sdk";
+import { getWebInstrumentations, initializeFaro } from "@grafana/faro-web-sdk";
 
 type TelemetryCollectorURL =
   | "https://telemetry.nav.no/collect"
@@ -25,5 +25,10 @@ export function initGrafanaFaro() {
     app: {
       name: "sokos-op-skattekort",
     },
+    instrumentations: [
+      ...getWebInstrumentations({
+        captureConsole: false,
+      }),
+    ],
   });
 }
