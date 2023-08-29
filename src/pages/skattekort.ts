@@ -22,7 +22,6 @@ export function useSkattekortFetch(fnr: string, inntektsaar: number) {
           if (!parsedResult.success) {
             const error = new Error(parsedResult.error.message);
             faro.api.pushError(error);
-            console.error(parsedResult.error.message);
           } else setData(data);
           setIsLoading(false);
         })
