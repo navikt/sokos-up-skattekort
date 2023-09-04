@@ -16,6 +16,7 @@ export function useSkattekortFetch(fnr: string, inntektsaar: number) {
       setInputError("Fødselsnummer er ikke gyldig");
     } else {
       setInputError("");
+      setIsLoading(true);
       RestService.fetchSkattekort({ fnr: formattedFodelsnummer, inntektsaar })
         .then((data) => {
           const parsedResult = SkattekortListeSchema.safeParse(data);
@@ -23,8 +24,10 @@ export function useSkattekortFetch(fnr: string, inntektsaar: number) {
             const error = new Error(parsedResult.error.message);
             faro.api.pushError(error);
             throw error;
-          } else setData(data);
-          setIsLoading(false);
+          } else {
+            setData(data);
+            setIsLoading(false);
+          }
         })
         .catch((error) => {
           setError(error);
