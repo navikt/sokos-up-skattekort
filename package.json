@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@grafana/faro-web-sdk": "^1.1.4",
-    "@navikt/aksel-icons": "^5.2.1",
-    "@navikt/ds-css": "^5.2.1",
-    "@navikt/ds-react": "^5.2.1",
+    "@navikt/aksel-icons": "^5.3.1",
+    "@navikt/ds-css": "^5.3.1",
+    "@navikt/ds-react": "^5.3.1",
     "axios": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@eik/rollup-plugin": "^4.0.50",
-    "@navikt/aksel-stylelint": "^5.2.1",
+    "@navikt/aksel-stylelint": "^5.3.1",
     "@rollup/plugin-terser": "^0.4.3",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
