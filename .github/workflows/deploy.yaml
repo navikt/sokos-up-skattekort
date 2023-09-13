@@ -60,7 +60,7 @@ jobs:
         run: pnpm run build
 
       - name: Build docker image
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Push docker image to Google Artifact Registry
         uses: nais/docker-build-push@v0
@@ -87,17 +87,17 @@ jobs:
           RESOURCE: .nais/naiserator-dev.yaml
           PRINT_PAYLOAD: true
 
-  #  deploy-prod:
-  #    name: Deploy til prod
-  #    needs: deploy-dev
-  #    if: github.ref == 'refs/heads/master'
-  #    runs-on: ubuntu-latest
-  #    steps:
-  #      - uses: actions/checkout@v4
-  #      - uses: nais/deploy/actions/deploy@v1
-  #        env:
-  #          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
-  #          CLUSTER: prod-gcp
-  #          IMAGE: ${{ needs.build.outputs.image }}
-  #          RESOURCE: .nais/naiserator-prod.yaml
-  #          PRINT_PAYLOAD: true
+  deploy-prod:
+    name: Deploy til prod
+    needs: [ build, deploy-dev ]
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: prod-gcp
+          IMAGE: ${{ needs.build.outputs.image }}
+          RESOURCE: .nais/naiserator-prod.yaml
+          PRINT_PAYLOAD: true
