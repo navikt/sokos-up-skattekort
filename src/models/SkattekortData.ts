@@ -69,10 +69,10 @@ const SkattekortDataSchema = z.object({
   arbeidsgiver: z.array(ArbeidsgiverSchema),
 });
 
-export const SkattekortListeSchema = z.object({
-  skattekortListe: z.array(SkattekortDataSchema),
+export const DataSchema = z.object({
+  data: z.array(SkattekortDataSchema),
 });
 
-type SkattekortData = z.infer<typeof SkattekortListeSchema>;
+type SkattekortData = z.infer<typeof DataSchema>;
 
 export default SkattekortData;
