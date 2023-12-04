@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SkattekortData, { DataSchema } from "../models/SkattekortData";
+import SkattekortData, { SkattekortListeSchema } from "../models/SkattekortData";
 import RestService from "../services/rest-service";
 import { isValidFodselsnummer } from "../util/fnrValidator";
 import { faro } from "@grafana/faro-web-sdk";
@@ -19,7 +19,7 @@ export function useSkattekortFetch(fnr: string, inntektsaar: number) {
       setIsLoading(true);
       RestService.fetchSkattekort({ fnr: formattedFodelsnummer, inntektsaar })
         .then((data) => {
-          const parsedResult = DataSchema.safeParse(data);
+          const parsedResult = SkattekortListeSchema.safeParse(data);
           if (!parsedResult.success) {
             const error = new Error(parsedResult.error.message);
             faro.api.pushError(error);
