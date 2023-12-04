@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths-ignore:
-      - '**.md'
-      - 'LICENCE'
-      - 'CODEOWNERS'
-      - '.gitignore'
-      - '.github/workflows/build-pr.yaml'
-      - '.github/workflows/manual-deploy-dev.yaml'
-      - '.github/workflows/security.yaml'
-      - '.github/dependabot.yaml'
+      - "**.md"
+      - "LICENCE"
+      - "CODEOWNERS"
+      - ".gitignore"
+      - ".github/workflows/build-pr.yaml"
+      - ".github/workflows/manual-deploy-dev.yaml"
+      - ".github/workflows/security.yaml"
+      - ".github/dependabot.yaml"
 
 env:
   TZ: Europe/Oslo
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
       - uses: pnpm/action-setup@v2
         id: pnpm-install
         with:
@@ -89,8 +89,8 @@ jobs:
 
   deploy-prod:
     name: Deploy til prod
-    needs: [ build, deploy-dev ]
-    if: github.ref == 'refs/heads/master'
+    needs: [build, deploy-dev]
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
