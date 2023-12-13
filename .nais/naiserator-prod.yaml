@@ -1,7 +1,7 @@
 apiVersion: "nais.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: sokos-op-skattekort
+  name: sokos-up-skattekort
   namespace: okonomi
   labels:
     team: okonomi
@@ -11,23 +11,23 @@ metadata:
 spec:
   env:
   - name: CORS_ALLOWED_ORIGIN
-    value: "https://okonomiportalen.intern.nav.no"
+    value: "https://utbetalingsportalen.intern.nav.no"
   image: {{ image }}
   port: 8080
   liveness:
-    path: /sokos-op-skattekort/internal/isAlive
+    path: /sokos-up-skattekort/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /sokos-op-skattekort/internal/isReady
+    path: /sokos-up-skattekort/internal/isReady
     initialDelay: 10
   prometheus:
     enabled: true
-    path: /sokos-op-skattekort/internal/metrics
+    path: /sokos-up-skattekort/internal/metrics
   replicas:
     min: 2
     max: 4
   ingresses:
-    - "https://okonomiportalen.intern.nav.no/sokos-op-skattekort"
+    - "https://utbetalingsportalen.intern.nav.no/sokos-up-skattekort"
   resources:
     limits:
       cpu: "3"
