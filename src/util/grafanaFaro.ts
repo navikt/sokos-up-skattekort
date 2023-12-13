@@ -23,7 +23,7 @@ export function initGrafanaFaro() {
     isolate: true,
     url: getTelemetryCollectorURL(),
     app: {
-      name: "sokos-op-skattekort",
+      name: "sokos-up-skattekort",
     },
     instrumentations: [
       ...getWebInstrumentations({
