@@ -24,8 +24,8 @@ spec:
     enabled: true
     path: /sokos-up-skattekort/internal/metrics
   replicas:
-    min: 2
-    max: 4
+    min: 1
+    max: 2
   ingresses:
     - "https://utbetalingsportalen.intern.nav.no/sokos-up-skattekort"
   resources:
