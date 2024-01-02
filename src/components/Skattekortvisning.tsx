@@ -10,9 +10,9 @@ type SkattekortvisningProps = {
 };
 
 const Skattekortvisning = ({ data }: SkattekortvisningProps) => {
-  const arbeidsgiver = data.skattekortListe[0].arbeidsgiver[0];
+  const arbeidsgiver = data.data[0].arbeidsgiver[0];
   const arbeidstaker = arbeidsgiver.arbeidstaker[0];
-  const skattekort = data.skattekortListe[0].arbeidsgiver[0].arbeidstaker[0].skattekort;
+  const skattekort = data.data[0].arbeidsgiver[0].arbeidstaker[0].skattekort;
   const forskuddstrekkList = arbeidstaker.skattekort?.forskuddstrekk ?? [];
   const utstedtTekst = skattekort?.utstedtDato ? `Utstedt dato ${skattekort.utstedtDato}` : "Ingen skattekort utstedt";
 
