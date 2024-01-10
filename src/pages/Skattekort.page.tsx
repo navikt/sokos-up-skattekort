@@ -24,7 +24,7 @@ const SkattekortPage = () => {
       return <Alert variant="error">En feil oppstod, prøv igjen</Alert>;
     } else if (!data) {
       return <></>;
-    } else if (data && isEmpty(data.skattekortListe)) {
+    } else if (isEmpty(data)) {
       return <Alert variant="warning">{`Ingen skattekort funnet`}</Alert>;
     } else if (data) {
       return <Skattekortvisning data={data} />;
