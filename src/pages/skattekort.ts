@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SkattekortData, { SkattekortDataSchema } from "../models/SkattekortData";
+import { SkattekortData, SkattekortDataSchema } from "../models/SkattekortData";
 import RestService from "../services/rest-service";
 import { isValidFodselsnummer } from "../util/fnrValidator";
 import { faro } from "@grafana/faro-web-sdk";
