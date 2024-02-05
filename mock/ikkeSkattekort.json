@@ -1,20 +1,18 @@
-{
-  "skattekortListe": [
-    {
-      "arbeidsgiver": [
-        {
-          "arbeidstaker": [
-            {
-              "inntektsaar": 2023,
-              "arbeidstakeridentifikator": "04015201822",
-              "resultatPaaForespoersel": "ikkeSkattekort"
-            }
-          ],
-          "arbeidsgiveridentifikator": {
-            "organisasjonsnummer": "910962728"
+[
+  {
+    "arbeidsgiver": [
+      {
+        "arbeidstaker": [
+          {
+            "inntektsaar": 2023,
+            "arbeidstakeridentifikator": "04015201822",
+            "resultatPaaForespoersel": "ikkeSkattekort"
           }
+        ],
+        "arbeidsgiveridentifikator": {
+          "organisasjonsnummer": "910962728"
         }
-      ]
-    }
-  ]
-}
+      }
+    ]
+  }
+]
