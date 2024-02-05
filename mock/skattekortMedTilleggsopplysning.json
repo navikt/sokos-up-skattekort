@@ -1,52 +1,50 @@
-{
-  "skattekortListe": [
-    {
-      "arbeidsgiver": [
-        {
-          "arbeidstaker": [
-            {
-              "inntektsaar": 2022,
-              "arbeidstakeridentifikator": "01016902310",
-              "resultatPaaForespoersel": "skattekortopplysningerOK",
-              "skattekort": {
-                "utstedtDato": "2022-01-12",
-                "skattekortidentifikator": 1035996,
-                "forskuddstrekk": [
-                  {
-                    "type": "Trekkprosent",
-                    "trekkode": "loennFraHovedarbeidsgiver",
-                    "prosentsats": 22
-                  },
-                  {
-                    "type": "Trekkprosent",
-                    "trekkode": "loennFraBiarbeidsgiver",
-                    "prosentsats": 22
-                  },
-                  {
-                    "type": "Trekkprosent",
-                    "trekkode": "loennFraNAV",
-                    "prosentsats": 22
-                  },
-                  {
-                    "type": "Trekkprosent",
-                    "trekkode": "ufoeretrygdFraNAV",
-                    "prosentsats": 16.2
-                  },
-                  {
-                    "type": "Trekkprosent",
-                    "trekkode": "ufoereytelserFraAndre",
-                    "prosentsats": 16.2
-                  }
-                ]
-              },
-              "tilleggsopplysning": ["oppholdPaaSvalbard"]
-            }
-          ],
-          "arbeidsgiveridentifikator": {
-            "organisasjonsnummer": "910962728"
+[
+  {
+    "arbeidsgiver": [
+      {
+        "arbeidstaker": [
+          {
+            "inntektsaar": 2022,
+            "arbeidstakeridentifikator": "01016902310",
+            "resultatPaaForespoersel": "skattekortopplysningerOK",
+            "skattekort": {
+              "utstedtDato": "2022-01-12",
+              "skattekortidentifikator": 1035996,
+              "forskuddstrekk": [
+                {
+                  "type": "Trekkprosent",
+                  "trekkode": "loennFraHovedarbeidsgiver",
+                  "prosentsats": 22
+                },
+                {
+                  "type": "Trekkprosent",
+                  "trekkode": "loennFraBiarbeidsgiver",
+                  "prosentsats": 22
+                },
+                {
+                  "type": "Trekkprosent",
+                  "trekkode": "loennFraNAV",
+                  "prosentsats": 22
+                },
+                {
+                  "type": "Trekkprosent",
+                  "trekkode": "ufoeretrygdFraNAV",
+                  "prosentsats": 16.2
+                },
+                {
+                  "type": "Trekkprosent",
+                  "trekkode": "ufoereytelserFraAndre",
+                  "prosentsats": 16.2
+                }
+              ]
+            },
+            "tilleggsopplysning": ["oppholdPaaSvalbard"]
           }
+        ],
+        "arbeidsgiveridentifikator": {
+          "organisasjonsnummer": "910962728"
         }
-      ]
-    }
-  ]
-}
+      }
+    ]
+  }
+]
