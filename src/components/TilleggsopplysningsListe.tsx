@@ -12,7 +12,7 @@ const TilleggsopplysningsListe = ({ tilleggsopplysninger }: TilleggsopplysningPr
 
   return (
     <div className="flex-col">
-      <div className="font-bold pb-1">Tilleggsopplysning</div>
+      <div className="pb-1">Tilleggsopplysning</div>
       <ul className="list-disc pl-8">
         {tilleggsopplysningList.map((tilleggsopplysning) => (
           <li className="text-xs" key={tilleggsopplysning}>

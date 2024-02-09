@@ -67,6 +67,7 @@ const ArbeidsgiverSchema = z.object({
 
 export const SkattekortDataSchema = z.array(
   z.object({
+    navn: z.optional(z.string()),
     arbeidsgiver: z.array(ArbeidsgiverSchema),
   }),
 );
