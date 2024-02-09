@@ -1,7 +1,5 @@
-import { Label } from "@navikt/ds-react";
 import { Tilleggsopplysning } from "../models/SkattekortData";
 import { TillegsopplysningTekster } from "../models/TillegsopplysningTekster";
-import styles from "./TilleggsopplysningsListe.module.css";
 
 type TilleggsopplysningProps = {
   tilleggsopplysninger: Tilleggsopplysning[];
@@ -13,11 +11,13 @@ const TilleggsopplysningsListe = ({ tilleggsopplysninger }: TilleggsopplysningPr
   );
 
   return (
-    <div className={styles.tilleggsopplysning}>
-      <Label>Tilleggsopplysning</Label>
-      <ul>
+    <div className="flex-col">
+      <div className="font-bold pb-1">Tilleggsopplysning</div>
+      <ul className="list-disc pl-8">
         {tilleggsopplysningList.map((tilleggsopplysning) => (
-          <li key={tilleggsopplysning}>{TillegsopplysningTekster.get(tilleggsopplysning)}</li>
+          <li className="text-xs" key={tilleggsopplysning}>
+            {TillegsopplysningTekster.get(tilleggsopplysning)}
+          </li>
         ))}
       </ul>
     </div>

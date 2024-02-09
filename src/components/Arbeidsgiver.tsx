@@ -1,4 +1,3 @@
-import { Label } from "@navikt/ds-react";
 import { Arbeidsgiveridentifikator } from "../models/SkattekortData";
 
 type ArbeidsgiverProps = {
@@ -6,7 +5,7 @@ type ArbeidsgiverProps = {
 };
 
 const Arbeidsgiver = ({ identifikator }: ArbeidsgiverProps) => (
-  <Label>Arbeidsgiver: {identifikator.organisasjonsnummer}</Label>
+  <div className="font-bold">Arbeidsgiver: {identifikator.organisasjonsnummer}</div>
 );
 
 export default Arbeidsgiver;

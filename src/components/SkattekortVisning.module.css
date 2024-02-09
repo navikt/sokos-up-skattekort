@@ -1,16 +1,3 @@
-.skattekortvisning {
-  display: grid;
-  grid-template-columns: 40% 60%;
-  background-color: antiquewhite;
-  max-width: 1024px;
-  margin-top: 20px;
-}
-
-.skattekortvisning__rightTitle {
-  grid-column-start: 2;
-  grid-row-start: 1;
-}
-
 .skattekortvisning__leftColumn {
   display: flex;
   flex-direction: column;

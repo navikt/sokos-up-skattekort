@@ -1,7 +1,5 @@
-import { BodyShort, Label } from "@navikt/ds-react";
 import { Forskuddstrekk } from "../models/SkattekortData";
 import { TrekkodeTekster } from "../models/TrekkodeTekster";
-import styles from "./ForskuddstrekkSection.module.css";
 
 type ForskuddstrekkSectionProps = {
   forskuddstrekk: Forskuddstrekk;
@@ -16,18 +14,17 @@ const ForskuddstrekkSection = ({ forskuddstrekk }: ForskuddstrekkSectionProps) =
   const showTable = forskuddstrekk.type === "Trekktabell";
 
   return (
-    <div className={styles.forskuddstrekk}>
-      <div>
-        <Label className={styles.forskuddstrekk__label}>{title}</Label>
-        <BodyShort>{prosentSatsOrFrikort}</BodyShort>
-      </div>
-      {showTable && (
-        <div className={styles.forskuddstrekk__tabelltrekk}>
-          <BodyShort>Tabellnummer: {forskuddstrekk.tabellnummer}</BodyShort>
-          <BodyShort>Antall måneder for trekk: {forskuddstrekk.antallMaanederForTrekk}</BodyShort>
-        </div>
+    <tr>
+      <td className="font-bold whitespace-nowrap">{title}</td>
+      <td className="whitespace-nowrap">{prosentSatsOrFrikort}</td>
+      {showTable ? <td className="font-bold whitespace-nowrap">Tabell {forskuddstrekk.tabellnummer}</td> : <td></td>}
+
+      {showTable ? (
+        <td className="whitespace-nowrap">Antall måneder for trekk: {forskuddstrekk.antallMaanederForTrekk}</td>
+      ) : (
+        <td></td>
       )}
-    </div>
+    </tr>
   );
 };
 export default ForskuddstrekkSection;
