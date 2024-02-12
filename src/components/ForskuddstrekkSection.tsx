@@ -1,6 +1,6 @@
 import { Forskuddstrekk } from "../models/SkattekortData";
 import { TrekkodeTekster } from "../models/TrekkodeTekster";
-
+import styles from "./ForskuddstrekkSection.module.css";
 type ForskuddstrekkSectionProps = {
   forskuddstrekk: Forskuddstrekk;
 };
@@ -14,17 +14,23 @@ const ForskuddstrekkSection = ({ forskuddstrekk }: ForskuddstrekkSectionProps) =
   const showTable = forskuddstrekk.type === "Trekktabell";
 
   return (
-    <tr>
-      <td className="font-bold whitespace-nowrap">{title}</td>
-      <td className="whitespace-nowrap">{prosentSatsOrFrikort}</td>
-      {showTable ? <td className="font-bold whitespace-nowrap">Tabell {forskuddstrekk.tabellnummer}</td> : <td></td>}
-
+    <div className={styles.forskuddstrekk__row}>
+      <div className={styles.forskuddstrekk__bold}>{title}</div>
+      <div className={styles.forskuddstrekk__normal}>{prosentSatsOrFrikort}</div>
       {showTable ? (
-        <td className="whitespace-nowrap">Antall måneder for trekk: {forskuddstrekk.antallMaanederForTrekk}</td>
+        <>
+          <div className={styles.forskuddstrekk__bold}>Tabell {forskuddstrekk.tabellnummer}</div>
+          <div className={styles.forskuddstrekk__normal}>
+            Antall måneder for trekk: {forskuddstrekk.antallMaanederForTrekk}
+          </div>
+        </>
       ) : (
-        <td></td>
+        <>
+          <div></div>
+          <div></div>
+        </>
       )}
-    </tr>
+    </div>
   );
 };
 export default ForskuddstrekkSection;

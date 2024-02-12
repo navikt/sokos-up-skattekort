@@ -1,1 +1,1 @@
-export const isEmpty = (array: Array<unknown>) => !Array.isArray(array) || !array.length;
+export const isEmpty = (array: Array<unknown> | undefined | null) => !array || !Array.isArray(array) || !array.length;

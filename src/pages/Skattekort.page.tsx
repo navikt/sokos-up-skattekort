@@ -3,6 +3,7 @@ import SkattekortSearch from "../components/SkattekortSearch";
 import Skattekortvisning from "../components/Skattekortvisning";
 import { Alert, Heading, Loader } from "@navikt/ds-react";
 import styles from "./Skattekort.module.css";
+import commonStyles from "../util/commonStyles.module.css";
 import { isEmpty } from "../util/commonUtils";
 import { useSkattekortFetch, useSkattekortSearch } from "./skattekort";
 
@@ -25,10 +26,31 @@ const SkattekortPage = () => {
     } else if (!data) {
       return <></>;
     } else if (isEmpty(data)) {
-      return <Alert variant="warning">{`Ingen skattekort funnet`}</Alert>;
-    } else if (data) {
-      return <Skattekortvisning data={data} />;
-    }
+      return (
+        <Alert variant="warning">
+          <div className={commonStyles.bold}>{`Ingen skattekort funnet`}</div>
+        </Alert>
+      );
+    } else if (isEmpty(data[0].arbeidsgiver))
+      return (
+        <>
+          <hr className={commonStyles.separator} />
+          <div className={styles.skattekort__name}>{data[0]?.navn ?? "N.N."}</div>
+
+          <Alert variant="warning">
+            <div className={commonStyles.bold}>{`Ingen skattekort funnet`}</div>
+            <div>Vi fant ingen opplysninger om skattekort på dette fødselsnummeret</div>
+          </Alert>
+        </>
+      );
+    else if (data && data[0])
+      return (
+        <>
+          <hr className={commonStyles.separator} />
+          <div className={styles.skattekort__name}>{data[0].navn ?? "N.N."}</div>
+          <Skattekortvisning data={data} />
+        </>
+      );
   };
 
   return (

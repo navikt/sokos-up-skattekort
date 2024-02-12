@@ -1,12 +1,11 @@
-.skattekortvisning__leftColumn {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  grid-row-start: 2;
-  margin-left: 5px;
+.skattekortvisning {
+  @apply flex-col w-[860px] min-w-64 bg-white shadow-lg mx-12 p-6;
 }
 
-.skattekortvisning__rightColumn {
-  grid-column-start: 2;
-  grid-row-end: 3;
+.skattekortvisning__title {
+  @apply w-full text-4xl;
+}
+
+.skattekortvisning__table {
+  @apply table-auto mt-5 border-spacing-x-[36px] border-spacing-y-[24px];
 }

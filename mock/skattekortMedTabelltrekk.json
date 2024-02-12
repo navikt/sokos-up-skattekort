@@ -5,15 +5,9 @@
       {
         "arbeidstaker": [
           {
-            "inntektsaar": 2023,
+            "inntektsaar": 2024,
             "arbeidstakeridentifikator": "04014400295",
             "resultatPaaForespoersel": "skattekortopplysningerOK",
-            "tilleggsopplysning": [
-              "oppholdPaaSvalbard",
-              "kildeskattpensjonist",
-              "oppholdITiltakssone",
-              "kildeskattPaaLoenn"
-            ],
             "skattekort": {
               "utstedtDato": "2023-01-26",
               "skattekortidentifikator": 1035796,
