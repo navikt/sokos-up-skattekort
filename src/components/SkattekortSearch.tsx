@@ -7,7 +7,7 @@ type SkattekortSearchProps = {
   searchOptions: SkattekortSearchOptions;
   inputError?: string;
   clearInputErrorOnChange: () => void;
-  submitHandler: () => void;
+  submitHandler: (fnr: string, year: number) => void;
 };
 
 const SkattekortSearch = ({
@@ -16,10 +16,11 @@ const SkattekortSearch = ({
   inputError,
   clearInputErrorOnChange,
 }: SkattekortSearchProps) => {
-  const changeYearHandler = (year: string) => {
-    searchOptions.setYear(parseInt(year));
+  const changeYearHandler = (yearstr: string) => {
+    const year = parseInt(yearstr);
+    searchOptions.setYear(year);
     if (!inputError && searchOptions.fnr) {
-      submitHandler();
+      submitHandler(searchOptions.fnr, year);
     }
   };
 
@@ -35,11 +36,11 @@ const SkattekortSearch = ({
           searchOptions.fnrInputOnChange(fnr);
           clearInputErrorOnChange();
         }}
-        onSearchClick={submitHandler}
+        onSearchClick={() => submitHandler(searchOptions.fnr, searchOptions.year)}
         value={searchOptions.fnr}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            submitHandler();
+            submitHandler(searchOptions.fnr, searchOptions.year);
           }
         }}
       />

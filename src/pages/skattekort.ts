@@ -4,13 +4,13 @@ import RestService from "../services/rest-service";
 import { isValidFodselsnummer } from "../util/fnrValidator";
 import { faro } from "@grafana/faro-web-sdk";
 
-export function useSkattekortFetch(fnr: string, inntektsaar: number) {
+export function useSkattekortFetch() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>();
   const [data, setData] = useState<SkattekortData | null>();
   const [inputError, setInputError] = useState<string>();
 
-  const submitHandler = () => {
+  const submitHandler = (fnr: string, inntektsaar: number) => {
     const formattedFodelsnummer = fnr.replace(/[\s.]/g, "");
     if (!isValidFodselsnummer(formattedFodelsnummer)) {
       setInputError("Fødselsnummer er ikke gyldig");

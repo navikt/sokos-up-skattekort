@@ -9,10 +9,7 @@ import { useSkattekortFetch, useSkattekortSearch } from "./skattekort";
 
 const SkattekortPage = () => {
   const searchOptions = useSkattekortSearch("");
-  const { isLoading, error, data, submitHandler, inputError, clearInputErrorOnChange } = useSkattekortFetch(
-    searchOptions.fnr,
-    searchOptions.year,
-  );
+  const { isLoading, error, data, submitHandler, inputError, clearInputErrorOnChange } = useSkattekortFetch();
 
   const showSkatteKort = () => {
     if (isLoading) {
