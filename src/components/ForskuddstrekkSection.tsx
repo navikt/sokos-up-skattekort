@@ -5,29 +5,24 @@ type ForskuddstrekkSectionProps = {
   forskuddstrekk: Forskuddstrekk;
 };
 const ForskuddstrekkSection = ({ forskuddstrekk }: ForskuddstrekkSectionProps) => {
-  const title = TrekkodeTekster.get(forskuddstrekk.trekkode) ?? forskuddstrekk.trekkode;
+  const type = TrekkodeTekster.get(forskuddstrekk.trekkode) ?? forskuddstrekk.trekkode;
 
   const prosentSatsOrFrikort = forskuddstrekk.prosentsats
     ? `Prosentsats: ${forskuddstrekk.prosentsats}`
     : `Frikortbeløp: ${forskuddstrekk.frikortbeloep}`;
 
-  const showTable = forskuddstrekk.type === "Trekktabell";
+  const showTrekktabell = forskuddstrekk.type === "Trekktabell";
 
   return (
     <div className={styles.forskuddstrekk__row}>
-      <div className={styles.forskuddstrekk__bold}>{title}</div>
+      <div className={styles.forskuddstrekk__bold}>{type}</div>
       <div className={styles.forskuddstrekk__normal}>{prosentSatsOrFrikort}</div>
-      {showTable ? (
+      {showTrekktabell && (
         <>
           <div className={styles.forskuddstrekk__bold}>Tabell {forskuddstrekk.tabellnummer}</div>
           <div className={styles.forskuddstrekk__normal}>
             Antall måneder for trekk: {forskuddstrekk.antallMaanederForTrekk}
           </div>
-        </>
-      ) : (
-        <>
-          <div></div>
-          <div></div>
         </>
       )}
     </div>

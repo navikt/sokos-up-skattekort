@@ -15,36 +15,45 @@ const SkattekortSearch = ({
   submitHandler,
   inputError,
   clearInputErrorOnChange,
-}: SkattekortSearchProps) => (
-  <>
-    <Search
-      label="Søk på person"
-      description="Tast inn fødselsnummer 11 siffer"
-      hideLabel={false}
-      htmlSize="12"
-      error={inputError}
-      onChange={(fnr) => {
-        searchOptions.fnrInputOnChange(fnr);
-        clearInputErrorOnChange();
-      }}
-      onSearchClick={submitHandler}
-      value={searchOptions.fnr}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          submitHandler();
-        }
-      }}
-    />
-    <div className={commonStyles.column}>
-      <div className={commonStyles.bold}>Gjelder år</div>
-      <ToggleGroup defaultValue={"" + searchOptions.year} onChange={(year) => searchOptions.setYear(parseInt(year))}>
-        {searchOptions.yearList.map((selectedYear) => (
-          <ToggleGroup.Item key={selectedYear} value={"" + selectedYear}>
-            <div className={styles.skattekortsearch__toggleitems}>{selectedYear}</div>
-          </ToggleGroup.Item>
-        ))}
-      </ToggleGroup>
-    </div>
-  </>
-);
+}: SkattekortSearchProps) => {
+  const changeYearHandler = (year: string) => {
+    searchOptions.setYear(parseInt(year));
+    if (!inputError && searchOptions.fnr) {
+      submitHandler();
+    }
+  };
+
+  return (
+    <>
+      <Search
+        label="Søk på person"
+        description="Tast inn fødselsnummer 11 siffer"
+        hideLabel={false}
+        htmlSize="12"
+        error={inputError}
+        onChange={(fnr) => {
+          searchOptions.fnrInputOnChange(fnr);
+          clearInputErrorOnChange();
+        }}
+        onSearchClick={submitHandler}
+        value={searchOptions.fnr}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            submitHandler();
+          }
+        }}
+      />
+      <div className={commonStyles.column}>
+        <div className={commonStyles.bold}>Gjelder år</div>
+        <ToggleGroup defaultValue={"" + searchOptions.year} onChange={changeYearHandler}>
+          {searchOptions.yearList.map((selectedYear) => (
+            <ToggleGroup.Item key={selectedYear} value={"" + selectedYear}>
+              <div className={styles.skattekortsearch__toggleitems}>{selectedYear}</div>
+            </ToggleGroup.Item>
+          ))}
+        </ToggleGroup>
+      </div>
+    </>
+  );
+};
 export default SkattekortSearch;
