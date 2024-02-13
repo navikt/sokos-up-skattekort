@@ -15,6 +15,7 @@ export function useSkattekortFetch() {
     if (!isValidFodselsnummer(formattedFodelsnummer)) {
       setInputError("Fødselsnummer er ikke gyldig");
     } else {
+      setError("");
       setInputError("");
       setIsLoading(true);
       RestService.fetchSkattekort({ fnr: formattedFodelsnummer, inntektsaar })
