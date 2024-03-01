@@ -1,10 +1,11 @@
 [
   {
+    "navn": "Mister Mxyzptlk",
     "arbeidsgiver": [
       {
         "arbeidstaker": [
           {
-            "inntektsaar": 2023,
+            "inntektsaar": 2024,
             "arbeidstakeridentifikator": "04015201822",
             "resultatPaaForespoersel": "ikkeSkattekort"
           }
