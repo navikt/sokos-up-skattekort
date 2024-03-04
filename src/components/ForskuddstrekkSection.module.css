@@ -1,13 +1,11 @@
-.forskuddstrekk {
-  display: grid;
-  margin: 10px;
+.forskuddstrekk__row {
+  @apply table-row;
 }
 
-.forskuddstrekk__label {
-  margin-top: 0;
+.forskuddstrekk__normal {
+  @apply table-cell whitespace-nowrap;
 }
 
-.forskuddstrekk__tabelltrekk {
-  grid-column-start: 2;
-  text-align: right;
+.forskuddstrekk__bold {
+  @apply table-cell font-bold whitespace-nowrap;
 }

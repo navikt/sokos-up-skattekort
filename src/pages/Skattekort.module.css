@@ -5,3 +5,7 @@
 .skattekort__loader {
   @apply flex justify-center;
 }
+
+.skattekort__name {
+  @apply font-bold text-2xl;
+}

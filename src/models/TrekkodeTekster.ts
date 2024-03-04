@@ -1,8 +1,8 @@
 import { Trekkode } from "./SkattekortData";
 
 export const TrekkodeTekster = new Map<Trekkode, string>([
-  ["loennFraHovedarbeidsgiver", "Lønn fra hovedarbeidsgiver"],
-  ["loennFraBiarbeidsgiver", "Lønn fra biarbeidsgiver"],
+  ["loennFraHovedarbeidsgiver", "Hovedinntekt"],
+  ["loennFraBiarbeidsgiver", "Annen inntekt"],
   ["loennFraNAV", "Lønn fra NAV"],
   ["pensjon", "Pensjon"],
   ["pensjonFraNAV", "Pensjon fra NAV"],

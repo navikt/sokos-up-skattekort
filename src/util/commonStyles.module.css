@@ -1,0 +1,11 @@
+.bold {
+  @apply font-bold;
+}
+
+.separator {
+  @apply my-4;
+}
+
+.column {
+  @apply flex-col space-y-2;
+}
