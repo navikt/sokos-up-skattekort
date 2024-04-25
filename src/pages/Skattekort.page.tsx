@@ -44,7 +44,7 @@ const SkattekortPage = () => {
       return (
         <>
           <hr className={commonStyles.separator} />
-          <div className={styles.skattekort__name}>{data[0].navn ?? "N.N."}</div>
+          <div className={styles.skattekort__name}>Søkeresultat for {data[0].navn ?? "N.N."}</div>
           <Skattekortvisning data={data} />
         </>
       );

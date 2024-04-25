@@ -1,5 +1,5 @@
 .skattekortvisning {
-  @apply flex-col w-[860px] min-w-64 bg-white shadow-lg mx-12 p-6;
+  @apply flex-col w-[860px] min-w-64 bg-white shadow-lg mx-auto p-6;
 }
 
 .skattekortvisning__title {
