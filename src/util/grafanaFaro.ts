@@ -18,17 +18,19 @@ const getTelemetryCollectorURL = (): TelemetryCollectorURL => {
   return "http://localhost:12347";
 };
 
+// Fjern "getEnvironment() !== "local" &&" for å kjøre mot grafana på port 12347
 export function initGrafanaFaro() {
-  initializeFaro({
-    isolate: true,
-    url: getTelemetryCollectorURL(),
-    app: {
-      name: "sokos-up-skattekort",
-    },
-    instrumentations: [
-      ...getWebInstrumentations({
-        captureConsole: false,
-      }),
-    ],
-  });
+  getEnvironment() !== "local" &&
+    initializeFaro({
+      isolate: true,
+      url: getTelemetryCollectorURL(),
+      app: {
+        name: "sokos-up-skattekort",
+      },
+      instrumentations: [
+        ...getWebInstrumentations({
+          captureConsole: false,
+        }),
+      ],
+    });
 }

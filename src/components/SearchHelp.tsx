@@ -1,7 +1,7 @@
-import { HelpText } from "@navikt/ds-react";
+import { Alert } from "@navikt/ds-react";
 
 const SearchHelp = () => (
-  <HelpText title="a11y-title" placement="left" strategy="fixed">
+  <Alert variant="info">
     <p>
       <strong>Informasjon om Skattekort:</strong>
     </p>
@@ -10,7 +10,7 @@ const SearchHelp = () => (
       bli, eller er, brukt i en beregning må menypunktet "Skatt og trekk" og undermenypunkt "eSkattekort - Søk" i
       Økonomiportal benyttes.
     </p>
-  </HelpText>
+  </Alert>
 );
 
 export default SearchHelp;

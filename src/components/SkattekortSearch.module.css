@@ -1,5 +1,5 @@
 .skattekortsearch {
-  @apply relative bg-[--a-surface-subtle] space-y-5 p-7;
+  @apply relative bg-[--a-surface-alt-1-subtle] space-y-5 p-7;
 }
 .skattekortsearch__toggleitems {
   @apply px-7;

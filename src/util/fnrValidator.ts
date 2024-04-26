@@ -50,9 +50,16 @@ function getControlDigit(fodselsnummer: number[], controlRow: number[]): number 
 }
 
 export function isValidFodselsnummer(fodselsnummer: string): boolean {
-  if (!fodselsnummer.match(/^[0-9]{11}$/)) {
+  if (
+    !fodselsnummer
+      .split(".s")
+      .join()
+      .match(/^[0-9]{11}$/)
+  ) {
     return false;
   }
+  if (getEnvironment() === "local") return true;
+
   if (!isValidFodselsdato(fodselsnummer.substring(0, 6))) {
     return false;
   }
