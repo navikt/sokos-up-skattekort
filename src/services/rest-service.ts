@@ -1,6 +1,6 @@
 import axios from "axios";
 import { SkattekortRequest } from "./models";
-import SkattekortData from "../models/SkattekortData";
+import { SkattekortData } from "../models/SkattekortData";
 import { ApiError, HttpStatusCodeError } from "../types/errors";
 
 const BASE_API_URL = "/skattekort-api/api/v1";
