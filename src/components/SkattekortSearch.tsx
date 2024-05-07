@@ -1,7 +1,8 @@
-import { Search, ToggleGroup } from "@navikt/ds-react";
+import { Heading, Search, ToggleGroup } from "@navikt/ds-react";
 import styles from "./SkattekortSearch.module.css";
 import commonStyles from "../util/commonStyles.module.css";
 import { SkattekortSearchOptions } from "../pages/skattekort";
+import SearchHelp from "./SearchHelp";
 
 type SkattekortSearchProps = {
   searchOptions: SkattekortSearchOptions;
@@ -25,12 +26,16 @@ const SkattekortSearch = ({
   };
 
   return (
-    <>
+    <div className={styles.skattekortsearch}>
+      <Heading level="2" size="medium">
+        Søk
+      </Heading>
       <Search
-        label="Søk på person"
-        description="Tast inn fødselsnummer 11 siffer"
+        label="Gjelder ID"
+        defaultValue="Tast inn fødselsnummer 11 siffer"
+        autoFocus
         hideLabel={false}
-        htmlSize="12"
+        htmlSize="24"
         error={inputError}
         onChange={(fnr) => {
           searchOptions.fnrInputOnChange(fnr);
@@ -44,6 +49,9 @@ const SkattekortSearch = ({
           }
         }}
       />
+      <div className={styles.skattekortsearch__help}>
+        <SearchHelp />
+      </div>
       <div className={commonStyles.column}>
         <div className={commonStyles.bold}>Gjelder år</div>
         <ToggleGroup defaultValue={"" + searchOptions.year} onChange={changeYearHandler}>
@@ -54,7 +62,7 @@ const SkattekortSearch = ({
           ))}
         </ToggleGroup>
       </div>
-    </>
+    </div>
   );
 };
 export default SkattekortSearch;

@@ -9,3 +9,7 @@
 .column {
   @apply flex-col space-y-2;
 }
+
+.hvit_boks {
+  @apply bg-white p-5 m-5 rounded-md;
+}

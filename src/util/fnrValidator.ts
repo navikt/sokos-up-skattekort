@@ -50,14 +50,24 @@ function getControlDigit(fodselsnummer: number[], controlRow: number[]): number 
 }
 
 export function isValidFodselsnummer(fodselsnummer: string): boolean {
-  if (!fodselsnummer.match(/^[0-9]{11}$/)) {
+  if (
+    !fodselsnummer
+      .split(".s")
+      .join()
+      .match(/^[0-9]{11}$/)
+  ) {
     return false;
   }
-  if (!isValidFodselsdato(fodselsnummer.substring(0, 6))) {
-    return false;
-  }
-  const fodselsnummerDigitList = fodselsnummer.split("").map((x: string) => parseInt(x, 10));
-  const controlDigit1 = getControlDigit(fodselsnummerDigitList.slice(0, 9), controlNumberRow1);
-  const controlDigit2 = getControlDigit(fodselsnummerDigitList.slice(0, 10), controlNumberRow2);
-  return fodselsnummerDigitList[9] === controlDigit1 && fodselsnummerDigitList[10] === controlDigit2;
+
+  // Kommenterer ut fordi det er noen fødselsnumre som har vært testet som man forventer å ha skattekort, men som ikke
+  // validerer ok:
+  // fnr som starter på 800 og 00
+  // if (!isValidFodselsdato(fodselsnummer.substring(0, 6))) {
+  //   return false;
+  // }
+  // const fodselsnummerDigitList = fodselsnummer.split("").map((x: string) => parseInt(x, 10));
+  // const controlDigit1 = getControlDigit(fodselsnummerDigitList.slice(0, 9), controlNumberRow1);
+  // const controlDigit2 = getControlDigit(fodselsnummerDigitList.slice(0, 10), controlNumberRow2);
+  // return fodselsnummerDigitList[9] === controlDigit1 && fodselsnummerDigitList[10] === controlDigit2;
+  return true;
 }

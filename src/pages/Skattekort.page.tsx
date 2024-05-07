@@ -44,7 +44,7 @@ const SkattekortPage = () => {
       return (
         <>
           <hr className={commonStyles.separator} />
-          <div className={styles.skattekort__name}>{data[0].navn ?? "N.N."}</div>
+          <div className={styles.skattekort__name}>Søkeresultat for {data[0].navn ?? "N.N."}</div>
           <Skattekortvisning data={data} />
         </>
       );
@@ -52,15 +52,18 @@ const SkattekortPage = () => {
 
   return (
     <div className={styles.skattekort}>
-      <Heading level="1" size="medium">
+      <Heading level="1" size="large" style={{ textAlign: "center" }}>
         Skattekort
       </Heading>
-      <SkattekortSearch
-        inputError={inputError}
-        clearInputErrorOnChange={clearInputErrorOnChange}
-        searchOptions={searchOptions}
-        submitHandler={submitHandler}
-      />
+      <div className={styles.hvit_boks}>
+        <SkattekortSearch
+          inputError={inputError}
+          clearInputErrorOnChange={clearInputErrorOnChange}
+          searchOptions={searchOptions}
+          submitHandler={submitHandler}
+        />
+      </div>
+
       {showSkatteKort()}
     </div>
   );

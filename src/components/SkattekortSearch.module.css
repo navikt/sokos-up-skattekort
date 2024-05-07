@@ -1,3 +1,10 @@
+.skattekortsearch {
+  @apply relative bg-[--a-surface-alt-1-subtle] space-y-5 p-7 min-w-[1200px];
+}
 .skattekortsearch__toggleitems {
   @apply px-7;
+}
+
+.skattekortsearch__help {
+  @apply absolute right-5 top-0;
 }
