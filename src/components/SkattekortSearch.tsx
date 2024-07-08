@@ -1,4 +1,4 @@
-import { Heading, Search, ToggleGroup } from "@navikt/ds-react";
+import { Heading, HelpText, Search, ToggleGroup } from "@navikt/ds-react";
 import styles from "./SkattekortSearch.module.css";
 import commonStyles from "../util/commonStyles.module.css";
 import { SkattekortSearchOptions } from "../pages/skattekort";
@@ -50,7 +50,13 @@ const SkattekortSearch = ({
         }}
       />
       <div className={styles.skattekortsearch__help}>
-        <SearchHelp />
+        <HelpText title="Informasjon om Skattekort" placement="left-start">
+          <strong>Informasjon om Skattekort:</strong>
+          <br />
+          Skattekort viser skattekortet slik det er mottatt fra Skatteetaten. For å se hvilken del av skattekortet som
+          vil bli, eller er, brukt i en beregning må menypunktet "Skatt og trekk" og undermenypunkt "eSkattekort - Søk"
+          i Økonomiportal benyttes.
+        </HelpText>
       </div>
       <div className={commonStyles.column}>
         <div className={commonStyles.bold}>Gjelder år</div>
