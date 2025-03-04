@@ -50,7 +50,7 @@ const SkattekortSearch = ({
         }}
       />
       <div className={styles.skattekortsearch__help}>
-        <HelpText title="Informasjon om Skattekort" placement="left-start">
+        <HelpText title="Informasjon om Skattekort" placement="left-start" strategy="fixed">
           <strong>Informasjon om Skattekort:</strong>
           <br />
           Skattekort viser skattekortet slik det er mottatt fra Skatteetaten. For å se hvilken del av skattekortet som
