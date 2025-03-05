@@ -2,7 +2,6 @@ import { Heading, HelpText, Search, ToggleGroup } from "@navikt/ds-react";
 import styles from "./SkattekortSearch.module.css";
 import commonStyles from "../util/commonStyles.module.css";
 import { SkattekortSearchOptions } from "../pages/skattekort";
-import SearchHelp from "./SearchHelp";
 
 type SkattekortSearchProps = {
   searchOptions: SkattekortSearchOptions;
@@ -50,7 +49,7 @@ const SkattekortSearch = ({
         }}
       />
       <div className={styles.skattekortsearch__help}>
-        <HelpText title="Informasjon om Skattekort" placement="left-start">
+        <HelpText title="Informasjon om Skattekort" placement="left-start" strategy="fixed">
           <strong>Informasjon om Skattekort:</strong>
           <br />
           Skattekort viser skattekortet slik det er mottatt fra Skatteetaten. For å se hvilken del av skattekortet som
