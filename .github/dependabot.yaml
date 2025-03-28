@@ -5,11 +5,11 @@ registries:
     url: https://npm.pkg.github.com
     token: ${{ secrets.READER_TOKEN }}
 updates:
-  - package-ecosystem: npm
+  - package-ecosystem: "npm"
     directory: "/"
     registries: "*"
     schedule:
-      interval: weekly
+      interval: "weekly"
       day: "monday"
       time: "06:00"
       timezone: "Europe/Oslo"
