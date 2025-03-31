@@ -55,6 +55,7 @@
       "prettier --cache --write"
     ]
   },
+  "packageManager": "pnpm@9.15.0",
   "engines": {
     "node": ">=20.11.0",
     "pnpm": ">=8"
