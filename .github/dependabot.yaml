@@ -11,7 +11,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
-      time: "06:00"
+      time: "08:00"
       timezone: "Europe/Oslo"
     ignore:
       - dependency-name: "vite-plugin-mock"
@@ -27,22 +27,10 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
-      time: "06:00"
+      time: "08:00"
       timezone: "Europe/Oslo"
     groups:
       all-minor-updates:
         update-types:
           - "minor"
           - "patch"
-
-  - package-ecosystem: github-actions
-    directory: "/"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "06:00"
-      timezone: "Europe/Oslo"
-    groups:
-      github:
-        patterns:
-          - "*"
