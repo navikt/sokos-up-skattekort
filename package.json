@@ -22,7 +22,6 @@
     "zod": "^3.24.4"
   },
   "devDependencies": {
-    "@eik/rollup-plugin": "^4.0.66",
     "@navikt/aksel-stylelint": "^7.21.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/react": "^18.3.21",
