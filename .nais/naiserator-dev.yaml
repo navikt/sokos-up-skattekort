@@ -25,6 +25,7 @@ spec:
     max: 2
   ingresses:
     - "https://utbetalingsportalen.intern.dev.nav.no/sokos-up-skattekort"
+    - "https://utbetalingsportalen.ansatt.dev.nav.no/sokos-up-skattekort"
   resources:
     limits:
       cpu: "3"
