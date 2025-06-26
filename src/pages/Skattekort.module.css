@@ -1,11 +1,22 @@
 .skattekort {
-  @apply max-w-[1440px] space-y-4 mx-auto;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.skattekort > * + * {
+  margin-top: 1rem;
 }
 
 .skattekort__loader {
-  @apply flex justify-center;
+  display: flex;
+  justify-content: center;
 }
 
 .skattekort__name {
-  @apply font-bold text-2xl;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }

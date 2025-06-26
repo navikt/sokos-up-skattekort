@@ -1,10 +1,23 @@
 .skattekortsearch {
-  @apply relative bg-[--a-surface-alt-1-subtle] space-y-5 p-7 min-w-[1200px];
+  position: relative;
+  background-color: var(--a-surface-alt-1-subtle);
+  padding: 1.75rem;
+  min-width: 1200px;
+  display: flex;
+  flex-direction: column;
 }
+
+.skattekortsearch > * + * {
+  margin-top: 1.25rem;
+}
+
 .skattekortsearch__toggleitems {
-  @apply px-7;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
 }
 
 .skattekortsearch__help {
-  @apply absolute right-5 top-0;
+  position: absolute;
+  right: 1.25rem;
+  top: 0;
 }

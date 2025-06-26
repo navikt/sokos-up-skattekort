@@ -1,11 +1,25 @@
 .skattekortvisning {
-  @apply flex-col w-[860px] min-w-64 bg-white shadow-lg mx-auto p-6;
+  display: flex;
+  flex-direction: column;
+  width: 860px;
+  min-width: 4rem;
+  background-color: white;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
 }
 
 .skattekortvisning__title {
-  @apply w-full text-4xl;
+  width: 100%;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .skattekortvisning__table {
-  @apply table-auto mt-5 border-spacing-x-[36px] border-spacing-y-[24px];
+  table-layout: auto;
+  margin-top: 1.25rem;
+  border-spacing: 36px 24px;
 }
