@@ -12,13 +12,13 @@ importers:
         specifier: ^1.18.2
         version: 1.18.2
       '@navikt/aksel-icons':
-        specifier: ^7.21.1
+        specifier: ^7.24.0
         version: 7.24.0
       '@navikt/ds-css':
         specifier: ^7.24.0
         version: 7.24.0
       '@navikt/ds-react':
-        specifier: ^7.21.1
+        specifier: ^7.24.0
         version: 7.24.0(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       axios:
         specifier: ^1.10.0
