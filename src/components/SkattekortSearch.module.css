@@ -2,9 +2,9 @@
   position: relative;
   background-color: var(--a-surface-alt-1-subtle);
   padding: 1.75rem;
-  min-width: 1200px;
   display: flex;
   flex-direction: column;
+  border-radius: 0.5rem;
 }
 
 .skattekortsearch > * + * {
