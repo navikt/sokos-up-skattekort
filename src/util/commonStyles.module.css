@@ -1,15 +1,24 @@
 .bold {
-  @apply font-bold;
+  font-weight: bold;
 }
 
 .separator {
-  @apply my-4;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .column {
-  @apply flex-col space-y-2;
+  flex-direction: column;
+  display: flex;
+}
+
+.column > * + * {
+  margin-top: 0.5rem;
 }
 
 .hvit_boks {
-  @apply bg-white p-5 m-5 rounded-md;
+  background-color: white;
+  padding: 1.25rem;
+  margin: 1.25rem;
+  border-radius: 0.375rem;
 }
