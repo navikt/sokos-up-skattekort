@@ -34,7 +34,8 @@ const SkattekortSearch = ({
         defaultValue="Tast inn fødselsnummer 11 siffer"
         autoFocus
         hideLabel={false}
-        htmlSize="24"
+        htmlSize="15"
+        variant="primary"
         error={inputError}
         onChange={(fnr) => {
           searchOptions.fnrInputOnChange(fnr);
