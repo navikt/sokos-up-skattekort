@@ -5,34 +5,32 @@ metadata:
   namespace: okonomi
   labels:
     team: okonomi
-  annotations:
-    config.linkerd.io/proxy-memory-limit: "512Mi"
-    config.linkerd.io/proxy-memory-request: "128Mi"
 spec:
-  env:
-  - name: CORS_ALLOWED_ORIGIN
-    value: "https://utbetalingsportalen.intern.nav.no"
-  image: {{ image }}
-  port: 8080
+  image: "{{{ image }}}"
+  port: 3000
   liveness:
-    path: /sokos-up-skattekort/internal/isAlive
+    path: /api/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /sokos-up-skattekort/internal/isReady
+    path: /api/internal/isReady
     initialDelay: 10
-  prometheus:
-    enabled: true
-    path: /sokos-up-skattekort/internal/metrics
   replicas:
     min: 1
     max: 2
-  ingresses:
-    - "https://utbetalingsportalen.intern.nav.no/sokos-up-skattekort"
-    - "https://utbetalingsportalen.ansatt.nav.no/sokos-up-skattekort"
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: nodejs
+  accessPolicy:
+    inbound:
+      rules:
+        - application: sokos-utbetalingsportalen
   resources:
     limits:
-      cpu: "3"
-      memory: 768Mi
+      memory: 1024Mi
     requests:
-      cpu: "50m"
-      memory: 256Mi
+      cpu: 50m
+      memory: 128Mi
+  env:
+    - name: SOKOS_SKATTEKORT_PERSON_API
+      value: "https://sokos-skattekort-person"

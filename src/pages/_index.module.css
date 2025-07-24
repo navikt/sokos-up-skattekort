@@ -1,0 +1,10 @@
+.header {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.content {
+  background-color: var(--a-surface-alt-1-subtle);
+  padding: 2.5rem;
+}
