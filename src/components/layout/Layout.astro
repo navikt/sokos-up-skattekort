@@ -1,4 +1,6 @@
 ---
+import styles from "./Layout.module.css";
+
 type Language = "nb";
 const language = Astro.currentLocale as Language;
 ---
@@ -21,7 +23,6 @@ const language = Astro.currentLocale as Language;
     />
   </head>
   <section class="sokos-up-skattekort">
-    <slot />
+    <slot class={styles.container} />
   </section>
-
 </html>

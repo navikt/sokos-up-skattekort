@@ -1,0 +1,19 @@
+[
+  {
+    "navn": "Carl Gerhard Busch",
+    "arbeidsgiver": [
+      {
+        "arbeidstaker": [
+          {
+            "inntektsaar": 2024,
+            "arbeidstakeridentifikator": "04015201822",
+            "resultatPaaForespoersel": "ikkeSkattekort"
+          }
+        ],
+        "arbeidsgiveridentifikator": {
+          "organisasjonsnummer": "910962728"
+        }
+      }
+    ]
+  }
+]

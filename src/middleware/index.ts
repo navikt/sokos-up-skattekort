@@ -1,12 +1,13 @@
-import { defineMiddleware } from "astro/middleware";
-import { isInternal, isLocal } from "../utils/environment";
 import { getToken, validateAzureToken } from "@navikt/oasis";
+import { getServerSideEnvironment } from "@utils/environment";
 import logger from "@utils/logger.ts";
+import { defineMiddleware } from "astro/middleware";
+import { isInternal } from "./utils";
 
 export const onRequest = defineMiddleware(async (context, next) => {
   const token = getToken(context.request.headers);
 
-  if (isLocal) {
+  if (getServerSideEnvironment() === "local") {
     return next();
   }
 

@@ -1,0 +1,9 @@
+.container {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  margin: 0.75rem auto;
+  gap: 1rem;
+  max-width: 1600px;
+  width: 100%;
+}

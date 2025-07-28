@@ -33,4 +33,4 @@ spec:
       memory: 128Mi
   env:
     - name: SOKOS_SKATTEKORT_PERSON_API
-      value: "https://sokos-skattekort-person"
+      value: "http://sokos-skattekort-person"

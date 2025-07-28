@@ -1,51 +1,17 @@
 ---
-import { BodyLong, Heading, Table } from "@navikt/ds-react";
 import Layout from "@components/layout/Layout.astro";
-import type { Employee } from "../types/Employee";
-import styles from "./_index.module.css";
+import { Heading } from "@navikt/ds-react";
+import { getSkattekort } from "src/api/apiService";
 
-const data = [
-  { id: 1, name: "Ola Nordmann", profession: "Lærer" },
-  { id: 2, name: "Kari Nordmann", profession: "Sykepleier" },
-  { id: 3, name: "Per Hansen", profession: "Elektriker" },
-];
+const request = {
+  fnr: "12345678901",
+  inntektsaar: 2024,
+};
+
+const data = await getSkattekort(request); // Assuming this function fetches the data from the API
 ---
 
 <Layout>
-  <div class={styles["header"]}>
-    <Heading spacing level="1" size="large">
-      Astro grensesnittmal for Utbetalingsportalen
-    </Heading>
-    <BodyLong>
-      Dette er en mal for å bygge mikrofrontend i Utbetalingsportalen
-    </BodyLong>
-  </div>
-
-  <div class={styles["content"]}>
-    <Heading spacing level="2" size="medium"> Ansatte </Heading>
-
-    <Table>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell scope="col">Id</Table.HeaderCell>
-          <Table.HeaderCell scope="col">Navn</Table.HeaderCell>
-          <Table.HeaderCell scope="col">Yrke</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-
-      <Table.Body>
-        {
-          data?.map((employee: Employee) => {
-            return (
-              <Table.Row key={employee.id}>
-                <Table.HeaderCell scope="row">{employee.id}</Table.HeaderCell>
-                <Table.DataCell>{employee.name}</Table.DataCell>
-                <Table.DataCell>{employee.profession}</Table.DataCell>
-              </Table.Row>
-            );
-          })
-        }
-      </Table.Body>
-    </Table>
-  </div>
+  <Heading level="1" size="large" spacing align="center"> Skattekort </Heading>
+  <h3>{JSON.stringify(data)}</h3>
 </Layout>

@@ -1,6 +1,16 @@
-import type { APIContext } from "astro";
+const isDevelopment = process.env.NAIS_CLUSTER_NAME === "dev-gcp";
+const isProduction = process.env.NAIS_CLUSTER_NAME === "prod-gcp";
 
-export const isInternal = (context: APIContext) =>
-  context.request.url.includes("/internal");
+type Environment = "production" | "development" | "local";
 
-export const isLocal = process.env.NODE_ENV === "development";
+export function getServerSideEnvironment(): Environment {
+  if (isDevelopment) {
+    return "development";
+  }
+
+  if (isProduction) {
+    return "production";
+  }
+
+  return "local";
+}
