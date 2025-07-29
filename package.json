@@ -19,7 +19,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "swr": "^2.3.4",
-    "zod": "^3.25.67"
+    "zod": "^4.0.13"
   },
   "devDependencies": {
     "@navikt/aksel-stylelint": "^7.25.1",
