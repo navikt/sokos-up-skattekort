@@ -1,21 +1,27 @@
-name: Build/test and validate PR
+name: Dependabot Auto-merge
 
 on:
   pull_request:
+    branches: [main]
     paths-ignore:
       - "**.md"
       - "LICENCE"
       - "CODEOWNERS"
       - ".gitignore"
-      - ".github/workflows/dependabot-automerge.yaml"
+      - ".github/workflows/build-pr.yaml"
       - ".github/workflows/deploy.yaml"
       - ".github/workflows/manual-deploy.yaml"
       - ".github/workflows/playwright.yaml"
       - ".github/workflows/security.yaml"
       - ".github/dependabot.yaml"
 
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
 jobs:
-  build-pr:
-    name: Build and test
-    uses: navikt/mob-gha-workflows/.github/workflows/node-build-pr.yaml@main
+  dependabot-automerge:
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    uses: navikt/mob-gha-workflows/.github/workflows/dependabot-automerge.yaml@main
     secrets: inherit
