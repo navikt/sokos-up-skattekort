@@ -27,6 +27,4 @@ permissions:
 jobs:
   dependabot-automerge:
     uses: navikt/mob-gha-workflows/.github/workflows/dependabot-automerge.yaml@main
-    with:
-      minimum-age-of-pr: "0"
     secrets: inherit
