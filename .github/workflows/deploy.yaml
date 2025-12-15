@@ -24,6 +24,13 @@ env:
   TZ: Europe/Oslo
 
 jobs:
+  playwright-test:
+    permissions:
+      contents: read
+    name: Playwright test
+    uses: navikt/mob-gha-workflows/.github/workflows/playwright.yaml@main
+    secrets: inherit
+
   build-push-image:
     permissions:
       contents: read
