@@ -10,17 +10,17 @@
   },
   "dependencies": {
     "@grafana/faro-web-sdk": "^1.19.0",
-    "@navikt/aksel-icons": "^7.35.2",
-    "@navikt/ds-css": "^7.35.2",
-    "@navikt/ds-react": "^7.35.2",
+    "@navikt/aksel-icons": "^7.36.0",
+    "@navikt/ds-css": "^7.36.0",
+    "@navikt/ds-react": "^7.36.0",
     "axios": "^1.13.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "swr": "^2.3.7",
-    "zod": "^4.2.0"
+    "swr": "^2.3.8",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
-    "@navikt/aksel-stylelint": "^7.35.2",
+    "@navikt/aksel-stylelint": "^7.36.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
