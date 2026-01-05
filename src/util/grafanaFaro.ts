@@ -20,11 +20,7 @@ function getTelemetryCollectorURL(): TelemetryCollectorURL {
 
 export function initGrafanaFaro() {
 	// Don't initialize in mock/local environments
-	if (
-		import.meta.env.MODE === "mock" ||
-		import.meta.env.MODE === "backend" ||
-		import.meta.env.MODE === "backend-q1"
-	) {
+	if (import.meta.env.MODE !== "mock" && import.meta.env.MODE !== "backend") {
 		return;
 	}
 
@@ -32,7 +28,7 @@ export function initGrafanaFaro() {
 		isolate: true,
 		url: getTelemetryCollectorURL(),
 		app: {
-			name: "sokos-up-attestasjon",
+			name: "sokos-react-template",
 		},
 		instrumentations: [
 			...getWebInstrumentations({
