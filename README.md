@@ -27,8 +27,8 @@ NB! Navngi følgende: `sokos-up-appNavn`, f.eks: `sokos-up-venteregister`
 3. Installere dependencies `pnpm install && cd server && pnpm install`
 4. Start appen med to følgende måter:
 
-- Mot [Mock Service Worker](https://mswjs.io/) mock server -> `pnpm run dev`
-- Mot en backend kjørende lokalt på maskinen `pnpm run dev:backend`
+- Mot [Mock Service Worker](https://mswjs.io/) `mock`-server -> `pnpm run dev`
+- Mot en backend kjørende lokalt på maskinen  -> `pnpm run dev:backend`
   - Gå til [vite.config.ts](/vite.config.ts), endre til riktig url som skal gå mot backend.
 
 ```javascript
@@ -49,7 +49,7 @@ NB! Navngi følgende: `sokos-up-appNavn`, f.eks: `sokos-up-venteregister`
 
 Templaten har ikke routing. Men om du ønsker å ha routing gjør du følgende:
 
-1. `pnpm i react-router-dom`
+1. `pnpm i react-router`
 2. Erstatter følgende innhold i [App.tsx](/src/App.tsx)
 
 ```typescript
@@ -61,17 +61,10 @@ med
 ```typescript
 return <BrowserRouter basename="/mikrofrontend">
     <Routes>
-      <Route path={"/"} ErrorBoundary={ErrorBoundary}>
         <Route path="/" element={<TemplatePage />} />
         <Route path="/anotherpage" element={<AnotherPage />} />
-      </Route>
     </Routes>
   </BrowserRouter>
-
-function ErrorBoundary(): JSX.Element {
-  const error = useRouteError();
-  throw error;
-}
 ```
 
 ## Design
