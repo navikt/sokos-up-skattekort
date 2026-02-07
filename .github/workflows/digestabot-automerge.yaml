@@ -11,6 +11,7 @@ jobs:
       contents: read
       pull-requests: write
     uses: navikt/mob-gha-workflows/.github/workflows/digestabot-automerge.yaml@main
+    name: Digestabot Auto-merge
     secrets:
       APP_ID: ${{ vars.APP_ID }}
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
