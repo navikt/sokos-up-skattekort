@@ -3,7 +3,7 @@ import cors from "cors";
 import express, { type Request, type Response } from "express";
 import expressStaticGzip from "express-static-gzip";
 
-const basePath = "/sokos-react-template";
+const basePath = "/sokos-up-skattekort";
 const buildPath = path.resolve(__dirname, "../dist");
 const server = express();
 

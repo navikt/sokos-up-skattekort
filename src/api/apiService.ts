@@ -1,9 +1,10 @@
 import useSWRImmutable from "swr/immutable";
-import type { EmployeeList } from "../types/Employee";
-import { axiosFetcher } from "./config/apiConfig";
+import type { HentSkattekortRequest } from "../types/schema/HentSkattekortRequestSchema";
+import type { Skattekort } from "../types/schema/SkattekortSchema";
+import { axiosPostFetcher } from "./config/apiConfig";
 
 const BASE_URI = {
-	BACKEND_API: "/mikrofrontend-api/api/v1",
+	SOKOS_SKATTEKORT_API: "/skattekort-api/api/v1/person/",
 };
 
 function swrConfig<T>(fetcher: (uri: string) => Promise<T>) {
@@ -14,13 +15,26 @@ function swrConfig<T>(fetcher: (uri: string) => Promise<T>) {
 		refreshInterval: 600000,
 	};
 }
-
-export function useGetEmployee() {
-	const { data, error, isValidating } = useSWRImmutable<EmployeeList>(
-		`/employee`,
-		swrConfig<EmployeeList>((url) =>
-			axiosFetcher<EmployeeList>(BASE_URI.BACKEND_API, url),
-		),
+type HentSkattekortResponse = { skattekort: Skattekort[] };
+export function useFetchSkattekort(fnr: string) {
+	const { data, error, isValidating } = useSWRImmutable<HentSkattekortResponse>(
+		"/hent-skattekort",
+		{
+			...swrConfig<HentSkattekortResponse>((url) =>
+				axiosPostFetcher<HentSkattekortRequest, HentSkattekortResponse>(
+					BASE_URI.SOKOS_SKATTEKORT_API,
+					url,
+					{
+						fnr,
+						hentAlle: true,
+					},
+				),
+			),
+			revalidateOnMount: true,
+			shouldRetryOnError: true,
+			errorRetryCount: 3,
+			errorRetryInterval: 3000,
+		},
 	);
 	const isLoading = (!error && !data) || isValidating;
 

@@ -1,7 +1,7 @@
 {
-	"name": "sokos-react-template",
+	"name": "sokos-up-skattekort",
 	"version": "1.0.0",
-	"description": "Mikrofrontend for Utbetalingsportalen",
+	"description": "Skattekort i Utbetalingsportalen",
 	"type": "module",
 	"scripts": {
 		"dev": "vite --mode mock",
@@ -21,6 +21,7 @@
 		"@navikt/ds-css": "^7.39.0",
 		"@navikt/ds-react": "^7.39.0",
 		"axios": "^1.13.5",
+		"pino-http": "^11.0.0",
 		"react": "^19.2.3",
 		"react-dom": "^19.2.3",
 		"swr": "^2.3.8",

@@ -28,7 +28,7 @@ export function initGrafanaFaro() {
 		isolate: true,
 		url: getTelemetryCollectorURL(),
 		app: {
-			name: "sokos-react-template",
+			name: "sokos-up-skattekort",
 		},
 		instrumentations: [
 			...getWebInstrumentations({

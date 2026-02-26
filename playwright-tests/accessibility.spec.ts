@@ -5,7 +5,7 @@ test.describe("Axe a11y", () => {
 	test("should not have any automatically detectable accessibility issues", async ({
 		page,
 	}) => {
-		await page.goto("/mikrofrontend");
+		await page.goto("/skattekort");
 
 		await page.waitForLoadState("networkidle");
 
