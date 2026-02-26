@@ -8,9 +8,9 @@
 
 .box {
   width: 100%;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 0.5rem;
-  background-color: var(--a-surface-alt-1-subtle);
+  background-color: var(--a-surface-subtle);
   position: relative;
 }
 
@@ -95,4 +95,10 @@
     margin-top: 0;
     justify-content: flex-end;
   }
+}
+
+.skattekort {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
 }

@@ -13,13 +13,13 @@ import {
 import type React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useFetchSkattekort } from "../../api/apiService";
-import { AlertWithCloseButton } from "../../components/AlertWithCloseButton";
-import Innhold from "../../components/Innhold";
+import { useFetchSkattekort } from "../api/apiService";
+import { AlertWithCloseButton } from "../components/AlertWithCloseButton";
+import Innhold from "../components/Innhold";
 import {
 	type SokParameter,
 	SokParameterSchema,
-} from "../../types/schema/SokParameter";
+} from "../types/schema/SokParameter";
 import styles from "./Sok.module.css";
 
 function formaterFnr(fnr: string) {
@@ -150,10 +150,10 @@ export default function Sok() {
 				</VStack>
 			</Box>
 			{data?.map((skattekort, index) => (
-				<div key={index} className={styles.result}>
+				<div key={skattekort.utstedtDato} className={styles["box"]}>
 					<ExpansionCard aria-label="Demo med bare tittel">
 						<ExpansionCard.Header>
-							<ExpansionCard.Title>
+							<ExpansionCard.Title as="h4" size="small">
 								Skattekort {skattekort.inntektsaar}. Utstedt{" "}
 								{data.length - index}
 							</ExpansionCard.Title>
