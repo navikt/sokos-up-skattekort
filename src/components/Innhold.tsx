@@ -11,7 +11,7 @@ export default function Innhold({
 		<>
 			<div className={styles["skattekort-container"]}>
 				<div className={styles["skattekort-details"]}>
-					<LabelText label="Indentifikator" text={"-"} />
+					<LabelText label="Indentifikator" text={skattekort.identifikator} />
 					{skattekort.tilleggsopplysningList && (
 						<LabelText
 							label="Tilleggsopplysning"
@@ -21,7 +21,7 @@ export default function Innhold({
 				</div>
 				<div className={styles["skattekort-details-right"]}>
 					<LabelText label="Utstedt dato" text={skattekort.utstedtDato} />
-					<LabelText label="Mottatt" text="" />
+					<LabelText label="Mottatt" text={skattekort.mottatt} />
 				</div>
 			</div>
 			{skattekort?.forskuddstrekkList &&

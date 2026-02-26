@@ -1,12 +1,13 @@
 import { HttpResponse, http } from "msw";
-import { HentSkattekortRequest } from "../src/types/schema/HentSkattekortRequestSchema";
 
 export const handlers = [
 	http.post("/skattekort-api/api/v1/person/hent-skattekort", async () =>
 		HttpResponse.json(
 			[
 				{
+					identifikator: "12345678910",
 					utstedtDato: "2020-02-20",
+					mottatt: "2020-02-20 12:00:00",
 					inntektsaar: 2020,
 					resultatForSkattekort: "skattekortopplysningerOK",
 					forskuddstrekkList: [
@@ -32,7 +33,10 @@ export const handlers = [
 					],
 				},
 				{
+					identifikator: "12345678912",
 					utstedtDato: "2020-02-21",
+					mottatt: "2020-02-21 13:37:00",
+
 					inntektsaar: 2020,
 					resultatForSkattekort: "skattekortopplysningerOK",
 					forskuddstrekkList: [
@@ -59,7 +63,10 @@ export const handlers = [
 					tilleggsopplysningList: ["oppholdPaaSvalbard"],
 				},
 				{
+					identifikator: "12345678910",
 					utstedtDato: "2020-02-22",
+					mottatt: "2020-02-22 11:11:00",
+
 					inntektsaar: 2020,
 					resultatForSkattekort: "skattekortopplysningerOK",
 					forskuddstrekkList: [

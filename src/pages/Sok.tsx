@@ -155,7 +155,7 @@ export default function Sok() {
 						<ExpansionCard.Header>
 							<ExpansionCard.Title as="h4" size="small">
 								Skattekort {skattekort.inntektsaar}. Utstedt{" "}
-								{data.length - index}
+								{skattekort.utstedtDato}.{data.length - index}
 							</ExpansionCard.Title>
 						</ExpansionCard.Header>
 						<ExpansionCard.Content>

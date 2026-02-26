@@ -2,6 +2,8 @@ import { object, z } from "zod";
 
 export const SkattekortSchema = z.object({
 	utstedtDato: z.string(),
+	identifikator: z.string(),
+	mottatt: z.string(),
 	inntektsaar: z.number(),
 	resultatForSkattekort: z.string(),
 
