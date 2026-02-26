@@ -17,8 +17,9 @@ function swrConfig<T>(fetcher: (uri: string) => Promise<T>) {
 }
 type HentSkattekortResponse = { skattekort: Skattekort[] };
 export function useFetchSkattekort(fnr: string) {
+	const shouldFetch = fnr?.trim().length > 0;
 	const { data, error, isValidating } = useSWRImmutable<HentSkattekortResponse>(
-		"/hent-skattekort",
+		shouldFetch ? "/hent-skattekort" : null,
 		{
 			...swrConfig<HentSkattekortResponse>((url) =>
 				axiosPostFetcher<HentSkattekortRequest, HentSkattekortResponse>(
@@ -37,6 +38,5 @@ export function useFetchSkattekort(fnr: string) {
 		},
 	);
 	const isLoading = (!error && !data) || isValidating;
-
 	return { data, error, isLoading };
 }

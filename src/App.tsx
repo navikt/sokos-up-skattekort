@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import Form from "./pages/skattekort/Sok";
 import TemplatePage from "./pages/TemplatePage";
 import { initGrafanaFaro } from "./util/grafanaFaro";
-import Form from "./pages/skattekort/Form";
 
 export default function App() {
 	useEffect(() => {

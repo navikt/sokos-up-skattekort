@@ -20,20 +20,20 @@ function getTelemetryCollectorURL(): TelemetryCollectorURL {
 
 export function initGrafanaFaro() {
 	// Don't initialize in mock/local environments
-	if (import.meta.env.MODE !== "mock" && import.meta.env.MODE !== "backend") {
-		return;
-	}
-
-	initializeFaro({
-		isolate: true,
-		url: getTelemetryCollectorURL(),
-		app: {
-			name: "sokos-up-skattekort",
-		},
-		instrumentations: [
-			...getWebInstrumentations({
-				captureConsole: false,
-			}),
-		],
-	});
+	// if (import.meta.env.MODE !== "mock" && import.meta.env.MODE !== "backend") {
+	// 	return;
+	// }
+	//
+	// initializeFaro({
+	// 	isolate: true,
+	// 	url: getTelemetryCollectorURL(),
+	// 	app: {
+	// 		name: "sokos-up-skattekort",
+	// 	},
+	// 	instrumentations: [
+	// 		...getWebInstrumentations({
+	// 			captureConsole: false,
+	// 		}),
+	// 	],
+	// });
 }
