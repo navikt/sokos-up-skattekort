@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import TemplatePage from "./pages/TemplatePage";
+import Sok from "./pages/Sok";
 import { initGrafanaFaro } from "./util/grafanaFaro";
 
 export default function App() {
@@ -7,5 +7,5 @@ export default function App() {
 		initGrafanaFaro();
 	}, []);
 
-	return <TemplatePage />;
+	return <Sok />;
 }

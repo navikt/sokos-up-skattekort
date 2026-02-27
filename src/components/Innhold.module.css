@@ -1,0 +1,13 @@
+.skattekort-container {
+    display: flex;
+    justify-content: space-between; /* pushes left & right apart */
+    align-items: flex-start;        /* align to top */
+    width: 100%;
+}
+
+.skattekort-details,
+.skattekort-details-right {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    gap: 8px;               /* spacing between LabelText */
+}
