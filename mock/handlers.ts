@@ -63,7 +63,7 @@ export const handlers = [
 					tilleggsopplysningList: ["oppholdPaaSvalbard"],
 				},
 				{
-					identifikator: "12345678910",
+					identifikator: "12345678914",
 					utstedtDato: "2020-02-22",
 					mottatt: "2020-02-22 11:11:00",
 

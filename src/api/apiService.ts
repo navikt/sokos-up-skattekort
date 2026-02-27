@@ -1,3 +1,4 @@
+import type { AxiosError } from "axios";
 import useSWRImmutable from "swr/immutable";
 import type { HentSkattekortRequest } from "../types/schema/HentSkattekortRequestSchema";
 import type { Skattekort } from "../types/schema/SkattekortSchema";
@@ -7,36 +8,43 @@ const BASE_URI = {
 	SOKOS_SKATTEKORT_API: "/skattekort-api/api/v1/person/",
 };
 
-function swrConfig<T>(fetcher: (uri: string) => Promise<T>) {
+function swrConfig<T, ArgType>(fetcher: (arg: ArgType) => Promise<T>) {
 	return {
 		fetcher,
-		suspense: true,
 		revalidateOnFocus: false,
 		refreshInterval: 600000,
 	};
 }
-type HentSkattekortResponse = { skattekort: Skattekort[] };
-export function useFetchSkattekort(fnr: string) {
+
+export function useFetchSkattekort(fnr: string): {
+	data: Skattekort[] | undefined;
+	error: AxiosError | null;
+	isLoading: boolean;
+} {
 	const shouldFetch = fnr?.trim().length > 0;
-	const { data, error, isValidating } = useSWRImmutable<HentSkattekortResponse>(
-		shouldFetch ? "/hent-skattekort" : null,
+	const { data, error, isLoading } = useSWRImmutable<Skattekort[]>(
+		shouldFetch ? ["/hent-skattekort", fnr] : null,
 		{
-			...swrConfig<HentSkattekortResponse>((url) =>
-				axiosPostFetcher<HentSkattekortRequest, HentSkattekortResponse>(
-					BASE_URI.SOKOS_SKATTEKORT_API,
-					url,
-					{
-						fnr,
-						hentAlle: true,
-					},
-				),
+			...swrConfig<Skattekort[], [string, string]>(
+				async ([_url, fnr]: [string, string]) => {
+					return axiosPostFetcher<HentSkattekortRequest, Skattekort[]>(
+						BASE_URI.SOKOS_SKATTEKORT_API,
+						_url,
+						{
+							fnr,
+							hentAlle: true,
+						},
+					);
+				},
 			),
+			onError: (error) => {
+				return { data: [], error, isValidating: false };
+			},
 			revalidateOnMount: true,
 			shouldRetryOnError: true,
-			errorRetryCount: 3,
+			errorRetryCount: 1,
 			errorRetryInterval: 3000,
 		},
 	);
-	const isLoading = (!error && !data) || isValidating;
 	return { data, error, isLoading };
 }

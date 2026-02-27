@@ -11,7 +11,7 @@ export default function Innhold({
 		<>
 			<div className={styles["skattekort-container"]}>
 				<div className={styles["skattekort-details"]}>
-					<LabelText label="Indentifikator" text={skattekort.identifikator} />
+					<LabelText label="Identifikator" text={skattekort.identifikator} />
 					{skattekort.tilleggsopplysningList && (
 						<LabelText
 							label="Tilleggsopplysning"
@@ -29,31 +29,32 @@ export default function Innhold({
 					<Table>
 						<Table.Body>
 							{skattekort.forskuddstrekkList.map((ft, ftIndex) => {
-								let col2 = "";
-								let col3 = "";
-								let col4 = "";
+								let trekkprosentkolonne = "";
+								let frikortEllerTabellkolonne = "";
+								let antallMndForTrekkkolonne = "";
 
 								if (ft.prosentkort) {
-									col2 = `Trekkprosent ${ft.prosentkort.prosentSats}%`;
-									col4 = `Antall måneder for trekk: ${ft.prosentkort.antallMndForTrekk}`;
+									trekkprosentkolonne = `Trekkprosent ${ft.prosentkort.prosentSats}%`;
+									if (ft.prosentkort.antallMndForTrekk)
+										antallMndForTrekkkolonne = `Antall måneder for trekk: ${ft.prosentkort.antallMndForTrekk}`;
 								}
 
 								if (ft.trekktabell) {
-									col3 = `Tabell: ${ft.trekktabell.tabell ?? "-"}`;
-									col2 = `Trekkprosent: ${ft.trekktabell.prosentSats}%`;
-									col4 = `Antall måneder for trekk: ${ft.trekktabell.antallMndForTrekk}`;
+									frikortEllerTabellkolonne = `Tabell: ${ft.trekktabell.tabell ?? "-"}`;
+									trekkprosentkolonne = `Trekkprosent: ${ft.trekktabell.prosentSats}%`;
+									antallMndForTrekkkolonne = `Antall måneder for trekk: ${ft.trekktabell.antallMndForTrekk}`;
 								}
 
 								if (ft.frikort) {
-									col3 = `Frikortbeløp: ${ft.frikort.frikortBeloep ?? "∞"}`;
+									frikortEllerTabellkolonne = `Frikortbeløp: ${ft.frikort.frikortBeloep ?? "∞"}`;
 								}
 
 								return (
 									<Table.Row key={ft.trekkode}>
 										<Table.HeaderCell>{Trekkode[ft.trekkode]}</Table.HeaderCell>
-										<Table.DataCell>{col2}</Table.DataCell>
-										<Table.DataCell>{col3}</Table.DataCell>
-										<Table.DataCell>{col4}</Table.DataCell>
+										<Table.DataCell>{trekkprosentkolonne}</Table.DataCell>
+										<Table.DataCell>{frikortEllerTabellkolonne}</Table.DataCell>
+										<Table.DataCell>{antallMndForTrekkkolonne}</Table.DataCell>
 									</Table.Row>
 								);
 							})}
