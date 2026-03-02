@@ -6,7 +6,7 @@ import {
 	Button,
 	ExpansionCard,
 	Heading,
-	Loader,
+	Skeleton,
 	TextField,
 	VStack,
 } from "@navikt/ds-react";
@@ -21,7 +21,6 @@ import {
 	type SokParameter,
 	SokParameterSchema,
 } from "../types/schema/SokParameter";
-import styles from "./Sok.module.css";
 
 type BackendError = {
 	statusCode?: number;
@@ -82,37 +81,20 @@ export default function Sok() {
 	}
 
 	return (
-		<div>
-			{false &&
-				"data:" +
-					JSON.stringify(data, null, 2) +
-					"error:" +
-					JSON.stringify(error, null, 2) +
-					"isLoading:" +
-					JSON.stringify(isLoading, null, 2) +
-					"isSubmit:" +
-					JSON.stringify(isSubmit, null, 2)}
-
+		<>
 			{error && (
-				<Alert
-					variant="error"
-					role="alert"
-					className={styles["alert-full-width"]}
-				>
+				<Alert variant="error" role="alert">
 					Noe er galt. {menneskeleseligFeilmelding(error)} Legg inn sak i porten
 					hvis problemet vedvarer.
 				</Alert>
 			)}
 
 			{isNullOrEmpty(data) && isSubmit && !isLoading && !error && (
-				<Alert
-					variant="info"
-					role="alert"
-					className={styles["alert-full-width"]}
-				>
+				<Alert variant="info" role="alert">
 					Ingen treff for oppgitt fnr
 				</Alert>
 			)}
+
 			<Heading spacing level="1" size="large" align={"center"}>
 				Skattekort
 			</Heading>
@@ -182,13 +164,15 @@ export default function Sok() {
 				</VStack>
 			</Box>
 			{isLoading && (
-				<div className={styles.center}>
-					<Loader size="3xlarge" title="Henter data..." />
-				</div>
+				<VStack padding="space-8" gap="space-16">
+					<Skeleton variant="rounded" height={90} />
+					<Skeleton variant="rounded" height={90} />
+					<Skeleton variant="rounded" height={90} />
+				</VStack>
 			)}
 			{data?.map((skattekort) => (
-				<div key={skattekort.identifikator} className={styles["box"]}>
-					<ExpansionCard aria-label="Demo med bare tittel">
+				<VStack key={skattekort.identifikator} padding="space-8">
+					<ExpansionCard aria-label="Skattekort">
 						<ExpansionCard.Header>
 							<ExpansionCard.Title as="h4" size="small">
 								Skattekort {skattekort.inntektsaar}. Utstedt{" "}
@@ -199,8 +183,8 @@ export default function Sok() {
 							<Innhold skattekort={skattekort} />
 						</ExpansionCard.Content>
 					</ExpansionCard>
-				</div>
+				</VStack>
 			))}
-		</div>
+		</>
 	);
 }

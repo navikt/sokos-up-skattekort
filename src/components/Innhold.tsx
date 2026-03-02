@@ -1,6 +1,5 @@
-import { Table } from "@navikt/ds-react";
+import { HStack, Table, VStack } from "@navikt/ds-react";
 import { type Skattekort, Trekkode } from "../types/schema/SkattekortSchema";
-import styles from "./Innhold.module.css";
 import LabelText from "./LabelText";
 
 export default function Innhold({
@@ -8,21 +7,22 @@ export default function Innhold({
 }: Readonly<{ skattekort: Skattekort }>) {
 	return (
 		<>
-			<div className={styles["skattekort-container"]}>
-				<div className={styles["skattekort-details"]}>
+			<HStack justify="space-between">
+				<VStack gap="space-8">
 					<LabelText label="Identifikator" text={skattekort.identifikator} />
-					{skattekort.tilleggsopplysningList && (
-						<LabelText
-							label="Tilleggsopplysning"
-							text={skattekort.tilleggsopplysningList?.join(", ")}
-						/>
-					)}
-				</div>
-				<div className={styles["skattekort-details-right"]}>
+					{skattekort?.tilleggsopplysningList &&
+						skattekort.tilleggsopplysningList.length > 0 && (
+							<LabelText
+								label="Tilleggsopplysning"
+								text={skattekort.tilleggsopplysningList?.join(", ")}
+							/>
+						)}
+				</VStack>
+				<VStack gap="space-8">
 					<LabelText label="Utstedt dato" text={skattekort.utstedtDato} />
 					<LabelText label="Mottatt" text={skattekort.mottatt} />
-				</div>
-			</div>
+				</VStack>
+			</HStack>
 			{skattekort?.forskuddstrekkList &&
 				skattekort.forskuddstrekkList.length > 0 && (
 					<Table>
@@ -34,19 +34,46 @@ export default function Innhold({
 								let antallMndForTrekk = null;
 
 								if (ft.prosentkort) {
-									trekkprosent = `Trekkprosent ${ft.prosentkort.prosentSats}%`;
+									trekkprosent = (
+										<LabelText
+											label="Trekkprosent"
+											text={`${ft.prosentkort.prosentSats}%`}
+										/>
+									);
 									if (ft.prosentkort.antallMndForTrekk)
-										antallMndForTrekk = `Antall måneder for trekk: ${ft.prosentkort.antallMndForTrekk}`;
+										antallMndForTrekk = (
+											<LabelText
+												label="Antall måneder for trekk"
+												text={ft.prosentkort.antallMndForTrekk}
+											/>
+										);
 								}
 
 								if (ft.trekktabell) {
-									tabell = `Tabell: ${ft.trekktabell.tabell ?? "-"}`;
-									trekkprosent = `Trekkprosent: ${ft.trekktabell.prosentSats}%`;
-									antallMndForTrekk = `Antall måneder for trekk: ${ft.trekktabell.antallMndForTrekk}`;
+									tabell = (
+										<LabelText label="Tabell" text={ft.trekktabell.tabell} />
+									);
+									trekkprosent = (
+										<LabelText
+											label="Trekkprosent"
+											text={`${ft.trekktabell.prosentSats}%`}
+										/>
+									);
+									antallMndForTrekk = (
+										<LabelText
+											label="Antall måneder for trekk"
+											text={ft.trekktabell.antallMndForTrekk}
+										/>
+									);
 								}
 
 								if (ft.frikort) {
-									frikort = `Frikortbeløp: ${ft.frikort.frikortBeloep ?? "∞"}`;
+									frikort = (
+										<LabelText
+											label="Frikortbeløp"
+											text={ft.frikort.frikortBeloep ?? "∞"}
+										/>
+									);
 								}
 
 								return (

@@ -1,20 +1,15 @@
-import styles from "./LabelText.module.css";
+import { HStack, Label } from "@navikt/ds-react";
 
 interface LabelTextProps {
 	label: string;
 	text: string | number;
-	nowrap?: boolean;
 }
 
 export default function LabelText(props: Readonly<LabelTextProps>) {
 	return (
-		<div className={styles["flex-row-gap-sm"]}>
-			<div className={styles["text-bold"]}>{props.label}:</div>
-			{props.nowrap ? (
-				<div className={styles["text-nowrap"]}>{props.text}</div>
-			) : (
-				props.text
-			)}
-		</div>
+		<HStack gap="space-8">
+			<Label>{props.label}</Label>
+			{props.text}
+		</HStack>
 	);
 }
