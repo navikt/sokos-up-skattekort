@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => ({
 			...(mode === "backend" && {
 				"/skattekort-api/api/v1": {
 					target: "http://localhost:8080",
-					rewrite: (path: string) => path.replace(/^\/oppdrag-api/, ""),
+					rewrite: (path: string) => path.replace(/^\/skattekort-api/, ""),
 					changeOrigin: true,
 					secure: false,
 				},

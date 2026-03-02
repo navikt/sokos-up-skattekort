@@ -10,26 +10,52 @@ import {
 	TextField,
 	VStack,
 } from "@navikt/ds-react";
+import type { AxiosError } from "axios";
 import type React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useFetchSkattekort } from "../api/apiService";
-import { AlertWithCloseButton } from "../components/AlertWithCloseButton";
 import Innhold from "../components/Innhold";
+import type { Skattekort } from "../types/schema/SkattekortSchema";
 import {
 	type SokParameter,
 	SokParameterSchema,
 } from "../types/schema/SokParameter";
 import styles from "./Sok.module.css";
 
+type BackendError = {
+	statusCode?: number;
+	status?: number;
+	message?: string;
+};
+
 function formaterFnr(fnr: string) {
-	return fnr.replace(/\D/g, "");
+	return fnr.replaceAll(/\D/g, "");
+}
+
+function isNullOrEmpty(data: Skattekort[] | undefined) {
+	return !data || data.length === 0;
+}
+
+function menneskeleseligFeilmelding(error: AxiosError | BackendError | Error) {
+	const status =
+		(error as AxiosError).response?.status ??
+		(error as BackendError).statusCode ??
+		(error as BackendError).status;
+
+	if (status && 300 <= status && status < 400) {
+		return "Det ser ut til at det er en feil i kommunikasjonen med skattekort-tjenesten.";
+	} else if (status && 400 <= status && status < 500) {
+		return "Det ser ut til at det er en feil i forespørselen. Sjekk at fødselsnummeret er korrekt og prøv igjen.";
+	} else if (status && status >= 500) {
+		return "Det ser ut til at det er en feil i skattekort-tjenesten.";
+	} else {
+		return "Det oppsto en uventet feil. Prøv igjen senere.";
+	}
 }
 
 export default function Sok() {
-	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [isSubmit, setIsSubmit] = useState<boolean>(false);
-	const [sokParameter, setSokParameter] = useState<SokParameter>({ fnr: "" });
 	const [fnr, setFnr] = useState<string>("");
 	const {
 		register,
@@ -41,10 +67,9 @@ export default function Sok() {
 	} = useForm<SokParameter>({
 		resolver: zodResolver(SokParameterSchema),
 	});
-	const { data, error } = useFetchSkattekort(fnr);
+	const { data, error, isLoading } = useFetchSkattekort(fnr);
 
 	function handleSokReset() {
-		setSokParameter({ fnr: "" });
 		setIsSubmit(false);
 		setFnr("");
 		reset();
@@ -52,21 +77,45 @@ export default function Sok() {
 
 	function handleSokSubmit(parameter: SokParameter) {
 		setIsSubmit(true);
-		setSokParameter({ ...parameter });
 		const fnr = parameter.fnr ?? "";
 		setFnr(fnr);
 	}
 
 	return (
 		<div>
+			{false &&
+				"data:" +
+					JSON.stringify(data, null, 2) +
+					"error:" +
+					JSON.stringify(error, null, 2) +
+					"isLoading:" +
+					JSON.stringify(isLoading, null, 2) +
+					"isSubmit:" +
+					JSON.stringify(isSubmit, null, 2)}
+
+			{error && (
+				<Alert
+					variant="error"
+					role="alert"
+					className={styles["alert-full-width"]}
+				>
+					Noe er galt. {menneskeleseligFeilmelding(error)} Legg inn sak i porten
+					hvis problemet vedvarer.
+				</Alert>
+			)}
+
+			{isNullOrEmpty(data) && isSubmit && !isLoading && !error && (
+				<Alert
+					variant="info"
+					role="alert"
+					className={styles["alert-full-width"]}
+				>
+					Ingen treff for oppgitt fnr
+				</Alert>
+			)}
 			<Heading spacing level="1" size="large" align={"center"}>
 				Skattekort
 			</Heading>
-			{!data && isSubmit && (
-				<div>
-					<Loader size="3xlarge" title="Henter data..." />
-				</div>
-			)}
 			<Box paddingInline={{ sm: "0", md: "32" }} paddingBlock="0 4">
 				<VStack gap="4">
 					<Box
@@ -83,7 +132,6 @@ export default function Sok() {
 										autoComplete={"off"}
 										htmlSize={30}
 										label="Fødselsnummer"
-										defaultValue={sokParameter.fnr}
 										error={errors.fnr?.message}
 										onPaste={(
 											event: React.ClipboardEvent<HTMLInputElement>,
@@ -131,31 +179,20 @@ export default function Sok() {
 							</VStack>
 						</form>
 					</Box>
-					{isLoading && (
-						<div>
-							<Loader size="3xlarge" title="Henter data..." />
-						</div>
-					)}
-
-					{!data && isSubmit && !isLoading && !error && (
-						<Alert variant="error" role="alert">
-							Ingen treff for org.nr. {sokParameter.fnr}
-						</Alert>
-					)}
-					{error && (
-						<AlertWithCloseButton variant="error" role="alert">
-							{error}
-						</AlertWithCloseButton>
-					)}
 				</VStack>
 			</Box>
-			{data?.map((skattekort, index) => (
-				<div key={skattekort.utstedtDato} className={styles["box"]}>
+			{isLoading && (
+				<div className={styles.center}>
+					<Loader size="3xlarge" title="Henter data..." />
+				</div>
+			)}
+			{data?.map((skattekort) => (
+				<div key={skattekort.identifikator} className={styles["box"]}>
 					<ExpansionCard aria-label="Demo med bare tittel">
 						<ExpansionCard.Header>
 							<ExpansionCard.Title as="h4" size="small">
 								Skattekort {skattekort.inntektsaar}. Utstedt{" "}
-								{skattekort.utstedtDato}.{data.length - index}
+								{skattekort.utstedtDato}.
 							</ExpansionCard.Title>
 						</ExpansionCard.Header>
 						<ExpansionCard.Content>

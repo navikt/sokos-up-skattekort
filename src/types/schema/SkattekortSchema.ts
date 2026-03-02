@@ -13,7 +13,7 @@ export const SkattekortSchema = z.object({
 
 			frikort: z.optional(
 				object({
-					frikortBeloep: z.number(),
+					frikortBeloep: z.optional(z.number()),
 				}),
 			),
 
@@ -34,9 +34,10 @@ export const SkattekortSchema = z.object({
 		}),
 	),
 
-	tilleggsopplysningList: z.array(z.string()),
+	tilleggsopplysningList: z.optional(z.array(z.string())),
 });
 
+export const SkattekortListSchema = z.array(SkattekortSchema);
 export type Skattekort = z.infer<typeof SkattekortSchema>;
 
 export const Trekkode: { [key: string]: string } = {
