@@ -30,10 +30,7 @@ export function useFetchSkattekort(fnr: string): {
 					return axiosPostFetcher<HentSkattekortRequest, Skattekort[]>(
 						BASE_URI.SOKOS_SKATTEKORT_API,
 						_url,
-						{
-							fnr,
-							hentAlle: true,
-						},
+						{ fnr, hentAlle: true },
 					);
 				},
 			),

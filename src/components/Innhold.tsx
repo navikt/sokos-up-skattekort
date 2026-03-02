@@ -1,5 +1,4 @@
 import { Table } from "@navikt/ds-react";
-import type React from "react";
 import { type Skattekort, Trekkode } from "../types/schema/SkattekortSchema";
 import styles from "./Innhold.module.css";
 import LabelText from "./LabelText";
@@ -28,33 +27,34 @@ export default function Innhold({
 				skattekort.forskuddstrekkList.length > 0 && (
 					<Table>
 						<Table.Body>
-							{skattekort.forskuddstrekkList.map((ft, ftIndex) => {
-								let trekkprosentkolonne = "";
-								let frikortEllerTabellkolonne = "";
-								let antallMndForTrekkkolonne = "";
+							{skattekort.forskuddstrekkList.map((ft) => {
+								let trekkprosent = null;
+								let frikort = null;
+								let tabell = null;
+								let antallMndForTrekk = null;
 
 								if (ft.prosentkort) {
-									trekkprosentkolonne = `Trekkprosent ${ft.prosentkort.prosentSats}%`;
+									trekkprosent = `Trekkprosent ${ft.prosentkort.prosentSats}%`;
 									if (ft.prosentkort.antallMndForTrekk)
-										antallMndForTrekkkolonne = `Antall måneder for trekk: ${ft.prosentkort.antallMndForTrekk}`;
+										antallMndForTrekk = `Antall måneder for trekk: ${ft.prosentkort.antallMndForTrekk}`;
 								}
 
 								if (ft.trekktabell) {
-									frikortEllerTabellkolonne = `Tabell: ${ft.trekktabell.tabell ?? "-"}`;
-									trekkprosentkolonne = `Trekkprosent: ${ft.trekktabell.prosentSats}%`;
-									antallMndForTrekkkolonne = `Antall måneder for trekk: ${ft.trekktabell.antallMndForTrekk}`;
+									tabell = `Tabell: ${ft.trekktabell.tabell ?? "-"}`;
+									trekkprosent = `Trekkprosent: ${ft.trekktabell.prosentSats}%`;
+									antallMndForTrekk = `Antall måneder for trekk: ${ft.trekktabell.antallMndForTrekk}`;
 								}
 
 								if (ft.frikort) {
-									frikortEllerTabellkolonne = `Frikortbeløp: ${ft.frikort.frikortBeloep ?? "∞"}`;
+									frikort = `Frikortbeløp: ${ft.frikort.frikortBeloep ?? "∞"}`;
 								}
 
 								return (
 									<Table.Row key={ft.trekkode}>
 										<Table.HeaderCell>{Trekkode[ft.trekkode]}</Table.HeaderCell>
-										<Table.DataCell>{trekkprosentkolonne}</Table.DataCell>
-										<Table.DataCell>{frikortEllerTabellkolonne}</Table.DataCell>
-										<Table.DataCell>{antallMndForTrekkkolonne}</Table.DataCell>
+										<Table.DataCell>{trekkprosent}</Table.DataCell>
+										<Table.DataCell>{frikort || tabell}</Table.DataCell>
+										<Table.DataCell>{antallMndForTrekk}</Table.DataCell>
 									</Table.Row>
 								);
 							})}
