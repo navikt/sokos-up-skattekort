@@ -6,6 +6,7 @@ import {
 	Button,
 	ExpansionCard,
 	Heading,
+	HStack,
 	Skeleton,
 	TextField,
 	VStack,
@@ -107,13 +108,13 @@ export default function Sok() {
 					>
 						<form onSubmit={handleSubmit(handleSokSubmit)}>
 							<VStack gap={"4"}>
-								<Box>
+								<HStack>
 									<TextField
 										{...register("fnr")}
 										size={"small"}
 										autoComplete={"off"}
 										htmlSize={30}
-										label="Fødselsnummer"
+										label="Gjelder"
 										error={errors.fnr?.message}
 										onPaste={(
 											event: React.ClipboardEvent<HTMLInputElement>,
@@ -127,8 +128,23 @@ export default function Sok() {
 										// eslint-disable-next-line jsx-a11y/no-autofocus
 										autoFocus
 									/>
-								</Box>
-								<Box>
+								</HStack>
+								<HStack gap="space-16" justify="end">
+									<Button
+										disabled={isLoading}
+										variant="secondary"
+										size={"small"}
+										type="button"
+										icon={<EraserIcon aria-hidden={"true"} />}
+										iconPosition={"right"}
+										title={"Nytt søk"}
+										onClick={(e) => {
+											e.preventDefault();
+											handleSokReset();
+										}}
+									>
+										Nytt søk
+									</Button>
 									<Button
 										disabled={isLoading}
 										size={"small"}
@@ -141,23 +157,7 @@ export default function Sok() {
 									>
 										Søk
 									</Button>
-
-									<Button
-										disabled={isLoading}
-										variant="secondary"
-										size={"small"}
-										type="button"
-										icon={<EraserIcon aria-hidden={"true"} />}
-										iconPosition={"right"}
-										title={"Reset søk"}
-										onClick={(e) => {
-											e.preventDefault();
-											handleSokReset();
-										}}
-									>
-										Nullstill søk
-									</Button>
-								</Box>
+								</HStack>
 							</VStack>
 						</form>
 					</Box>

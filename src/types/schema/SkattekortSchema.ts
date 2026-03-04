@@ -1,10 +1,10 @@
 import { object, z } from "zod";
 
 export const SkattekortSchema = z.object({
-	utstedtDato: z.string(),
-	identifikator: z.string(),
+	utstedtDato: z.optional(z.string()),
+	identifikator: z.optional(z.string()),
 	opprettet: z.string(),
-	id: z.string(),
+	id: z.number(),
 	inntektsaar: z.number(),
 	kilde: z.string(),
 	resultatForSkattekort: z.string(),
@@ -22,7 +22,7 @@ export const SkattekortSchema = z.object({
 			prosentkort: z.optional(
 				object({
 					prosentSats: z.number(),
-					antallMndForTrekk: z.number(),
+					antallMndForTrekk: z.optional(z.number()),
 				}),
 			),
 
