@@ -5,7 +5,7 @@ import typisk_svar from "./typisk_svar.json";
 
 export const handlers = [
 	http.post(
-		"/skattekort-api/api/v1/person/hent-skattekort",
+		"/skattekort-api/api/v2/person/hent-skattekort",
 		async ({ request }) => {
 			const sokeParameter = (await request.json()) as HentSkattekortRequest;
 			const skattekort = sokeParameter.fnr === "11111111111" ? [] : typisk_svar;

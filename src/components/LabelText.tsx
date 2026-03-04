@@ -1,4 +1,4 @@
-import { HStack, Label } from "@navikt/ds-react";
+import { BodyShort, Detail, HStack, Label } from "@navikt/ds-react";
 
 interface LabelTextProps {
 	label: string;
@@ -9,7 +9,7 @@ export default function LabelText(props: Readonly<LabelTextProps>) {
 	return (
 		<HStack gap="space-8">
 			<Label>{props.label}</Label>
-			{props.text}
+			<BodyShort>{props.text}</BodyShort>
 		</HStack>
 	);
 }

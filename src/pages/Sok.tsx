@@ -171,12 +171,15 @@ export default function Sok() {
 				</VStack>
 			)}
 			{data?.map((skattekort) => (
-				<VStack key={skattekort.identifikator} padding="space-8">
+				<VStack
+					key={`${skattekort.opprettet}${skattekort.id}`}
+					padding="space-8"
+				>
 					<ExpansionCard aria-label="Skattekort">
 						<ExpansionCard.Header>
 							<ExpansionCard.Title as="h4" size="small">
 								Skattekort {skattekort.inntektsaar}. Utstedt{" "}
-								{skattekort.utstedtDato}.
+								{skattekort.utstedtDato}
 							</ExpansionCard.Title>
 						</ExpansionCard.Header>
 						<ExpansionCard.Content>

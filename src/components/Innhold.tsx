@@ -2,6 +2,22 @@ import { HStack, Table, VStack } from "@navikt/ds-react";
 import { type Skattekort, Trekkode } from "../types/schema/SkattekortSchema";
 import LabelText from "./LabelText";
 
+function toLocalDate(zulu: string) {
+	return Intl.DateTimeFormat("no-NO", {
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+	}).format(new Date(zulu));
+}
+
+function toLocalTime(zulu: string) {
+	return Intl.DateTimeFormat("no-NO", {
+		hour: "2-digit",
+		minute: "2-digit",
+		hourCycle: "h23",
+	}).format(new Date(zulu));
+}
+
 export default function Innhold({
 	skattekort,
 }: Readonly<{ skattekort: Skattekort }>) {
@@ -17,10 +33,20 @@ export default function Innhold({
 								text={skattekort.tilleggsopplysningList?.join(", ")}
 							/>
 						)}
+					<LabelText label="Kilde" text={skattekort.kilde} />
 				</VStack>
 				<VStack gap="space-8">
-					<LabelText label="Utstedt dato" text={skattekort.utstedtDato} />
-					<LabelText label="Mottatt" text={skattekort.mottatt} />
+					{skattekort.utstedtDato && (
+						<LabelText
+							label="Utstedt dato"
+							text={toLocalDate(skattekort.utstedtDato)}
+						/>
+					)}
+					<LabelText label="Mottatt" text={toLocalDate(skattekort.opprettet)} />
+					<LabelText
+						label="Mottatt tidspunkt"
+						text={toLocalTime(skattekort.opprettet)}
+					/>
 				</VStack>
 			</HStack>
 			{skattekort?.forskuddstrekkList &&

@@ -5,7 +5,7 @@ import type { Skattekort } from "../types/schema/SkattekortSchema";
 import { axiosPostFetcher } from "./config/apiConfig";
 
 const BASE_URI = {
-	SOKOS_SKATTEKORT_API: "/skattekort-api/api/v1/person/",
+	SOKOS_SKATTEKORT_API: "/skattekort-api/api/v2/person/",
 };
 
 function swrConfig<T, ArgType>(fetcher: (arg: ArgType) => Promise<T>) {

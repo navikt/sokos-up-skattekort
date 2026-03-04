@@ -3,8 +3,10 @@ import { object, z } from "zod";
 export const SkattekortSchema = z.object({
 	utstedtDato: z.string(),
 	identifikator: z.string(),
-	mottatt: z.string(),
+	opprettet: z.string(),
+	id: z.string(),
 	inntektsaar: z.number(),
+	kilde: z.string(),
 	resultatForSkattekort: z.string(),
 
 	forskuddstrekkList: z.array(
