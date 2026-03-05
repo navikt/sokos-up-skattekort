@@ -61,44 +61,29 @@ export default function Innhold({
 
 								if (ft.prosentkort) {
 									trekkprosent = (
-										<LabelText
-											label="Trekkprosent"
-											text={`${ft.prosentkort.prosentSats}%`}
-										/>
+										<BodyShort>{`Trekkprosent ${ft.prosentkort.prosentSats}%`}</BodyShort>
 									);
 									if (ft.prosentkort.antallMndForTrekk)
 										antallMndForTrekk = (
-											<LabelText
-												label="Antall måneder for trekk"
-												text={ft.prosentkort.antallMndForTrekk}
-											/>
+											<BodyShort>{`Antall måneder for trekk ${ft.prosentkort.antallMndForTrekk}`}</BodyShort>
 										);
 								}
 
 								if (ft.trekktabell) {
-									tabell = (
-										<LabelText label="Tabell" text={ft.trekktabell.tabell} />
-									);
 									trekkprosent = (
-										<LabelText
-											label="Trekkprosent"
-											text={`${ft.trekktabell.prosentSats}%`}
-										/>
+										<BodyShort>{`Trekkprosent ${ft.trekktabell.prosentSats}%`}</BodyShort>
+									);
+									tabell = (
+										<BodyShort>{`Tabell ${ft.trekktabell.tabell}`}</BodyShort>
 									);
 									antallMndForTrekk = (
-										<LabelText
-											label="Antall måneder for trekk"
-											text={ft.trekktabell.antallMndForTrekk}
-										/>
+										<BodyShort>{`Antall måneder for trekk ${ft.trekktabell.antallMndForTrekk}`}</BodyShort>
 									);
 								}
 
 								if (ft.frikort) {
 									frikort = (
-										<LabelText
-											label="Frikortbeløp"
-											text={ft.frikort.frikortBeloep ?? "∞"}
-										/>
+										<BodyShort>{`Frikortbeløp ${ft.frikort.frikortBeloep ?? "∞"}`}</BodyShort>
 									);
 								}
 

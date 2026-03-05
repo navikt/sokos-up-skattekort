@@ -3,8 +3,26 @@
 		"forskuddstrekkList": [
 			{
 				"trekkode": "loennFraNAV",
-				"frikort": {
-					"frikortBeloep": 0
+				"trekktabell": {
+					"tabell": "8010",
+					"prosentSats": 25.5,
+					"antallMndForTrekk": 10.5
+				}
+			},
+			{
+				"trekkode": "ufoeretrygdFraNAV",
+				"trekktabell": {
+					"tabell": "8010",
+					"prosentSats": 25.5,
+					"antallMndForTrekk": 10.5
+				}
+			},
+			{
+				"trekkode": "pensjonFraNAV",
+				"trekktabell": {
+					"tabell": "8010",
+					"prosentSats": 25.5,
+					"antallMndForTrekk": 10.5
 				}
 			}
 		],

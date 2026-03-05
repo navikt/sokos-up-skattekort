@@ -7,6 +7,7 @@ import {
 	ExpansionCard,
 	Heading,
 	HStack,
+	Page,
 	Skeleton,
 	TextField,
 	VStack,
@@ -82,112 +83,108 @@ export default function Sok() {
 	}
 
 	return (
-		<>
-			{error && (
-				<Alert variant="error" role="alert">
-					Noe er galt. {menneskeleseligFeilmelding(error)} Legg inn sak i porten
-					hvis problemet vedvarer.
-				</Alert>
-			)}
-
-			{isNullOrEmpty(data) && isSubmit && !isLoading && !error && (
-				<Alert variant="info" role="alert">
-					Ingen treff for oppgitt fnr
-				</Alert>
-			)}
-
+		<Page>
 			<Heading spacing level="1" size="large" align={"center"}>
 				Skattekort
 			</Heading>
-			<Box paddingInline={{ sm: "0", md: "32" }} paddingBlock="0 4">
-				<VStack gap="4">
-					<Box
-						padding="6"
-						background={"surface-alt-1-subtle"}
-						borderRadius="large"
-					>
-						<form onSubmit={handleSubmit(handleSokSubmit)}>
-							<VStack gap={"4"}>
-								<HStack>
-									<TextField
-										{...register("fnr")}
-										size={"small"}
-										autoComplete={"off"}
-										htmlSize={30}
-										label="Gjelder"
-										error={errors.fnr?.message}
-										onPaste={(
-											event: React.ClipboardEvent<HTMLInputElement>,
-										) => {
-											event.preventDefault();
-											const fraUtklippstavle =
-												event.clipboardData.getData("text");
-											const bareSiffer = formaterFnr(fraUtklippstavle);
-											setValue("fnr", bareSiffer);
-										}}
-										// eslint-disable-next-line jsx-a11y/no-autofocus
-										autoFocus
-									/>
-								</HStack>
-								<HStack gap="space-16" justify="end">
-									<Button
-										disabled={isLoading}
-										variant="secondary"
-										size={"small"}
-										type="button"
-										icon={<EraserIcon aria-hidden={"true"} />}
-										iconPosition={"right"}
-										title={"Nytt søk"}
-										onClick={(e) => {
-											e.preventDefault();
-											handleSokReset();
-										}}
-									>
-										Nytt søk
-									</Button>
-									<Button
-										disabled={isLoading}
-										size={"small"}
-										variant={"primary"}
-										type={"submit"}
-										title={"Søk"}
-										iconPosition={"right"}
-										icon={<MagnifyingGlassIcon aria-hidden={"true"} />}
-										onClick={() => trigger()}
-									>
-										Søk
-									</Button>
-								</HStack>
-							</VStack>
-						</form>
-					</Box>
-				</VStack>
-			</Box>
-			{isLoading && (
-				<VStack padding="space-8" gap="space-16">
-					<Skeleton variant="rounded" height={90} />
-					<Skeleton variant="rounded" height={90} />
-					<Skeleton variant="rounded" height={90} />
-				</VStack>
-			)}
-			{data?.map((skattekort) => (
-				<VStack
-					key={`${skattekort.opprettet}${skattekort.id}`}
-					padding="space-8"
+			<Page.Block as="main" width="md">
+				{error && (
+					<Alert variant="error" role="alert">
+						Noe er galt. {menneskeleseligFeilmelding(error)} Legg inn sak i
+						porten hvis problemet vedvarer.
+					</Alert>
+				)}
+
+				{isNullOrEmpty(data) && isSubmit && !isLoading && !error && (
+					<Alert variant="info" role="alert">
+						Ingen treff for oppgitt fnr
+					</Alert>
+				)}
+
+				<Box
+					padding="6"
+					background={"surface-alt-1-subtle"}
+					borderRadius="large"
 				>
-					<ExpansionCard aria-label="Skattekort">
-						<ExpansionCard.Header>
-							<ExpansionCard.Title as="h4" size="small">
-								Skattekort {skattekort.inntektsaar}. Utstedt{" "}
-								{skattekort.utstedtDato}
-							</ExpansionCard.Title>
-						</ExpansionCard.Header>
-						<ExpansionCard.Content>
-							<Innhold skattekort={skattekort} />
-						</ExpansionCard.Content>
-					</ExpansionCard>
-				</VStack>
-			))}
-		</>
+					<form onSubmit={handleSubmit(handleSokSubmit)}>
+						<VStack gap={"4"}>
+							<HStack>
+								<TextField
+									{...register("fnr")}
+									size={"small"}
+									autoComplete={"off"}
+									htmlSize={30}
+									label="Gjelder"
+									error={errors.fnr?.message}
+									onPaste={(event: React.ClipboardEvent<HTMLInputElement>) => {
+										event.preventDefault();
+										const fraUtklippstavle =
+											event.clipboardData.getData("text");
+										const bareSiffer = formaterFnr(fraUtklippstavle);
+										setValue("fnr", bareSiffer);
+									}}
+									// eslint-disable-next-line jsx-a11y/no-autofocus
+									autoFocus
+								/>
+							</HStack>
+							<HStack gap="space-16" justify="end">
+								<Button
+									disabled={isLoading}
+									variant="secondary"
+									size={"small"}
+									type="button"
+									icon={<EraserIcon aria-hidden={"true"} />}
+									iconPosition={"right"}
+									title={"Nytt søk"}
+									onClick={(e) => {
+										e.preventDefault();
+										handleSokReset();
+									}}
+								>
+									Nytt søk
+								</Button>
+								<Button
+									disabled={isLoading}
+									size={"small"}
+									variant={"primary"}
+									type={"submit"}
+									title={"Søk"}
+									iconPosition={"right"}
+									icon={<MagnifyingGlassIcon aria-hidden={"true"} />}
+									onClick={() => trigger()}
+								>
+									Søk
+								</Button>
+							</HStack>
+						</VStack>
+					</form>
+				</Box>
+				{isLoading && (
+					<VStack padding="space-8" gap="space-16">
+						<Skeleton variant="rounded" height={90} />
+						<Skeleton variant="rounded" height={90} />
+						<Skeleton variant="rounded" height={90} />
+					</VStack>
+				)}
+				{data?.map((skattekort) => (
+					<VStack
+						key={`${skattekort.opprettet}${skattekort.id}`}
+						padding="space-8"
+					>
+						<ExpansionCard aria-label="Skattekort">
+							<ExpansionCard.Header>
+								<ExpansionCard.Title as="h4" size="small">
+									Skattekort {skattekort.inntektsaar}. Utstedt{" "}
+									{skattekort.utstedtDato}
+								</ExpansionCard.Title>
+							</ExpansionCard.Header>
+							<ExpansionCard.Content>
+								<Innhold skattekort={skattekort} />
+							</ExpansionCard.Content>
+						</ExpansionCard>
+					</VStack>
+				))}
+			</Page.Block>
+		</Page>
 	);
 }
