@@ -87,7 +87,7 @@ export default function Sok() {
 			<Heading spacing level="1" size="large" align={"center"}>
 				Skattekort
 			</Heading>
-			<Page.Block as="main" width="md" aria-label="Skattekort">
+			<Page.Block width="md">
 				{error && (
 					<Alert variant="error" role="alert">
 						Noe er galt. {menneskeleseligFeilmelding(error)} Legg inn sak i
