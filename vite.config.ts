@@ -26,9 +26,9 @@ export default defineConfig(({ mode }) => ({
 	server: {
 		proxy: {
 			...(mode === "backend" && {
-				"/skattekort-api/api/v2": {
+				"/sokos-skattekort/api/v2": {
 					target: "http://localhost:8080",
-					rewrite: (path: string) => path.replace(/^\/skattekort-api/, ""),
+					rewrite: (path: string) => path.replace(/^\/sokos-skattekort/, ""),
 					changeOrigin: true,
 					secure: false,
 				},
