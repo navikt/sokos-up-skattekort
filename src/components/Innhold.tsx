@@ -25,7 +25,9 @@ export default function Innhold({
 		<>
 			<HStack justify="space-between">
 				<VStack gap="space-8">
-					<LabelText label="Identifikator" text={skattekort.identifikator} />
+					{skattekort.identifikator && (
+						<LabelText label="Identifikator" text={skattekort.identifikator} />
+					)}
 					{skattekort?.tilleggsopplysningList &&
 						skattekort.tilleggsopplysningList.length > 0 && (
 							<LabelText
