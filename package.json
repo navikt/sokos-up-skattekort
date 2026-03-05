@@ -71,7 +71,19 @@
 			"stylelint-config-standard",
 			"@navikt/aksel-stylelint/recommended"
 		],
-		"ignoreFiles": "dist/**/*"
+		"rules": {
+			"aksel/design-token-no-global-override": [
+				true,
+				{
+					"severity": "warning"
+				}
+			],
+			"selector-class-pattern": null
+		},
+		"ignoreFiles": [
+			"dist/**/*",
+			"playwright-report/**/*"
+		]
 	},
 	"lint-staged": {
 		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": "biome check --write --no-errors-on-unmatched",
