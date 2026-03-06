@@ -27,14 +27,16 @@
 			}
 		],
 		"id": 2945,
+		"identifikator": "2147483648",
 		"inntektsaar": 2026,
-		"kilde": "MANUELL",
+		"kilde": "SKATTEETATEN",
 		"opprettet": "2026-02-13T12:53:06.012337Z",
 		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": [],
+		"tilleggsopplysningList": ["kildeskattPaaPensjon", "oppholdITiltakssone"],
 		"utstedtDato": "2026-02-13"
 	},
 	{
+		"identifikator": "2147483647",
 		"forskuddstrekkList": [
 			{
 				"trekkode": "loennFraNAV",
@@ -60,7 +62,7 @@
 		"kilde": "SYNTETISERT",
 		"opprettet": "2026-02-12T11:03:04.848790Z",
 		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"]
+		"tilleggsopplysningList": ["oppholdPaaSvalbard", "kildeskattPaaPensjon"]
 	},
 	{
 		"forskuddstrekkList": [

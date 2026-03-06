@@ -1,4 +1,4 @@
-import { BodyShort, HStack, Table, VStack } from "@navikt/ds-react";
+import { BodyShort, HStack, Label, Table, VStack } from "@navikt/ds-react";
 import { type Skattekort, Trekkode } from "../types/schema/SkattekortSchema";
 import LabelText from "./LabelText";
 
@@ -18,37 +18,45 @@ function toLocalTime(zulu: string) {
 	}).format(new Date(zulu));
 }
 
+function menneskeleseligTilleggsopplysning(t: string) {
+	if (t === "oppholdPaaSvalbard") return "Opphold på Svalbard";
+	else if (t === "kildeskattPaaPensjon") return "Kildeskatt på pensjon";
+	else if (t === "oppholdITiltakssone") return "Opphold i tiltakssone";
+	else return t;
+}
+function menneskeleseligKilde(t: string) {
+	if (t === "SYNTETISERT") return "Syntetisert";
+	else if (t === "SKATTEETATEN") return "Skatteetaten";
+	else if (t === "MANUELL") return "Dolly";
+	else return t;
+}
 export default function Innhold({
 	skattekort,
 }: Readonly<{ skattekort: Skattekort }>) {
 	return (
-		<VStack gap="space-32">
-			<HStack justify="space-between">
-				<VStack gap="space-8">
-					{skattekort.identifikator && (
-						<LabelText label="Identifikator" text={skattekort.identifikator} />
-					)}
-					{skattekort?.tilleggsopplysningList &&
-						skattekort.tilleggsopplysningList.length > 0 && (
+		<VStack gap="space-32" margin="space-16">
+			<VStack gap="space-8">
+				<HStack justify="space-between" wrap={false}>
+					<VStack gap="space-8">
+						{skattekort.identifikator && (
 							<LabelText
-								label="Tilleggsopplysning"
-								text={skattekort.tilleggsopplysningList?.join(", ")}
+								label="Identifikator"
+								text={skattekort.identifikator}
 							/>
 						)}
-				</VStack>
-				<VStack gap="space-8">
-					{skattekort.utstedtDato && (
+					</VStack>
+					<Label>{`Mottatt: ${toLocalDate(skattekort.opprettet)} - ${toLocalTime(skattekort.opprettet)}`}</Label>
+				</HStack>
+				{skattekort?.tilleggsopplysningList &&
+					skattekort.tilleggsopplysningList.length > 0 && (
 						<LabelText
-							label="Utstedt dato"
-							text={toLocalDate(skattekort.utstedtDato)}
+							label="Tilleggsopplysning"
+							text={skattekort.tilleggsopplysningList
+								?.map((t) => menneskeleseligTilleggsopplysning(t))
+								.join(", ")}
 						/>
 					)}
-					<LabelText
-						label="Mottatt"
-						text={`${toLocalDate(skattekort.opprettet)} - ${toLocalTime(skattekort.opprettet)}`}
-					/>
-				</VStack>
-			</HStack>
+			</VStack>
 			{skattekort?.forskuddstrekkList &&
 				skattekort.forskuddstrekkList.length > 0 && (
 					<Table>
@@ -65,7 +73,7 @@ export default function Innhold({
 									);
 									if (ft.prosentkort.antallMndForTrekk)
 										antallMndForTrekk = (
-											<BodyShort>{`Antall måneder for trekk ${ft.prosentkort.antallMndForTrekk}`}</BodyShort>
+											<BodyShort>{`Antall mnd. for trekk ${ft.prosentkort.antallMndForTrekk}`}</BodyShort>
 										);
 								}
 
@@ -77,7 +85,7 @@ export default function Innhold({
 										<BodyShort>{`Tabell ${ft.trekktabell.tabell}`}</BodyShort>
 									);
 									antallMndForTrekk = (
-										<BodyShort>{`Antall måneder for trekk ${ft.trekktabell.antallMndForTrekk}`}</BodyShort>
+										<BodyShort>{`Antall mnd. for trekk ${ft.trekktabell.antallMndForTrekk}`}</BodyShort>
 									);
 								}
 
@@ -89,7 +97,9 @@ export default function Innhold({
 
 								return (
 									<Table.Row key={ft.trekkode}>
-										<Table.HeaderCell>{Trekkode[ft.trekkode]}</Table.HeaderCell>
+										<Table.HeaderCell>
+											{Trekkode[ft.trekkode]}:
+										</Table.HeaderCell>
 										<Table.DataCell>{trekkprosent}</Table.DataCell>
 										<Table.DataCell>{frikort || tabell}</Table.DataCell>
 										<Table.DataCell>{antallMndForTrekk}</Table.DataCell>
@@ -99,7 +109,7 @@ export default function Innhold({
 						</Table.Body>
 					</Table>
 				)}
-			<BodyShort size="small">{`Kilde: ${skattekort.kilde}`}</BodyShort>
+			<BodyShort size="small">{`Kilde: ${menneskeleseligKilde(skattekort.kilde)}`}</BodyShort>
 		</VStack>
 	);
 }
