@@ -30,7 +30,7 @@ function menneskeleseligKilde(t: string) {
 	else if (t === "MANUELL") return "Dolly";
 	else return t;
 }
-export default function Innhold({
+export default function Skattekortdata({
 	skattekort,
 }: Readonly<{ skattekort: Skattekort }>) {
 	return (

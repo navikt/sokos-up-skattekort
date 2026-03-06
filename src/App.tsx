@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Sok from "./pages/Sok";
+import Hovedside from "./pages/Hovedside";
 import { initGrafanaFaro } from "./util/grafanaFaro";
 
 export default function App() {
@@ -7,5 +7,5 @@ export default function App() {
 		initGrafanaFaro();
 	}, []);
 
-	return <Sok />;
+	return <Hovedside />;
 }
