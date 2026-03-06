@@ -1,10 +1,12 @@
 import { object, z } from "zod";
 
 export const SkattekortSchema = z.object({
-	utstedtDato: z.string(),
-	identifikator: z.string(),
-	mottatt: z.string(),
+	utstedtDato: z.optional(z.string()),
+	identifikator: z.optional(z.string()),
+	opprettet: z.string(),
+	id: z.number(),
 	inntektsaar: z.number(),
+	kilde: z.string(),
 	resultatForSkattekort: z.string(),
 
 	forskuddstrekkList: z.array(
@@ -13,14 +15,14 @@ export const SkattekortSchema = z.object({
 
 			frikort: z.optional(
 				object({
-					frikortBeloep: z.number(),
+					frikortBeloep: z.optional(z.number()),
 				}),
 			),
 
 			prosentkort: z.optional(
 				object({
 					prosentSats: z.number(),
-					antallMndForTrekk: z.number(),
+					antallMndForTrekk: z.optional(z.number()),
 				}),
 			),
 
@@ -34,9 +36,10 @@ export const SkattekortSchema = z.object({
 		}),
 	),
 
-	tilleggsopplysningList: z.array(z.string()),
+	tilleggsopplysningList: z.optional(z.array(z.string())),
 });
 
+export const SkattekortListSchema = z.array(SkattekortSchema);
 export type Skattekort = z.infer<typeof SkattekortSchema>;
 
 export const Trekkode: { [key: string]: string } = {

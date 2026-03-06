@@ -33,11 +33,6 @@ function api(baseUri: string) {
 	return instance;
 }
 
-export async function axiosFetcher<T>(baseUri: string, url: string) {
-	const res = await api(baseUri).get<T>(url);
-	return res.data;
-}
-
 export async function axiosPostFetcher<T, U>(
 	baseUri: string,
 	url: string,
