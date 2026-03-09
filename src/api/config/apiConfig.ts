@@ -13,7 +13,7 @@ const config = (baseUri: string): CreateAxiosDefaults => ({
 	validateStatus: (status) => status < 400,
 });
 
-function api(baseUri: string) {
+export function api(baseUri: string) {
 	const instance = axios.create(config(baseUri));
 
 	instance.interceptors.response.use(
@@ -24,20 +24,10 @@ function api(baseUri: string) {
 				throw new HttpStatusCodeError(error.response?.status);
 			}
 			if (error.response?.status === 401 || error.response?.status === 403) {
-				// Uinnlogget - vil ikke skje i miljø da appen er beskyttet
 				return Promise.reject(error);
 			}
 			throw new ApiError("Issues with connection to backend");
 		},
 	);
 	return instance;
-}
-
-export async function axiosPostFetcher<T, U>(
-	baseUri: string,
-	url: string,
-	body?: T,
-) {
-	const res = await api(baseUri).post<U>(url, body);
-	return res.data;
 }
