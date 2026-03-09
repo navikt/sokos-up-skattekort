@@ -17,4 +17,18 @@ export const handlers = [
 			return HttpResponse.json(data, { status: 200 });
 		},
 	),
+	http.post(
+		"/sokos-skattekort/api/v2/person/hent-navn",
+		async ({ request }) => {
+			const sokeParameter = (await request.json()) as HentSkattekortRequest;
+			const skattekort =
+				sokeParameter.fnr === "11111111111" ? [] : mangeSkattekort;
+			return HttpResponse.json(
+				{
+					navn: "Rudolf Blodstrupmoen",
+				},
+				{ status: 200 },
+			);
+		},
+	),
 ];

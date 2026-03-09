@@ -2,12 +2,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { EraserIcon, MagnifyingGlassIcon } from "@navikt/aksel-icons";
 import {
 	Alert,
+	BodyShort,
 	Box,
 	Button,
+	CopyButton,
 	ExpansionCard,
 	Heading,
 	HelpText,
 	HStack,
+	Label,
+	Loader,
 	Skeleton,
 	TextField,
 	VStack,
@@ -15,7 +19,7 @@ import {
 import type React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useFetchSkattekort } from "../api/apiService";
+import { useFetchNavn, useFetchSkattekort } from "../api/apiService";
 import Skattekortdata from "../components/Skattekortdata";
 import type { Skattekort } from "../types/schema/SkattekortSchema";
 import {
@@ -32,6 +36,10 @@ function isNullOrEmpty(data: Skattekort[] | undefined) {
 	return !data || data.length === 0;
 }
 
+function formatterFnr(fnr: string) {
+	return fnr.substring(0, 6) + " " + fnr.substring(6);
+}
+
 export default function Hovedside() {
 	const [isSubmit, setIsSubmit] = useState<boolean>(false);
 	const [fnr, setFnr] = useState<string>("");
@@ -46,6 +54,7 @@ export default function Hovedside() {
 		resolver: zodResolver(SokParameterSchema),
 	});
 	const { data, error, isLoading } = useFetchSkattekort(fnr);
+	const navnResponse = useFetchNavn(fnr);
 
 	function handleSokReset() {
 		setIsSubmit(false);
@@ -148,6 +157,48 @@ export default function Hovedside() {
 							<Skeleton variant="rounded" height={90} />
 						</VStack>
 					)}
+					{navnResponse && (
+						<VStack padding="space-8">
+							{navnResponse.data && (
+								<Box
+									background={"surface-default"}
+									padding="space-16"
+									paddingInline="space-32"
+									borderRadius="large"
+								>
+									<HStack gap="space-16" align="center">
+										<BodyShort size="medium">Søkeresultatet gjelder:</BodyShort>
+										<Label>{navnResponse.data?.navn},</Label>
+										<Label>{formatterFnr(fnr)}</Label>
+										<CopyButton
+											size={"small"}
+											copyText={fnr}
+											iconPosition={"left"}
+										/>
+									</HStack>
+								</Box>
+							)}
+							{navnResponse.isLoading && (
+								<Box
+									background={"surface-default"}
+									padding="space-16"
+									borderRadius="large"
+								>
+									<Loader />
+								</Box>
+							)}
+							{navnResponse.error && (
+								<Box
+									background={"surface-default"}
+									padding="space-16"
+									borderRadius="large"
+								>
+									Feil, feil, feil.
+								</Box>
+							)}
+						</VStack>
+					)}
+
 					{data?.map((skattekort) => (
 						<VStack
 							key={`${skattekort.opprettet}${skattekort.id}`}
