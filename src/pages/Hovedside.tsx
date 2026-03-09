@@ -166,12 +166,16 @@ export default function Hovedside() {
 									paddingInline="space-32"
 									borderRadius="large"
 								>
-									<HStack gap="space-16" align="center">
-										<BodyShort size="medium">Søkeresultatet gjelder:</BodyShort>
-										<Label>{navnResponse.data?.navn},</Label>
-										<Label>{formatterFnr(fnr)}</Label>
+									<HStack>
+										<HStack gap="space-16" align="center">
+											<BodyShort size="medium">
+												Søkeresultatet gjelder:
+											</BodyShort>
+											<Label>{navnResponse.data?.navn},</Label>
+											<Label>{formatterFnr(fnr)}</Label>
+										</HStack>
 										<CopyButton
-											size={"small"}
+											size={"medium"}
 											copyText={fnr}
 											iconPosition={"left"}
 										/>
