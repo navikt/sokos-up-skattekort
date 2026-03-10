@@ -197,7 +197,7 @@ export default function Hovedside() {
 									padding="space-16"
 									borderRadius="large"
 								>
-									Feil, feil, feil.
+									Fikk ikke noe svar fra PDL. Kan ikke vise navn.
 								</Box>
 							)}
 						</VStack>
