@@ -1,5 +1,8 @@
 import { BodyShort, HStack, Label, Table, VStack } from "@navikt/ds-react";
-import { type Skattekort, Trekkode } from "../types/schema/SkattekortSchema";
+import {
+	type Skattekort,
+	Trekkode,
+} from "../types/schema/SkattekortResponseDTOSchema";
 import LabelText from "./LabelText";
 
 function toLocalDate(zulu: string) {

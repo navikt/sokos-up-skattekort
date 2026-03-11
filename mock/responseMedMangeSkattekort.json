@@ -1,451 +1,453 @@
-[
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"trekktabell": {
-					"tabell": "8010",
-					"prosentSats": 25.5,
-					"antallMndForTrekk": 10.5
+{
+	"data": [
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"trekktabell": {
+						"tabell": "8010",
+						"prosentSats": 25.5,
+						"antallMndForTrekk": 10.5
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"trekktabell": {
+						"tabell": "8010",
+						"prosentSats": 25.5,
+						"antallMndForTrekk": 10.5
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"trekktabell": {
+						"tabell": "8010",
+						"prosentSats": 25.5,
+						"antallMndForTrekk": 10.5
+					}
 				}
-			},
-			{
-				"trekkode": "ufoeretrygdFraNAV",
-				"trekktabell": {
-					"tabell": "8010",
-					"prosentSats": 25.5,
-					"antallMndForTrekk": 10.5
+			],
+			"id": 2945,
+			"identifikator": "2147483648",
+			"inntektsaar": 2026,
+			"kilde": "SKATTEETATEN",
+			"opprettet": "2026-02-13T12:53:06.012337Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": ["kildeskattPaaPensjon", "oppholdITiltakssone"],
+			"utstedtDato": "2026-02-13"
+		},
+		{
+			"identifikator": "2147483647",
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"prosentkort": {
+						"prosentSats": 13.1
+					}
 				}
-			},
-			{
-				"trekkode": "pensjonFraNAV",
-				"trekktabell": {
-					"tabell": "8010",
-					"prosentSats": 25.5,
-					"antallMndForTrekk": 10.5
+			],
+			"id": 2943,
+			"inntektsaar": 2026,
+			"kilde": "SYNTETISERT",
+			"opprettet": "2026-02-12T11:03:04.848790Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard", "kildeskattPaaPensjon"]
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"trekktabell": {
+						"tabell": "8010",
+						"prosentSats": 25.5,
+						"antallMndForTrekk": 10.5
+					}
 				}
-			}
-		],
-		"id": 2945,
-		"identifikator": "2147483648",
-		"inntektsaar": 2026,
-		"kilde": "SKATTEETATEN",
-		"opprettet": "2026-02-13T12:53:06.012337Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": ["kildeskattPaaPensjon", "oppholdITiltakssone"],
-		"utstedtDato": "2026-02-13"
-	},
-	{
-		"identifikator": "2147483647",
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2942,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-12T11:03:04.848790Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-01-22"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"trekktabell": {
+						"tabell": "8010",
+						"prosentSats": 25.5,
+						"antallMndForTrekk": 10.5
+					}
 				}
-			},
-			{
-				"trekkode": "ufoeretrygdFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2941,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-12T11:00:05.871026Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-01-22"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"trekktabell": {
+						"tabell": "8010",
+						"prosentSats": 25.5,
+						"antallMndForTrekk": 10.5
+					}
 				}
-			},
-			{
-				"trekkode": "pensjonFraNAV",
-				"prosentkort": {
-					"prosentSats": 13.1
+			],
+			"id": 2940,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-12T10:59:29.241421Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-01-22"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"trekktabell": {
+						"tabell": "8010",
+						"prosentSats": 25.5,
+						"antallMndForTrekk": 10.5
+					}
 				}
-			}
-		],
-		"id": 2943,
-		"inntektsaar": 2026,
-		"kilde": "SYNTETISERT",
-		"opprettet": "2026-02-12T11:03:04.848790Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard", "kildeskattPaaPensjon"]
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"trekktabell": {
-					"tabell": "8010",
-					"prosentSats": 25.5,
-					"antallMndForTrekk": 10.5
+			],
+			"id": 2939,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-12T10:58:44.930723Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-01-22"
+		},
+		{
+			"forskuddstrekkList": [],
+			"id": 2937,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-11T12:04:25.499617Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-02-11"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {}
 				}
-			}
-		],
-		"id": 2942,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-12T11:03:04.848790Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-01-22"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"trekktabell": {
-					"tabell": "8010",
-					"prosentSats": 25.5,
-					"antallMndForTrekk": 10.5
+			],
+			"id": 2906,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-09T12:34:24.687320Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-02-09"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {
+						"frikortBeloep": 0
+					}
 				}
-			}
-		],
-		"id": 2941,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-12T11:00:05.871026Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": [],
-		"utstedtDato": "2026-01-22"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"trekktabell": {
-					"tabell": "8010",
-					"prosentSats": 25.5,
-					"antallMndForTrekk": 10.5
+			],
+			"id": 2905,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-09T12:34:02.782378Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-02-09"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"prosentkort": {
+						"prosentSats": 13.1
+					}
 				}
-			}
-		],
-		"id": 2940,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-12T10:59:29.241421Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": [],
-		"utstedtDato": "2026-01-22"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"trekktabell": {
-					"tabell": "8010",
-					"prosentSats": 25.5,
-					"antallMndForTrekk": 10.5
+			],
+			"id": 2904,
+			"inntektsaar": 2026,
+			"kilde": "SYNTETISERT",
+			"opprettet": "2026-02-09T12:33:23.379261Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {}
 				}
-			}
-		],
-		"id": 2939,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-12T10:58:44.930723Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": [],
-		"utstedtDato": "2026-01-22"
-	},
-	{
-		"forskuddstrekkList": [],
-		"id": 2937,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-11T12:04:25.499617Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": [],
-		"utstedtDato": "2026-02-11"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {}
-			}
-		],
-		"id": 2906,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-09T12:34:24.687320Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": [],
-		"utstedtDato": "2026-02-09"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {
-					"frikortBeloep": 0
+			],
+			"id": 2903,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-09T12:33:23.379261Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-02-09"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"prosentkort": {
+						"prosentSats": 13.1
+					}
 				}
-			}
-		],
-		"id": 2905,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-09T12:34:02.782378Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": [],
-		"utstedtDato": "2026-02-09"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2902,
+			"inntektsaar": 2026,
+			"kilde": "SYNTETISERT",
+			"opprettet": "2026-02-09T12:32:59.725936Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {}
 				}
-			},
-			{
-				"trekkode": "ufoeretrygdFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2901,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-09T12:32:59.725936Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-02-09"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"prosentkort": {
+						"prosentSats": 13.1
+					}
 				}
-			},
-			{
-				"trekkode": "pensjonFraNAV",
-				"prosentkort": {
-					"prosentSats": 13.1
+			],
+			"id": 2900,
+			"inntektsaar": 2026,
+			"kilde": "SYNTETISERT",
+			"opprettet": "2026-02-09T12:32:00.125693Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {}
 				}
-			}
-		],
-		"id": 2904,
-		"inntektsaar": 2026,
-		"kilde": "SYNTETISERT",
-		"opprettet": "2026-02-09T12:33:23.379261Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"]
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {}
-			}
-		],
-		"id": 2903,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-09T12:33:23.379261Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-02-09"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2899,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-09T12:32:00.125693Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-02-09"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"prosentkort": {
+						"prosentSats": 13.1
+					}
 				}
-			},
-			{
-				"trekkode": "ufoeretrygdFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2898,
+			"inntektsaar": 2026,
+			"kilde": "SYNTETISERT",
+			"opprettet": "2026-02-09T12:31:48.560930Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {
+						"frikortBeloep": 0
+					}
 				}
-			},
-			{
-				"trekkode": "pensjonFraNAV",
-				"prosentkort": {
-					"prosentSats": 13.1
+			],
+			"id": 2897,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-09T12:31:48.560930Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-02-09"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"prosentkort": {
+						"prosentSats": 13.1
+					}
 				}
-			}
-		],
-		"id": 2902,
-		"inntektsaar": 2026,
-		"kilde": "SYNTETISERT",
-		"opprettet": "2026-02-09T12:32:59.725936Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"]
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {}
-			}
-		],
-		"id": 2901,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-09T12:32:59.725936Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-02-09"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2896,
+			"inntektsaar": 2026,
+			"kilde": "SYNTETISERT",
+			"opprettet": "2026-02-09T12:26:56.522492Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
+		},
+		{
+			"forskuddstrekkList": [],
+			"id": 2895,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-09T12:26:56.522492Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-02-09"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {
+						"frikortBeloep": 50000
+					}
 				}
-			},
-			{
-				"trekkode": "ufoeretrygdFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
+			],
+			"id": 2801,
+			"identifikator": "dolly",
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-01-23T09:15:27.870686Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-01-23"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {
+						"frikortBeloep": 50000
+					}
 				}
-			},
-			{
-				"trekkode": "pensjonFraNAV",
-				"prosentkort": {
-					"prosentSats": 13.1
+			],
+			"id": 2800,
+			"identifikator": "dolly",
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-01-23T09:01:51.879369Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-01-23"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"frikort": {
+						"frikortBeloep": 50000
+					}
 				}
-			}
-		],
-		"id": 2900,
-		"inntektsaar": 2026,
-		"kilde": "SYNTETISERT",
-		"opprettet": "2026-02-09T12:32:00.125693Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"]
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {}
-			}
-		],
-		"id": 2899,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-09T12:32:00.125693Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-02-09"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
-				}
-			},
-			{
-				"trekkode": "ufoeretrygdFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
-				}
-			},
-			{
-				"trekkode": "pensjonFraNAV",
-				"prosentkort": {
-					"prosentSats": 13.1
-				}
-			}
-		],
-		"id": 2898,
-		"inntektsaar": 2026,
-		"kilde": "SYNTETISERT",
-		"opprettet": "2026-02-09T12:31:48.560930Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"]
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {
-					"frikortBeloep": 0
-				}
-			}
-		],
-		"id": 2897,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-09T12:31:48.560930Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-02-09"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
-				}
-			},
-			{
-				"trekkode": "ufoeretrygdFraNAV",
-				"prosentkort": {
-					"prosentSats": 15.6
-				}
-			},
-			{
-				"trekkode": "pensjonFraNAV",
-				"prosentkort": {
-					"prosentSats": 13.1
-				}
-			}
-		],
-		"id": 2896,
-		"inntektsaar": 2026,
-		"kilde": "SYNTETISERT",
-		"opprettet": "2026-02-09T12:26:56.522492Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"]
-	},
-	{
-		"forskuddstrekkList": [],
-		"id": 2895,
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-02-09T12:26:56.522492Z",
-		"resultatForSkattekort": "ikkeSkattekort",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-02-09"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {
-					"frikortBeloep": 50000
-				}
-			}
-		],
-		"id": 2801,
-		"identifikator": "dolly",
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-01-23T09:15:27.870686Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": [],
-		"utstedtDato": "2026-01-23"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {
-					"frikortBeloep": 50000
-				}
-			}
-		],
-		"id": 2800,
-		"identifikator": "dolly",
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-01-23T09:01:51.879369Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-01-23"
-	},
-	{
-		"forskuddstrekkList": [
-			{
-				"trekkode": "loennFraNAV",
-				"frikort": {
-					"frikortBeloep": 50000
-				}
-			}
-		],
-		"id": 2799,
-		"identifikator": "dolly",
-		"inntektsaar": 2026,
-		"kilde": "MANUELL",
-		"opprettet": "2026-01-23T09:01:45.793787Z",
-		"resultatForSkattekort": "skattekortopplysningerOK",
-		"tilleggsopplysningList": ["oppholdPaaSvalbard"],
-		"utstedtDato": "2026-01-23"
-	}
-]
+			],
+			"id": 2799,
+			"identifikator": "dolly",
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-01-23T09:01:45.793787Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-01-23"
+		}
+	]
+}

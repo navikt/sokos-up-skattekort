@@ -1,34 +1,31 @@
 import { HttpResponse, http } from "msw";
+import type { HentNavnRequest } from "../src/types/schema/HentNavnRequest";
 import type { HentSkattekortRequest } from "../src/types/schema/HentSkattekortRequestSchema";
-import {
-	type Skattekort,
-	SkattekortListSchema,
-} from "../src/types/schema/SkattekortSchema";
+import ingenNavnResponse from "./ingenNavnResponse.json";
+import hentNavnResponse from "./navnResponse.json";
 import mangeSkattekort from "./responseMedMangeSkattekort.json";
-
+import ingenSkattekort from "./responseUtenSkattekort.json";
 export const handlers = [
 	http.post(
 		"/sokos-skattekort/api/v2/person/hent-skattekort",
 		async ({ request }) => {
 			const sokeParameter = (await request.json()) as HentSkattekortRequest;
 			const skattekort =
-				sokeParameter.fnr === "11111111111" ? [] : mangeSkattekort;
-			const data: Skattekort[] = SkattekortListSchema.parse(skattekort);
-			return HttpResponse.json(data, { status: 200 });
+				sokeParameter.fnr === "11111111111" ||
+				sokeParameter.fnr === "22222222222"
+					? ingenSkattekort
+					: mangeSkattekort;
+			return HttpResponse.json(skattekort, { status: 200 });
 		},
 	),
 	http.post(
 		"/sokos-skattekort/api/v2/person/hent-navn",
 		async ({ request }) => {
-			const sokeParameter = (await request.json()) as HentSkattekortRequest;
-			const skattekort =
-				sokeParameter.fnr === "11111111111" ? [] : mangeSkattekort;
-			return HttpResponse.json(
-				{
-					navn: "Rudolf Blodstrupmoen",
-				},
-				{ status: 200 },
-			);
+			const sokeParameter = (await request.json()) as HentNavnRequest;
+			if (sokeParameter.fnr === "22222222222") {
+				return HttpResponse.json(ingenNavnResponse, { status: 200 });
+			}
+			return HttpResponse.json(hentNavnResponse, { status: 200 });
 		},
 	),
 ];

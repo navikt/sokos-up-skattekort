@@ -1,6 +1,6 @@
 import { object, z } from "zod";
 
-export const SkattekortSchema = z.object({
+export const SkattekortResponseDTOSchema = z.object({
 	utstedtDato: z.optional(z.string()),
 	identifikator: z.optional(z.string()),
 	opprettet: z.string(),
@@ -8,7 +8,6 @@ export const SkattekortSchema = z.object({
 	inntektsaar: z.number(),
 	kilde: z.string(),
 	resultatForSkattekort: z.string(),
-
 	forskuddstrekkList: z.array(
 		z.object({
 			trekkode: z.string(),
@@ -35,12 +34,11 @@ export const SkattekortSchema = z.object({
 			),
 		}),
 	),
-
 	tilleggsopplysningList: z.optional(z.array(z.string())),
 });
 
-export const SkattekortListSchema = z.array(SkattekortSchema);
-export type Skattekort = z.infer<typeof SkattekortSchema>;
+export const SkattekortListSchema = z.array(SkattekortResponseDTOSchema);
+export type Skattekort = z.infer<typeof SkattekortResponseDTOSchema>;
 
 export const Trekkode: { [key: string]: string } = {
 	loennFraNAV: "Lønn fra Nav",

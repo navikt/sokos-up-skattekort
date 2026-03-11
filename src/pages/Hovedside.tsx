@@ -11,17 +11,19 @@ import {
 	HelpText,
 	HStack,
 	Label,
-	Loader,
 	Skeleton,
 	TextField,
 	VStack,
 } from "@navikt/ds-react";
+import type { AxiosError } from "axios";
 import type React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import type { ZodError } from "zod";
 import { useFetchNavn, useFetchSkattekort } from "../api/apiService";
 import Skattekortdata from "../components/Skattekortdata";
-import type { Skattekort } from "../types/schema/SkattekortSchema";
+import type { BackendError, NoNameError } from "../types/Error";
+import type { Skattekort } from "../types/schema/SkattekortResponseDTOSchema";
 import {
 	type SokParameter,
 	SokParameterSchema,
@@ -40,6 +42,35 @@ function formatterFnr(fnr: string) {
 	return fnr.substring(0, 6) + " " + fnr.substring(6);
 }
 
+function isBackendError(
+	error: AxiosError | ZodError | BackendError | NoNameError,
+): error is BackendError {
+	return error && "meldingFraBackend" in error;
+}
+
+function isNoNameError(
+	error: AxiosError | ZodError | BackendError | NoNameError,
+): error is NoNameError {
+	return error && "name" in error && error.name === "NoNameError";
+}
+
+function navnErrorText(
+	error: AxiosError | ZodError<unknown> | BackendError | NoNameError,
+) {
+	if (isBackendError(error)) return error.meldingFraBackend;
+	else if (isNoNameError(error)) return "Søket ga ingen treff";
+	else
+		return "Det oppstod en feil i kommunikasjon med PDL. Kan ikke vise navn.";
+}
+
+function skattekortErrorText(
+	error: AxiosError | ZodError<unknown> | BackendError,
+) {
+	if (isBackendError(error)) return error.meldingFraBackend;
+	else
+		return "Det oppstod en feil i kommunikasjon med Skattekort-tjenesten. Legg inn sak i porten hvis problemet vedvarer.";
+}
+
 export default function Hovedside() {
 	const [isSubmit, setIsSubmit] = useState<boolean>(false);
 	const [fnr, setFnr] = useState<string>("");
@@ -54,7 +85,11 @@ export default function Hovedside() {
 		resolver: zodResolver(SokParameterSchema),
 	});
 	const { data, error, isLoading } = useFetchSkattekort(fnr);
-	const navnResponse = useFetchNavn(fnr);
+	const {
+		data: navn,
+		error: navnError,
+		isLoading: navnIsLoading,
+	} = useFetchNavn(fnr);
 
 	function handleSokReset() {
 		setIsSubmit(false);
@@ -139,15 +174,22 @@ export default function Hovedside() {
 							</VStack>
 						</form>
 					</Box>
-					{isNullOrEmpty(data) && isSubmit && !isLoading && !error && (
+					{navn && isNullOrEmpty(data) && isSubmit && !isLoading && !error && (
 						<Alert variant="info" role="alert">
-							Ingen treff for oppgitt fnr
+							Vi fant ingen opplysninger om skattekort på dette fødselsnummeret
 						</Alert>
 					)}
-					{error && (
+					{navnError && (
+						<Alert
+							variant={isNoNameError(navnError) ? "info" : "error"}
+							role="alert"
+						>
+							{navnErrorText(navnError)}
+						</Alert>
+					)}
+					{!navnError && error && (
 						<Alert variant="error" role="alert">
-							Det oppstod en feil i kommunikasjon med Skattekort-tjenesten. Legg
-							inn sak i porten hvis problemet vedvarer.
+							{skattekortErrorText(error)}
 						</Alert>
 					)}
 					{isLoading && (
@@ -157,9 +199,9 @@ export default function Hovedside() {
 							<Skeleton variant="rounded" height={90} />
 						</VStack>
 					)}
-					{navnResponse && (
+					{(navn || navnIsLoading) && (
 						<VStack padding="space-8">
-							{navnResponse.data && (
+							{navn && (
 								<Box
 									background={"surface-default"}
 									padding="space-16"
@@ -171,7 +213,7 @@ export default function Hovedside() {
 											<BodyShort size="medium">
 												Søkeresultatet gjelder:
 											</BodyShort>
-											<Label>{navnResponse.data?.navn},</Label>
+											<Label>{navn},</Label>
 											<Label>{formatterFnr(fnr)}</Label>
 										</HStack>
 										<CopyButton
@@ -182,16 +224,17 @@ export default function Hovedside() {
 									</HStack>
 								</Box>
 							)}
-							{navnResponse.isLoading && (
+							{navnIsLoading && (
 								<Box
 									background={"surface-default"}
 									padding="space-16"
 									borderRadius="large"
+									margin="auto"
 								>
-									<Loader />
+									<Skeleton variant="text" width="100%" />
 								</Box>
 							)}
-							{navnResponse.error && (
+							{navnError && (
 								<Box
 									background={"surface-default"}
 									padding="space-16"
