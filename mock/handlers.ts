@@ -1,8 +1,8 @@
 import { HttpResponse, http } from "msw";
 import type { HentNavnRequest } from "../src/types/schema/HentNavnRequest";
 import type { HentSkattekortRequest } from "../src/types/schema/HentSkattekortRequestSchema";
-import ingenNavnResponse from "./ingenNavnResponse.json";
 import hentNavnResponse from "./navnResponse.json";
+import ingenNavnResponse from "./navnResponseMedFeilmelding.json";
 import mangeSkattekort from "./responseMedMangeSkattekort.json";
 import ingenSkattekort from "./responseUtenSkattekort.json";
 export const handlers = [

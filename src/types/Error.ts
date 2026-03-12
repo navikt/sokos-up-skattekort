@@ -7,10 +7,10 @@ export class BackendError extends Error {
 		this.meldingFraBackend = meldingFraBackend;
 	}
 }
-export class NoNameError extends Error {
+export class NoDataError extends Error {
 	constructor() {
 		super();
-		this.name = "NoNameError";
+		this.name = "NoDataError";
 	}
 }
 

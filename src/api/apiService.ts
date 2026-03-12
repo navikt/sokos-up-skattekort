@@ -1,7 +1,8 @@
 import type { AxiosError, AxiosResponse } from "axios";
 import useSWRImmutable from "swr/immutable";
 import type { ZodError } from "zod";
-import { BackendError, NoNameError } from "../types/Error";
+import { BackendError, NoDataError } from "../types/Error";
+import type { HentNavnRequest } from "../types/schema/HentNavnRequest";
 import {
 	type HentNavnResponse,
 	HentNavnResponseSchema,
@@ -54,6 +55,9 @@ export function useFetchSkattekort(fnr: string): {
 							if (error.success) {
 								throw new BackendError(error.data.errorMessage);
 							}
+							if (!wrapped.data || wrapped.data.length === 0) {
+								throw new NoDataError();
+							}
 							return SkattekortListSchema.parse(wrapped.data);
 						});
 				},
@@ -83,7 +87,7 @@ export function useFetchNavn(fnr: string): {
 				async ([_url, fnr]: [string, string]) => {
 					return api(BASE_URI.SOKOS_SKATTEKORT_API)
 						.post<
-							HentSkattekortRequest,
+							HentNavnRequest,
 							AxiosResponse<WrappedHentNavnResponseWithError>
 						>(_url, { fnr })
 						.then((response) => response.data)
@@ -94,7 +98,7 @@ export function useFetchNavn(fnr: string): {
 								throw new BackendError(error.data.errorMessage);
 							}
 							if (!wrapped.data || wrapped.data.length === 0) {
-								throw new NoNameError();
+								throw new NoDataError();
 							}
 							return HentNavnResponseSchema.parse(wrapped.data);
 						});

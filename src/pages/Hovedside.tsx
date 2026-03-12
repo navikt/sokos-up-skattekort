@@ -1,16 +1,11 @@
-import { Alert, Heading, VStack } from "@navikt/ds-react";
+import { Heading, VStack } from "@navikt/ds-react";
 import { useState } from "react";
 import { useFetchNavn, useFetchSkattekort } from "../api/apiService";
 import Errorhandler from "../components/Errorhandler";
 import ShowName from "../components/ShowName";
 import ShowSkattekort from "../components/ShowSkattekort";
 import Soek from "../components/Soek";
-import type { Skattekort } from "../types/schema/SkattekortResponseDTOSchema";
 import styles from "./Hovedside.module.css";
-
-function isNullOrEmpty(data: Skattekort[] | undefined) {
-	return !data || data.length === 0;
-}
 
 export default function Hovedside() {
 	const [isSubmit, setIsSubmit] = useState<boolean>(false);
@@ -35,12 +30,10 @@ export default function Hovedside() {
 						setIsSubmit={setIsSubmit}
 						isLoading={navnIsLoading}
 					/>
-					{navn && isNullOrEmpty(data) && isSubmit && !isLoading && !error && (
-						<Alert variant="info" role="alert">
-							Vi fant ingen opplysninger om skattekort på dette fødselsnummeret
-						</Alert>
+
+					{isSubmit && !isLoading && (
+						<Errorhandler error={error} navnError={navnError} />
 					)}
-					<Errorhandler error={error} navnError={navnError} />
 
 					<ShowName fnr={fnr} navn={navn} navnIsLoading={navnIsLoading} />
 
