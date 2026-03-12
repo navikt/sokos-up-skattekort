@@ -1,5 +1,5 @@
 import { ExpansionCard, Skeleton, VStack } from "@navikt/ds-react";
-import type { Skattekort } from "../types/schema/SkattekortResponseDTOSchema";
+import type { Skattekort } from "../types/SkattekortResponseDTOSchema";
 import Skattekortdata from "./Skattekortdata";
 
 export type ShowSkattekortProps = {

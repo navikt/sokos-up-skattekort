@@ -2,22 +2,22 @@ import type { AxiosError, AxiosResponse } from "axios";
 import useSWRImmutable from "swr/immutable";
 import type { ZodError } from "zod";
 import { BackendError, NoDataError } from "../types/Error";
-import type { HentNavnRequest } from "../types/schema/HentNavnRequest";
+import type { HentNavnRequest } from "../types/HentNavnRequest";
 import {
 	type HentNavnResponse,
 	HentNavnResponseSchema,
-} from "../types/schema/HentNavnResponse";
-import type { HentSkattekortRequest } from "../types/schema/HentSkattekortRequestSchema";
+} from "../types/HentNavnResponse";
+import type { HentSkattekortRequest } from "../types/HentSkattekortRequestSchema";
 import {
 	type Skattekort,
 	SkattekortListSchema,
-} from "../types/schema/SkattekortResponseDTOSchema";
+} from "../types/SkattekortResponseDTOSchema";
 import {
 	type WrappedHentNavnResponseWithError,
 	WrappedHentNavnResponseWithErrorSchema,
 	type WrappedSkattekortResponseDTOWithError,
 	WrappedSkattekortResponseDTOWithErrorSchema,
-} from "../types/schema/WrappedResponseWithErrorSchema";
+} from "../types/WrappedResponseWithErrorSchema";
 import { api } from "./config/apiConfig";
 export type OtherErrors = AxiosError | ZodError<unknown> | BackendError;
 export type AllErrors = OtherErrors | NoDataError;

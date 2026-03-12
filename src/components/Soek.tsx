@@ -10,10 +10,7 @@ import {
 } from "@navikt/ds-react";
 import type React from "react";
 import { useForm } from "react-hook-form";
-import {
-	type SokParameter,
-	SokParameterSchema,
-} from "../types/schema/SokParameter";
+import { type SokParameter, SokParameterSchema } from "../types/SokParameter";
 
 export type SoekProps = {
 	setIsSubmit: (isSubmit: boolean) => void;

@@ -1,6 +1,6 @@
 import { HttpResponse, http } from "msw";
-import type { HentNavnRequest } from "../src/types/schema/HentNavnRequest";
-import type { HentSkattekortRequest } from "../src/types/schema/HentSkattekortRequestSchema";
+import type { HentNavnRequest } from "../src/types/HentNavnRequest";
+import type { HentSkattekortRequest } from "../src/types/HentSkattekortRequestSchema";
 import hentNavnResponse from "./navnResponse.json";
 import ingenNavnResponse from "./navnResponseMedFeilmelding.json";
 import mangeSkattekort from "./responseMedMangeSkattekort.json";
