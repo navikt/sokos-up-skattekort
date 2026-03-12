@@ -1,15 +1,12 @@
 import { Alert, ErrorSummary } from "@navikt/ds-react";
-import type { AxiosError } from "axios";
-import type { ZodError } from "zod";
+import type { AllErrors, OtherErrors } from "../api/apiService";
 import type { BackendError, NoDataError } from "../types/Error";
 
 const DEBUG = false;
-type AllErrors = AxiosError | ZodError<unknown> | BackendError | NoDataError;
-type OtherError = AxiosError | ZodError<unknown> | BackendError;
 
 export type ErrorHandlerProps = {
-	error: OtherError | null;
-	navnError: OtherError | NoDataError | null;
+	error: AllErrors | null;
+	navnError: AllErrors | null;
 };
 
 function isBackendError(error: AllErrors): error is BackendError {
@@ -20,7 +17,7 @@ function isNoDataError(error: AllErrors): error is NoDataError {
 	return error && "name" in error && error.name === "NoDataError";
 }
 
-function isNotNoDataError(error: AllErrors): error is OtherError {
+function isOtherError(error: AllErrors): error is OtherErrors {
 	return !isNoDataError(error);
 }
 
@@ -58,12 +55,12 @@ export default function Errorhandler({
 				</Alert>
 			)}
 
-			{DEBUG && navnError && isNotNoDataError(navnError) && (
+			{DEBUG && navnError && isOtherError(navnError) && (
 				<ErrorSummary>
 					<pre>hent-navn: {JSON.stringify(navnError, null, 2)}</pre>
 				</ErrorSummary>
 			)}
-			{DEBUG && error && isNotNoDataError(error) && (
+			{DEBUG && error && isOtherError(error) && (
 				<ErrorSummary>
 					<pre>hent-skattekort: {JSON.stringify(error, null, 2)}</pre>
 					{"message" in error && /[${[.*]/.exec(error?.message) && (

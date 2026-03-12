@@ -19,6 +19,8 @@ import {
 	WrappedSkattekortResponseDTOWithErrorSchema,
 } from "../types/schema/WrappedResponseWithErrorSchema";
 import { api } from "./config/apiConfig";
+export type OtherErrors = AxiosError | ZodError<unknown> | BackendError;
+export type AllErrors = OtherErrors | NoDataError;
 
 const BASE_URI = {
 	SOKOS_SKATTEKORT_API: "/sokos-skattekort/api/v2/person/",
@@ -34,7 +36,7 @@ function swrConfig<T, ArgType>(fetcher: (arg: ArgType) => Promise<T>) {
 
 export function useFetchSkattekort(fnr: string): {
 	data: Skattekort[] | undefined;
-	error: AxiosError | ZodError | BackendError | null;
+	error: AllErrors | null;
 	isLoading: boolean;
 } {
 	const shouldFetch = fnr?.trim().length > 0;
@@ -76,7 +78,7 @@ export function useFetchSkattekort(fnr: string): {
 
 export function useFetchNavn(fnr: string): {
 	data: string | undefined;
-	error: AxiosError | ZodError | BackendError | null;
+	error: AllErrors | null;
 	isLoading: boolean;
 } {
 	const shouldFetch = fnr?.trim().length > 0;
