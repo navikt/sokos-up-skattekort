@@ -2,13 +2,20 @@ import { Alert, ErrorSummary } from "@navikt/ds-react";
 import type { AllErrors, OtherErrors } from "../api/apiService";
 import type { BackendError, NoDataError } from "../types/Error";
 
-const DEBUG = false;
+const DEBUG = true;
 
 export type ErrorHandlerProps = {
 	error: AllErrors | null;
 	navnError: AllErrors | null;
 };
 
+function safeParseJson(error: OtherErrors): string {
+	try {
+		return JSON.parse(error.message);
+	} catch (_) {
+		return error.message;
+	}
+}
 function isBackendError(error: AllErrors): error is BackendError {
 	return error && "meldingFraBackend" in error;
 }
@@ -63,8 +70,8 @@ export default function Errorhandler({
 			{DEBUG && error && isOtherError(error) && (
 				<ErrorSummary>
 					<pre>hent-skattekort: {JSON.stringify(error, null, 2)}</pre>
-					{"message" in error && /[${[.*]/.exec(error?.message) && (
-						<pre>{JSON.stringify(JSON.parse(error.message), null, 2)}</pre>
+					{error.message && "message" in error && (
+						<pre>{JSON.stringify(safeParseJson(error), null, 2)}</pre>
 					)}
 				</ErrorSummary>
 			)}
