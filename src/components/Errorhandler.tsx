@@ -63,10 +63,10 @@ export default function Errorhandler({
 					<pre>hent-navn: {JSON.stringify(navnError, null, 2)}</pre>
 				</ErrorSummary>
 			)}
-			{DEBUG && error && "message" in error && (
+			{DEBUG && error && (
 				<ErrorSummary>
 					<pre>hent-skattekort: {JSON.stringify(error, null, 2)}</pre>
-					{/[${[.*]/.exec(error?.message) && (
+					{"message" in error && /[${[.*]/.exec(error?.message) && (
 						<pre>{JSON.stringify(JSON.parse(error.message), null, 2)}</pre>
 					)}
 				</ErrorSummary>
