@@ -26,6 +26,9 @@ export function api(baseUri: string) {
 			if (error.response?.status === 401 || error.response?.status === 403) {
 				return Promise.reject(error);
 			}
+			if (error.response?.status === 500) {
+				throw new HttpStatusCodeError(error.response?.status, "Serverfeil.");
+			}
 			throw new ApiError("Issues with connection to backend");
 		},
 	);
