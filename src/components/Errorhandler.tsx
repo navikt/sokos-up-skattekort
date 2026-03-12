@@ -2,7 +2,7 @@ import { Alert, ErrorSummary } from "@navikt/ds-react";
 import type { AllErrors, OtherErrors } from "../api/apiService";
 import type { BackendError, NoDataError } from "../types/Error";
 
-const DEBUG = true;
+const DEBUG = false;
 
 export type ErrorHandlerProps = {
 	error: AllErrors | null;
