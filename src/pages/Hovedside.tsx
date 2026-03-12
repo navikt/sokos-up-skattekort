@@ -229,7 +229,6 @@ export default function Hovedside() {
 									background={"surface-default"}
 									padding="space-16"
 									borderRadius="large"
-									margin="auto"
 								>
 									<Skeleton variant="text" width="100%" />
 								</Box>

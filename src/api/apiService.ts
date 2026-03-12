@@ -96,7 +96,7 @@ export function useFetchNavn(fnr: string): {
 							if (!wrapped.data || wrapped.data.length === 0) {
 								throw new NoNameError();
 							}
-							return HentNavnResponseSchema.parse(wrapped.data[0]);
+							return HentNavnResponseSchema.parse(wrapped.data);
 						});
 				},
 			),
@@ -109,5 +109,5 @@ export function useFetchNavn(fnr: string): {
 			errorRetryInterval: 3000,
 		},
 	);
-	return { data: data?.navn, error, isLoading };
+	return { data, error, isLoading };
 }
