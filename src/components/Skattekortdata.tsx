@@ -33,8 +33,20 @@ function menneskeleseligKilde(t: string) {
 	else if (t === "MANUELL") return "Dolly";
 	else return t;
 }
+function isNotEmpty<T>(list?: T[] | null | undefined): list is T[] {
+	return !!list && list.length > 0;
+}
+function isEmpty<T>(list?: T[] | null | undefined): list is null | undefined {
+	return !list || list.length === 0;
+}
+
 export default function Skattekortdata({
 	skattekort,
+	skattekort: {
+		forskuddstrekkList,
+		tilleggsopplysningList,
+		resultatForSkattekort,
+	},
 }: Readonly<{ skattekort: Skattekort }>) {
 	return (
 		<VStack gap="space-32" margin="space-16">
@@ -50,68 +62,76 @@ export default function Skattekortdata({
 					</VStack>
 					<Label>{`Mottatt: ${toLocalDate(skattekort.opprettet)} - ${toLocalTime(skattekort.opprettet)}`}</Label>
 				</HStack>
-				{skattekort?.tilleggsopplysningList &&
-					skattekort.tilleggsopplysningList.length > 0 && (
-						<LabelText
-							label="Tilleggsopplysning"
-							text={skattekort.tilleggsopplysningList
-								?.map((t) => menneskeleseligTilleggsopplysning(t))
-								.join(", ")}
-						/>
-					)}
-			</VStack>
-			{skattekort?.forskuddstrekkList &&
-				skattekort.forskuddstrekkList.length > 0 && (
-					<Table>
-						<Table.Body>
-							{skattekort.forskuddstrekkList.map((ft) => {
-								let trekkprosent = null;
-								let frikort = null;
-								let tabell = null;
-								let antallMndForTrekk = null;
-
-								if (ft.prosentkort) {
-									trekkprosent = (
-										<BodyShort>{`Trekkprosent ${ft.prosentkort.prosentSats}%`}</BodyShort>
-									);
-									if (ft.prosentkort.antallMndForTrekk)
-										antallMndForTrekk = (
-											<BodyShort>{`Antall mnd. for trekk ${ft.prosentkort.antallMndForTrekk}`}</BodyShort>
-										);
-								}
-
-								if (ft.trekktabell) {
-									trekkprosent = (
-										<BodyShort>{`Trekkprosent ${ft.trekktabell.prosentSats}%`}</BodyShort>
-									);
-									tabell = (
-										<BodyShort>{`Tabell ${ft.trekktabell.tabell}`}</BodyShort>
-									);
-									antallMndForTrekk = (
-										<BodyShort>{`Antall mnd. for trekk ${ft.trekktabell.antallMndForTrekk}`}</BodyShort>
-									);
-								}
-
-								if (ft.frikort) {
-									frikort = (
-										<BodyShort>{`Frikortbeløp ${ft.frikort.frikortBeloep ?? "∞"}`}</BodyShort>
-									);
-								}
-
-								return (
-									<Table.Row key={ft.trekkode}>
-										<Table.HeaderCell>
-											{Trekkode[ft.trekkode]}:
-										</Table.HeaderCell>
-										<Table.DataCell>{trekkprosent}</Table.DataCell>
-										<Table.DataCell>{frikort || tabell}</Table.DataCell>
-										<Table.DataCell>{antallMndForTrekk}</Table.DataCell>
-									</Table.Row>
-								);
-							})}
-						</Table.Body>
-					</Table>
+				{isNotEmpty(tilleggsopplysningList) && (
+					<LabelText
+						label="Tilleggsopplysning"
+						text={tilleggsopplysningList
+							?.map((t) => menneskeleseligTilleggsopplysning(t))
+							.join(", ")}
+					/>
 				)}
+			</VStack>
+
+			{resultatForSkattekort === "ikkeSkattekort" &&
+				isEmpty(
+					forskuddstrekkList,
+				) /* Et syntetisk skattekort kan ha resultat ikkeSkattekort*/ && (
+					<BodyShort>Har ikke skattekort</BodyShort>
+				)}
+
+			{isNotEmpty(forskuddstrekkList) && (
+				<Table>
+					<Table.Body>
+						{forskuddstrekkList.map((ft) => {
+							let trekkprosent = null;
+							let frikort = null;
+							let tabell = null;
+							let antallMndForTrekk = null;
+
+							if (ft.prosentkort) {
+								trekkprosent = (
+									<BodyShort>{`Trekkprosent ${ft.prosentkort.prosentSats}%`}</BodyShort>
+								);
+								if (ft.prosentkort.antallMndForTrekk)
+									antallMndForTrekk = (
+										<BodyShort>{`Antall mnd. for trekk ${ft.prosentkort.antallMndForTrekk}`}</BodyShort>
+									);
+							}
+
+							if (ft.trekktabell) {
+								trekkprosent = (
+									<BodyShort>{`Trekkprosent ${ft.trekktabell.prosentSats}%`}</BodyShort>
+								);
+								tabell = (
+									<BodyShort>{`Tabell ${ft.trekktabell.tabell}`}</BodyShort>
+								);
+								antallMndForTrekk = (
+									<BodyShort>{`Antall mnd. for trekk ${ft.trekktabell.antallMndForTrekk}`}</BodyShort>
+								);
+							}
+
+							if (ft.frikort) {
+								frikort = (
+									<BodyShort>
+										{ft.frikort.frikortBeloep
+											? `Frikortbeløp ${ft.frikort.frikortBeloep}`
+											: "Frikort uten beløpsgrense"}
+									</BodyShort>
+								);
+							}
+
+							return (
+								<Table.Row key={ft.trekkode}>
+									<Table.HeaderCell>{Trekkode[ft.trekkode]}:</Table.HeaderCell>
+									<Table.DataCell>{trekkprosent}</Table.DataCell>
+									<Table.DataCell>{frikort || tabell}</Table.DataCell>
+									<Table.DataCell>{antallMndForTrekk}</Table.DataCell>
+								</Table.Row>
+							);
+						})}
+					</Table.Body>
+				</Table>
+			)}
 			<BodyShort size="small">{`Kilde: ${menneskeleseligKilde(skattekort.kilde)}`}</BodyShort>
 		</VStack>
 	);

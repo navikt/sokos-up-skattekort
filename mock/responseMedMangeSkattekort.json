@@ -147,7 +147,7 @@
 			"inntektsaar": 2026,
 			"kilde": "MANUELL",
 			"opprettet": "2026-02-11T12:04:25.499617Z",
-			"resultatForSkattekort": "skattekortopplysningerOK",
+			"resultatForSkattekort": "ikkeSkattekort",
 			"tilleggsopplysningList": [],
 			"utstedtDato": "2026-02-11"
 		},
@@ -171,7 +171,7 @@
 				{
 					"trekkode": "loennFraNAV",
 					"frikort": {
-						"frikortBeloep": 0
+						"frikortBeloep": 8128
 					}
 				}
 			],
