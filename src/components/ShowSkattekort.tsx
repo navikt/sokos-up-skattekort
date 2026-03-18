@@ -1,5 +1,8 @@
 import { ExpansionCard, Skeleton, VStack } from "@navikt/ds-react";
-import type { Skattekort } from "../types/SkattekortResponseDTOSchema";
+import {
+	type Skattekort,
+	skattekortTittel,
+} from "../types/SkattekortResponseDTOSchema";
 import Skattekortdata from "./Skattekortdata";
 
 export type ShowSkattekortProps = {
@@ -29,7 +32,7 @@ export default function ShowSkattekort({
 					<ExpansionCard aria-label="Skattekort">
 						<ExpansionCard.Header>
 							<ExpansionCard.Title as="h4" size="small">
-								Skattekort {skattekort.inntektsaar}.{" "}
+								{skattekortTittel(skattekort)} {skattekort.inntektsaar}.{" "}
 								{(skattekort.utstedtDato ?? "") !== "" &&
 									`Utstedt ${skattekort.utstedtDato}`}
 							</ExpansionCard.Title>

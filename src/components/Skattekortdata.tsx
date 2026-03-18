@@ -1,5 +1,6 @@
 import { BodyShort, HStack, Label, Table, VStack } from "@navikt/ds-react";
 import {
+	menneskeleseligKilde,
 	type Skattekort,
 	Trekkode,
 } from "../types/SkattekortResponseDTOSchema";
@@ -27,12 +28,7 @@ function menneskeleseligTilleggsopplysning(t: string) {
 	else if (t === "oppholdITiltakssone") return "Opphold i tiltakssone";
 	else return t;
 }
-function menneskeleseligKilde(t: string) {
-	if (t === "SYNTETISERT") return "Syntetisert";
-	else if (t === "SKATTEETATEN") return "Skatteetaten";
-	else if (t === "MANUELL") return "Dolly";
-	else return t;
-}
+
 function isNotEmpty<T>(list?: T[] | null | undefined): list is T[] {
 	return !!list && list.length > 0;
 }
