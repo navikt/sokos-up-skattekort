@@ -71,7 +71,7 @@ export default function Skattekortdata({
 			{resultatForSkattekort === "ikkeSkattekort" &&
 				isEmpty(
 					forskuddstrekkList,
-				) /* Et syntetisk skattekort kan ha resultat ikkeSkattekort*/ && (
+				) /* Et utledet skattekort kan ha resultat ikkeSkattekort*/ && (
 					<BodyShort>Har ikke skattekort</BodyShort>
 				)}
 
