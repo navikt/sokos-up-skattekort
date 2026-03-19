@@ -32,6 +32,7 @@ function menneskeleseligTilleggsopplysning(t: string) {
 function isNotEmpty<T>(list?: T[] | null | undefined): list is T[] {
 	return !!list && list.length > 0;
 }
+
 function isEmpty<T>(list?: T[] | null | undefined): list is null | undefined {
 	return !list || list.length === 0;
 }
@@ -69,9 +70,7 @@ export default function Skattekortdata({
 			</VStack>
 
 			{resultatForSkattekort === "ikkeSkattekort" &&
-				isEmpty(
-					forskuddstrekkList,
-				) /* Et utledet skattekort kan ha resultat ikkeSkattekort*/ && (
+				isEmpty(forskuddstrekkList) && (
 					<BodyShort>Har ikke skattekort</BodyShort>
 				)}
 

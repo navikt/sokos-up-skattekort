@@ -47,7 +47,7 @@ export const Trekkode: { [key: string]: string } = {
 };
 
 export function menneskeleseligKilde(t: string) {
-	if (t === "SYNTETISERT") return "Utledet";
+	if (t === "SYNTETISERT") return "Opprettet av Nav";
 	else if (t === "SKATTEETATEN") return "Skatteetaten";
 	else if (t === "MANUELL") return "Dolly";
 	else return t;
@@ -55,14 +55,15 @@ export function menneskeleseligKilde(t: string) {
 
 export function skattekortTittel(skattekort: Skattekort) {
 	if (skattekort.resultatForSkattekort === "ikkeSkattekort") {
-		if (skattekort.kilde === "SYNTETISERT") return "Utledet skattekort";
+		if (skattekort.kilde === "SYNTETISERT")
+			return "Skattekort opprettet av Nav";
 		else if (skattekort.kilde === "SKATTEETATEN")
 			return '"Har ikke skattekort" fra Skatteetaten';
 		else if (skattekort.kilde === "MANUELL")
 			return '"Har ikke skattekort" fra Dolly';
 		else return skattekort.kilde;
 	}
-	if (skattekort.kilde === "SYNTETISERT") return "Utledet skattekort";
+	if (skattekort.kilde === "SYNTETISERT") return "Skattekort opprettet av Nav";
 	else if (skattekort.kilde === "SKATTEETATEN")
 		return "Skattekort fra Skatteetaten";
 	else if (skattekort.kilde === "MANUELL") return "Skattekort fra Dolly";
