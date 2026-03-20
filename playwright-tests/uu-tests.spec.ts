@@ -36,7 +36,6 @@ test.describe("Arbeidsflaten Skattekort", () => {
 		await expect(skattekort).toHaveCount(3);
 
 		await skattekort.first().click();
-		await page.pause();
 		const first = page.getByText("Har ikke skattekort", { exact: true });
 		await expect(first).toBeVisible();
 	});
