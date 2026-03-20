@@ -1,0 +1,52 @@
+{
+	"data": [
+		{
+			"forskuddstrekkList": [],
+			"id": 226278,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-03-16T15:42:22.153974Z",
+			"resultatForSkattekort": "ikkeSkattekort",
+			"tilleggsopplysningList": [],
+			"utstedtDato": "2026-03-16"
+		},
+		{
+			"forskuddstrekkList": [
+				{
+					"trekkode": "loennFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "ufoeretrygdFraNAV",
+					"prosentkort": {
+						"prosentSats": 15.6
+					}
+				},
+				{
+					"trekkode": "pensjonFraNAV",
+					"prosentkort": {
+						"prosentSats": 13.1
+					}
+				}
+			],
+			"id": 3060,
+			"inntektsaar": 2026,
+			"kilde": "SYNTETISERT",
+			"opprettet": "2026-02-19T11:49:47.787979Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
+		},
+		{
+			"forskuddstrekkList": [],
+			"id": 3059,
+			"inntektsaar": 2026,
+			"kilde": "MANUELL",
+			"opprettet": "2026-02-19T11:49:47.787979Z",
+			"resultatForSkattekort": "skattekortopplysningerOK",
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"],
+			"utstedtDato": "2026-02-19"
+		}
+	]
+}

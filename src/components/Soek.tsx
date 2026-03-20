@@ -69,8 +69,12 @@ export default function Soek({
 							// eslint-disable-next-line jsx-a11y/no-autofocus
 							autoFocus
 						/>
-						<HelpText title="Hvordan søke etter skattekort">
-							Søk etter skattekort ved å oppgi fødselsnummer.
+						<HelpText placement="left" title="Om arbeidsflaten skattekort">
+							Du kan se skattekort 24 mnd tilbake i tid.
+							<br />
+							For å se hvilken del av skattekortet som vil bli, eller er, brukt
+							i en beregning må menypunktet "Skatt og trekk" og underpunktmeny
+							"eSkattekort - Søk" i Økonomiportalen benyttes.
 						</HelpText>
 					</HStack>
 					<HStack gap="space-16" justify="end">
