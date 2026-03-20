@@ -3,6 +3,7 @@ import {
 	type Skattekort,
 	skattekortTittel,
 } from "../types/SkattekortResponseDTOSchema";
+import { toLocalDate } from "../util/norskFormat";
 import Skattekortdata from "./Skattekortdata";
 
 export type ShowSkattekortProps = {
@@ -34,7 +35,7 @@ export default function ShowSkattekort({
 							<ExpansionCard.Title as="h4" size="small">
 								{skattekortTittel(skattekort)} {skattekort.inntektsaar}.{" "}
 								{(skattekort.utstedtDato ?? "") !== "" &&
-									`Utstedt ${skattekort.utstedtDato}`}
+									`Utstedt ${toLocalDate(skattekort.utstedtDato ?? "")}`}
 							</ExpansionCard.Title>
 						</ExpansionCard.Header>
 						<ExpansionCard.Content>

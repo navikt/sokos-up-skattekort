@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import hentSkattekort from "./stubs/hent-skattekort.json" with { type: "json" };
 
-test.describe("Axe a11y", () => {
+test.describe("Arbeidsflaten Skattekort", () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto("/skattekort");
 		await page.waitForLoadState("networkidle");
@@ -36,9 +36,8 @@ test.describe("Axe a11y", () => {
 		await expect(skattekort).toHaveCount(3);
 
 		await skattekort.first().click();
-		const first = page
-			.getByRole("paragraph")
-			.filter({ hasText: /Har ikke skattekort/ });
+		await page.pause();
+		const first = page.getByText("Har ikke skattekort", { exact: true });
 		await expect(first).toBeVisible();
 	});
 });

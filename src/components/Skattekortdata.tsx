@@ -4,23 +4,8 @@ import {
 	type Skattekort,
 	Trekkode,
 } from "../types/SkattekortResponseDTOSchema";
+import { toLocalDate, toLocalTime } from "../util/norskFormat";
 import LabelText from "./LabelText";
-
-function toLocalDate(zulu: string) {
-	return Intl.DateTimeFormat("no-NO", {
-		year: "numeric",
-		month: "2-digit",
-		day: "2-digit",
-	}).format(new Date(zulu));
-}
-
-function toLocalTime(zulu: string) {
-	return Intl.DateTimeFormat("no-NO", {
-		hour: "2-digit",
-		minute: "2-digit",
-		hourCycle: "h23",
-	}).format(new Date(zulu));
-}
 
 function menneskeleseligTilleggsopplysning(t: string) {
 	if (t === "oppholdPaaSvalbard") return "Opphold på Svalbard";
@@ -33,17 +18,12 @@ function isNotEmpty<T>(list?: T[] | null | undefined): list is T[] {
 	return !!list && list.length > 0;
 }
 
-function isEmpty<T>(list?: T[] | null | undefined): list is null | undefined {
+function isEmpty<T>(list?: T[] | null | undefined): boolean {
 	return !list || list.length === 0;
 }
 
 export default function Skattekortdata({
 	skattekort,
-	skattekort: {
-		forskuddstrekkList,
-		tilleggsopplysningList,
-		resultatForSkattekort,
-	},
 }: Readonly<{ skattekort: Skattekort }>) {
 	return (
 		<VStack gap="space-32" margin="space-16">
@@ -59,25 +39,25 @@ export default function Skattekortdata({
 					</VStack>
 					<Label>{`Mottatt: ${toLocalDate(skattekort.opprettet)} - ${toLocalTime(skattekort.opprettet)}`}</Label>
 				</HStack>
-				{isNotEmpty(tilleggsopplysningList) && (
+				{isNotEmpty(skattekort.tilleggsopplysningList) && (
 					<LabelText
 						label="Tilleggsopplysning"
-						text={tilleggsopplysningList
+						text={skattekort.tilleggsopplysningList
 							?.map((t) => menneskeleseligTilleggsopplysning(t))
 							.join(", ")}
 					/>
 				)}
 			</VStack>
 
-			{resultatForSkattekort === "ikkeSkattekort" &&
-				isEmpty(forskuddstrekkList) && (
+			{skattekort.resultatForSkattekort === "ikkeSkattekort" &&
+				isEmpty(skattekort.forskuddstrekkList) && (
 					<BodyShort>Har ikke skattekort</BodyShort>
 				)}
 
-			{isNotEmpty(forskuddstrekkList) && (
+			{isNotEmpty(skattekort.forskuddstrekkList) && (
 				<Table>
 					<Table.Body>
-						{forskuddstrekkList.map((ft) => {
+						{skattekort.forskuddstrekkList.map((ft) => {
 							let trekkprosent = null;
 							let frikort = null;
 							let tabell = null;
@@ -108,9 +88,9 @@ export default function Skattekortdata({
 							if (ft.frikort) {
 								frikort = (
 									<BodyShort>
-										{ft.frikort.frikortBeloep
-											? `Frikortbeløp ${ft.frikort.frikortBeloep}`
-											: "Frikort uten beløpsgrense"}
+										{ft.frikort.frikortBeloep == null
+											? "Frikort uten beløpsgrense"
+											: `Frikortbeløp ${ft.frikort.frikortBeloep}`}
 									</BodyShort>
 								);
 							}
