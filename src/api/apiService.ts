@@ -67,10 +67,7 @@ export function useFetchSkattekort(fnr: string): {
 			onError: (error) => {
 				return { data: [], error, isValidating: false };
 			},
-			revalidateOnMount: true,
-			shouldRetryOnError: true,
-			errorRetryCount: 1,
-			errorRetryInterval: 3000,
+			shouldRetryOnError: false,
 		},
 	);
 	return { data, error, isLoading };
@@ -109,10 +106,7 @@ export function useFetchNavn(fnr: string): {
 			onError: (error) => {
 				return { data: [], error, isValidating: false };
 			},
-			revalidateOnMount: true,
-			shouldRetryOnError: true,
-			errorRetryCount: 1,
-			errorRetryInterval: 3000,
+			shouldRetryOnError: false,
 		},
 	);
 	return { data, error, isLoading };

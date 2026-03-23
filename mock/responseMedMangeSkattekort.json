@@ -63,7 +63,7 @@
 			"kilde": "SYNTETISERT",
 			"opprettet": "2026-02-12T11:03:04.848790Z",
 			"resultatForSkattekort": "skattekortopplysningerOK",
-			"tilleggsopplysningList": ["oppholdPaaSvalbard", "kildeskattPaaPensjon"]
+			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
 		},
 		{
 			"forskuddstrekkList": [
@@ -147,7 +147,7 @@
 			"inntektsaar": 2026,
 			"kilde": "MANUELL",
 			"opprettet": "2026-02-11T12:04:25.499617Z",
-			"resultatForSkattekort": "skattekortopplysningerOK",
+			"resultatForSkattekort": "ikkeSkattekort",
 			"tilleggsopplysningList": [],
 			"utstedtDato": "2026-02-11"
 		},
@@ -162,7 +162,7 @@
 			"inntektsaar": 2026,
 			"kilde": "MANUELL",
 			"opprettet": "2026-02-09T12:34:24.687320Z",
-			"resultatForSkattekort": "ikkeSkattekort",
+			"resultatForSkattekort": "skattekortopplysningerOK",
 			"tilleggsopplysningList": [],
 			"utstedtDato": "2026-02-09"
 		},
@@ -171,7 +171,7 @@
 				{
 					"trekkode": "loennFraNAV",
 					"frikort": {
-						"frikortBeloep": 0
+						"frikortBeloep": 8128
 					}
 				}
 			],
@@ -179,7 +179,7 @@
 			"inntektsaar": 2026,
 			"kilde": "MANUELL",
 			"opprettet": "2026-02-09T12:34:02.782378Z",
-			"resultatForSkattekort": "ikkeSkattekort",
+			"resultatForSkattekort": "skattekortopplysningerOK",
 			"tilleggsopplysningList": [],
 			"utstedtDato": "2026-02-09"
 		},
@@ -212,12 +212,7 @@
 			"tilleggsopplysningList": ["oppholdPaaSvalbard"]
 		},
 		{
-			"forskuddstrekkList": [
-				{
-					"trekkode": "loennFraNAV",
-					"frikort": {}
-				}
-			],
+			"forskuddstrekkList": [],
 			"id": 2903,
 			"inntektsaar": 2026,
 			"kilde": "MANUELL",
