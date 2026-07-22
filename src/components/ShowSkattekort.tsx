@@ -30,9 +30,9 @@ export default function ShowSkattekort({
 					key={`${skattekort.opprettet}${skattekort.id}`}
 					padding="space-8"
 				>
-					<ExpansionCard aria-label="Skattekort">
+					<ExpansionCard aria-label={skattekortTittel(skattekort)}>
 						<ExpansionCard.Header>
-							<ExpansionCard.Title as="h4" size="small">
+							<ExpansionCard.Title as="h2" size="small">
 								{skattekortTittel(skattekort)} {skattekort.inntektsaar}.{" "}
 								{(skattekort.utstedtDato ?? "") !== "" &&
 									`Utstedt ${toLocalDate(skattekort.utstedtDato ?? "")}`}
