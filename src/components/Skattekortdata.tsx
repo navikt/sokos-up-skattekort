@@ -55,7 +55,7 @@ export default function Skattekortdata({
 				)}
 
 			{isNotEmpty(skattekort.forskuddstrekkList) && (
-				<Table>
+				<Table aria-label="Forskuddstrekk">
 					<Table.Body>
 						{skattekort.forskuddstrekkList.map((ft) => {
 							let trekkprosent = null;
