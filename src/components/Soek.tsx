@@ -11,7 +11,6 @@ import {
 import type React from "react";
 import { useForm } from "react-hook-form";
 import { type SokParameter, SokParameterSchema } from "../types/SokParameter";
-import styles from "./Soek.module.css";
 
 export type SoekProps = {
 	setIsSubmit: (isSubmit: boolean) => void;
@@ -48,7 +47,11 @@ export default function Soek({
 		setFnr(fnr);
 	}
 	return (
-		<Box padding="space-24" className={styles.soekboks} borderRadius="12">
+		<Box
+			padding="space-24"
+			background={"meta-purple-moderateA"}
+			borderRadius="12"
+		>
 			<form onSubmit={handleSubmit(handleSoekSubmit)}>
 				<VStack gap={"space-4"}>
 					<HStack justify="space-between">
