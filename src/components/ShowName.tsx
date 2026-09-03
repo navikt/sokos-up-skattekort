@@ -27,40 +27,33 @@ export default function ShowName({
 		<>
 			{navn && (
 				<VStack padding="space-8">
-					{navn && (
-						<Box
-							background={"surface-default"}
-							padding="space-16"
-							paddingInline="space-32"
-							borderRadius="large"
-						>
-							<HStack>
-								<HStack gap="space-16" align="center">
-									<BodyShort size="medium">Søkeresultatet gjelder:</BodyShort>
-									<Label>{navn},</Label>
-									<Label>{formatterFnr(fnr)}</Label>
-								</HStack>
-								<CopyButton
-									size={"medium"}
-									copyText={fnr}
-									iconPosition={"left"}
-								/>
+					<Box
+						background={"default"}
+						padding="space-16"
+						paddingInline="space-32"
+						borderRadius="12"
+					>
+						<HStack>
+							<HStack gap="space-16" align="center">
+								<BodyShort size="medium">Søkeresultatet gjelder:</BodyShort>
+								<Label>{navn},</Label>
+								<Label>{formatterFnr(fnr)}</Label>
 							</HStack>
-						</Box>
-					)}
+							<CopyButton
+								size={"medium"}
+								copyText={fnr}
+								iconPosition={"left"}
+								title="Kopier fødselsnummer"
+							/>
+						</HStack>
+					</Box>
 				</VStack>
 			)}
 			{navnIsLoading && (
 				<VStack padding="space-8">
-					{navnIsLoading && (
-						<Box
-							background={"surface-default"}
-							padding="space-16"
-							borderRadius="large"
-						>
-							<Skeleton variant="text" width="100%" />
-						</Box>
-					)}
+					<Box background={"default"} padding="space-16" borderRadius="12">
+						<Skeleton variant="text" width="100%" />
+					</Box>
 				</VStack>
 			)}
 		</>

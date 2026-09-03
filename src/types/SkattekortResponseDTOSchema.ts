@@ -58,9 +58,9 @@ export function skattekortTittel(skattekort: Skattekort) {
 		if (skattekort.kilde === "SYNTETISERT")
 			return "Skattekort opprettet av Nav";
 		else if (skattekort.kilde === "SKATTEETATEN")
-			return '"Har ikke skattekort" fra Skatteetaten';
+			return '"Har ikke Skattekort" fra Skatteetaten';
 		else if (skattekort.kilde === "MANUELL")
-			return '"Har ikke skattekort" fra Dolly';
+			return '"Har ikke Skattekort" fra Dolly';
 		else return skattekort.kilde;
 	}
 	if (skattekort.kilde === "SYNTETISERT") return "Skattekort opprettet av Nav";
