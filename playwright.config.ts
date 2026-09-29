@@ -45,7 +45,7 @@ export default defineConfig({
 		},
 	],
 	webServer: {
-		command: "pnpm run dev",
+		command: "pnpm run dev:backend",
 		url: "http://localhost:5173/skattekort",
 		reuseExistingServer: !process.env.CI,
 	},

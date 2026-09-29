@@ -1,31 +1,19 @@
-import { Alert, ErrorSummary } from "@navikt/ds-react";
-import type { AllErrors, OtherErrors } from "../api/apiService";
+import { InformationSquareIcon } from "@navikt/aksel-icons";
+import { InfoCard, LocalAlert } from "@navikt/ds-react";
+import type { AllErrors } from "../api/apiService";
 import type { BackendError, NoDataError } from "../types/Error";
-
-const DEBUG = false;
 
 export type ErrorHandlerProps = {
 	error: AllErrors | null;
 	navnError: AllErrors | null;
 };
 
-function safeParseJson(error: OtherErrors): string {
-	try {
-		return JSON.parse(error.message);
-	} catch (_) {
-		return error.message;
-	}
-}
 function isBackendError(error: AllErrors): error is BackendError {
 	return error && "meldingFraBackend" in error;
 }
 
 function isNoDataError(error: AllErrors): error is NoDataError {
 	return error && "name" in error && error.name === "NoDataError";
-}
-
-function isOtherError(error: AllErrors): error is OtherErrors {
-	return !isNoDataError(error);
 }
 
 function navnErrorText(error: AllErrors) {
@@ -48,33 +36,32 @@ export default function Errorhandler({
 }: Readonly<ErrorHandlerProps>) {
 	return (
 		<>
-			{navnError && (
-				<Alert
-					variant={isNoDataError(navnError) ? "info" : "error"}
-					role="alert"
-				>
-					{navnErrorText(navnError)}
-				</Alert>
-			)}
-			{error && !navnError && (
-				<Alert variant={isNoDataError(error) ? "info" : "error"} role="alert">
-					{skattekortErrorText(error)}
-				</Alert>
-			)}
-
-			{DEBUG && navnError && isOtherError(navnError) && (
-				<ErrorSummary>
-					<pre>hent-navn: {JSON.stringify(navnError, null, 2)}</pre>
-				</ErrorSummary>
-			)}
-			{DEBUG && error && isOtherError(error) && (
-				<ErrorSummary>
-					<pre>hent-skattekort: {JSON.stringify(error, null, 2)}</pre>
-					{error.message && "message" in error && (
-						<pre>{JSON.stringify(safeParseJson(error), null, 2)}</pre>
-					)}
-				</ErrorSummary>
-			)}
+			{navnError && isNoDataError(navnError) ? (
+				<InfoCard data-color="info">
+					<InfoCard.Header icon={<InformationSquareIcon aria-hidden />}>
+						<InfoCard.Title>{navnErrorText(navnError)}</InfoCard.Title>
+					</InfoCard.Header>
+				</InfoCard>
+			) : navnError ? (
+				<LocalAlert status="error" role="alert">
+					<LocalAlert.Header>
+						<LocalAlert.Title>{navnErrorText(navnError)}</LocalAlert.Title>
+					</LocalAlert.Header>
+				</LocalAlert>
+			) : null}
+			{error && !navnError && isNoDataError(error) ? (
+				<InfoCard data-color="info">
+					<InfoCard.Header icon={<InformationSquareIcon aria-hidden />}>
+						<InfoCard.Title>{skattekortErrorText(error)}</InfoCard.Title>
+					</InfoCard.Header>
+				</InfoCard>
+			) : error && !navnError ? (
+				<LocalAlert status="error" role="alert">
+					<LocalAlert.Header>
+						<LocalAlert.Title>{skattekortErrorText(error)}</LocalAlert.Title>
+					</LocalAlert.Header>
+				</LocalAlert>
+			) : null}
 		</>
 	);
 }

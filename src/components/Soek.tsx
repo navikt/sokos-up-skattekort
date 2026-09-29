@@ -47,9 +47,13 @@ export default function Soek({
 		setFnr(fnr);
 	}
 	return (
-		<Box padding="6" background={"surface-alt-1-subtle"} borderRadius="large">
+		<Box
+			padding="space-24"
+			background={"meta-purple-moderateA"}
+			borderRadius="12"
+		>
 			<form onSubmit={handleSubmit(handleSoekSubmit)}>
-				<VStack gap={"4"}>
+				<VStack gap={"space-4"}>
 					<HStack justify="space-between">
 						<TextField
 							{...register("fnr")}
