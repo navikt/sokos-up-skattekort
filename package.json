@@ -18,9 +18,9 @@
 	"dependencies": {
 		"@axe-core/playwright": "4.13.0",
 		"@hookform/resolvers": "5.9.1",
-		"@navikt/aksel-icons": "8.16.2",
-		"@navikt/ds-css": "8.16.2",
-		"@navikt/ds-react": "8.16.2",
+		"@navikt/aksel-icons": "8.17.2",
+		"@navikt/ds-css": "8.17.2",
+		"@navikt/ds-react": "8.17.2",
 		"axios": "1.20.0",
 		"pino-http": "11.0.0",
 		"react": "19.3.0",
@@ -31,7 +31,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.14",
-		"@navikt/aksel-stylelint": "8.16.2",
+		"@navikt/aksel-stylelint": "8.17.2",
 		"@playwright/test": "1.63.0",
 		"@types/node": "26.6.2",
 		"@types/react": "19.3.0",
