@@ -17,7 +17,7 @@
 	},
 	"dependencies": {
 		"@axe-core/playwright": "4.13.0",
-		"@hookform/resolvers": "5.9.1",
+		"@hookform/resolvers": "6.0.0",
 		"@navikt/aksel-icons": "8.19.2",
 		"@navikt/ds-css": "8.19.2",
 		"@navikt/ds-react": "8.19.2",
